@@ -10,10 +10,12 @@ namespace Dominio
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
-        public string Artista { get; set; }
+        public Artista Artista { get; set; }
         public DateTime FechaLanzamiento { get; set; }
         public string ImgTapa { get; set; }
         public string ImgContratapa { get; set; }
+
+        public decimal Precio { get; set; }
         public Genero Genero { get; set; }
         public Categoria Categoria { get; set; }
     }

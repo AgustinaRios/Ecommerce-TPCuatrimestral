@@ -1,9 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Formulario.aspx.cs" Inherits="TiendaVinilos.Formulario" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
-     <div class="CuerpoRegistro">
-     <div class="FormularioRegistro">
+     <div class="bodyformulario">
+     <div class="formulario">
         <h4>Formulario </h4>
        <br />
         <h3>Titulo*</h3>
@@ -18,14 +16,13 @@
         <asp:TextBox ID="TxtImgContraTapa" class="form-control" type="text" placeholder="Ingrese url imagen Contratapa"  runat="server"></asp:TextBox>     
         <h5> Campos Obligatorios(*)</h5>  
         <h3>Genero</h3>
-        <asp:DropDownList runat="server" ID="ddlGenero"  CssClass="form-control-sm" ForeColor="Black">
+        <asp:DropDownList runat="server" ID="ddlGenero"  CssClass="form-control-sm">
         </asp:DropDownList>
         <h3>Categoria</h3> 
-        <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control-sm" ForeColor="Black">  
+        <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control-sm">  
         </asp:DropDownList>
         <br />
-         <br />
-        <asp:Button ID="BtnAgregar" Text="Agregar" CssClass="btn btn-outline-primary btn-lg" OnClick="BtnAgregar_Click" runat="server"  />
+        <asp:Button ID="BtnAgregar" Text="Agregar"  OnClick="BtnAgregar_Click" runat="server"  />
         </div>       
         </div>    
 </asp:Content>

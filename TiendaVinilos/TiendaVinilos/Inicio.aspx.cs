@@ -13,7 +13,7 @@ namespace TiendaVinilos
         public partial class Inicio : System.Web.UI.Page
         {
             public List<Album> listaAlbum { get; set; }
-            // public List<Album> listacarrito { get; set; }
+            
 
 
             protected void Page_Load(object sender, EventArgs e)
