@@ -1,26 +1,8 @@
-use master
-go
-create database ECOMMERCE_TP_DB
-go
-use ECOMMERCE_TP_DB
-go
-USE ECOMMERCE_TP_DB
-GO
 
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-SET ANSI_PADDING ON
-GO
 
 use master
 go
 create database ECOMMERCE_TP_DB
-go
-use ECOMMERCE_TP_DB
 go
 USE ECOMMERCE_TP_DB
 GO
