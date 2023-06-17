@@ -1,5 +1,10 @@
 use master
 go
+<<<<<<< HEAD
+=======
+DROP DATABASE ECOMMERCE_TP_DB
+GO
+>>>>>>> 5140054ee6baf4512d456b085dc192dd06210764
 create database ECOMMERCE_TP_DB
 go
 use ECOMMERCE_TP_DB
@@ -83,6 +88,15 @@ ADD CONSTRAINT FK_Albumes_Genero foreign key (IdGenero) references GENEROS(Id)
 ALTER TABLE ALBUMES 
 ADD CONSTRAINT FK_Albumes_Artista foreign key (IdArtista) references ARTISTA(Id)
 
+insert into GENEROS (Descripcion) values ('Folklore')
 
 
-select A.Id,A.Titulo,Art.Nombre as Artista,A.FechaLanzamiento,A.ImgTapa,A.ImgContratapa,A.Precio,G.Id as idGenero,G.Descripcion as Genero, C.Id as IdDescripcion,C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.Id and  Art.Id=A.IdArtista and C.Id=a.IdCategoria
+insert into ARTISTA (Nombre)
+VALUES ('FITO PAEZ'),('MERCEDES SOSA'),('LOS ABUELOS DE LA NADA'),('THE BEATLES'),('U2'),('HARRY STYLES'),('MICHAEL JACKSON')
+
+insert into ALBUMES (Titulo,IdArtista,FechaLanzamiento,ImgTapa,ImgContratapa,Precio,IdGenero)
+VALUES ('EL AMOR DESPUES DEL AMOR (2LP)',5,'2019/06/01','https://http2.mlstatic.com/D_NQ_NP_834079-MLA54966560635_042023-W.jpg','https://http2.mlstatic.com/D_NQ_NP_889938-MLA48948891521_012022-O.webp',19392,1),
+('SODA STEREO',4,'01/11/2015','https://http2.mlstatic.com/D_NQ_NP_863459-MLA48596431326_122021-O.webp','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnwsW-LClg87hvvxrOCAetLa3nJ1jllniy9g&usqp=CAU',14900,1),
+('CANTORA 1 (2LP)',6,'01/11/2017','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmcspn-2qadfwn8s561CUEflepWiWCwNproo0tDS1OLqzqSMkrZwwMDuFgFiVIxTtZFM&usqp=CAU','https://http2.mlstatic.com/D_NQ_NP_898106-MLA49844455670_052022-O.webp',21880,7),
+('BOHEMIAN RHAPSODY',1,NULL,'https://contentv2.tap-commerce.com/cover/large/50087408435_1.jpg?id_com=1156','https://tiendateatral.com/6549-large_default/cd-bohemian-rhapsody-original-soundtrack.jpg',1810,1),
+('FINE LINE',10,'2019','https://http2.mlstatic.com/D_NQ_NP_832207-MLA40089208872_122019-O.jpg',NULL,43200,2)
