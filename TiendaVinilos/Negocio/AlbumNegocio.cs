@@ -36,7 +36,7 @@ namespace Negocio
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Genero"))))
                         aux.Genero.Descripcion = (string)datos.Lector["Genero"];
                     aux.Categoria = new Categoria();
-                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Categoria"))))
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Categoria"))) )
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
 
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Precio"))))

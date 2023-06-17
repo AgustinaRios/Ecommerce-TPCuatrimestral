@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Formulario.aspx.cs" Inherits="TiendaVinilos.Formulario" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="bodyformulario">
-     <div class="formulario">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent"  runat="server">
+     <div class="CuerpoRegistro">
+     <div class="FormularioRegistro">
         <h4>Formulario </h4>
        <br />
         <h3>Titulo*</h3>

@@ -12,7 +12,7 @@
       <th scope="col">ImgContratapa</th>
       <th scope="col">Genero</th>
       <th scope="col">Categoria</th>    
-      <th> <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Vinilo" CssClass="btn btn-primary" onclick="BtnAlta_Click" /> </th>   
+      <th> <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Vinilo" Cssclass="btn btn-outline-success" type="submit"  onclick="BtnAlta_Click" /> </th>   
     </tr>
       
      </thead>

@@ -12,6 +12,7 @@
       <th scope="col">ImgContratapa</th>
       <th scope="col">Genero</th>
        <th scope="col">Categoria</th>
+         <th scope="col">Accion</th>
     </tr>
        </thead>
      <tbody>

@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="TiendaVinilos.Inicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <br />
- <div id="carouselExampleIndicators" class="carousel slide">
+   
+  <div id="carouselExampleIndicators" class="carousel slide">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -28,7 +29,7 @@
   </button>
 </div>
     <br />
-     
+      <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <% 
             foreach (Dominio.Album album in listaAlbum)
@@ -55,6 +56,8 @@
      </div>
     
     
+</div>
+
     <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">

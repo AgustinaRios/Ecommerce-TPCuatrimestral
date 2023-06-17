@@ -1,7 +1,5 @@
 use master
 go
-drop database ECOMMERCE_TP_DB
-go
 create database ECOMMERCE_TP_DB
 go
 use ECOMMERCE_TP_DB
