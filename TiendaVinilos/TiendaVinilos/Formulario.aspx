@@ -5,9 +5,9 @@
         <h4>Formulario </h4>
        <br />
         <h3>Titulo*</h3>
-        <asp:TextBox ID="TxtNombre" class="form-control" type="text" placeholder="Ingrese Nombre"  runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtTitulo" class="form-control" type="text" placeholder="Ingrese Titulo"  runat="server"></asp:TextBox>
         <h3> Artista*</h3>
-        <asp:TextBox ID="TxtDescripcion" class="form-control" type="text" placeholder="Ingrese Descripcion" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtArtista" class="form-control" type="text" placeholder="Ingrese Artista" runat="server"></asp:TextBox>
          <h3> Fecha Lanzamiento*</h3>
         <asp:TextBox ID="TxtFechaLanza" class="form-control" type="date"  runat="server"></asp:TextBox>
          <h3> Imagen Tapa*</h3>
