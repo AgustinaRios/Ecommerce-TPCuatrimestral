@@ -29,7 +29,7 @@
     <%--  <th scope="col"><%:album.ImgTapa %></th>
       <th scope="col"><%:album.ImgContratapa %></th>--%>
       <th scope="col"> <%:album.Genero %></th>
-      <th scope="col">Mas Vendidos</th>
+      <th scope="col"> <%:album.Categoria %></th>
       <th>
                <% 
                    }
