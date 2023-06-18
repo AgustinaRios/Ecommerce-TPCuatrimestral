@@ -22,7 +22,7 @@
         <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control-sm">  
         </asp:DropDownList>
         <br />
-        <asp:Button ID="BtnAgregar" Text="Agregar"  OnClick="BtnAgregar_Click" runat="server"  />
+        <asp:Button ID="BtnAgregar" Text="Agregar"  OnClick="BtnAgregar_Click" runat="server"  ToolTip="click para agregar un vinilo" />
         </div>       
         </div>    
 </asp:Content>

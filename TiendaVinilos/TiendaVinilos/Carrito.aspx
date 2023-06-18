@@ -27,14 +27,14 @@
       <th scope="col">Mas Vendidos</th>
       <th>
        <asp:TextBox TextMode="Number" runat="server" text="1" ID="txtCantidad" min="1"/>
-       <asp:Button Text="Agregar" CssClass="btn btn-primary"  ID="btnAgregar"    runat="server" />             
-      <asp:Button Text="Eliminar" CssClass="btn btn-danger"  ID="btnEliminar"   runat="server" />
+       <asp:Button Text="Agregar"  CssClass="btn btn-primary"  ID="btnAgregar"    runat="server" ToolTip="Agregar vinilo al carrito" />             
+      <asp:Button Text="Eliminar" CssClass="btn btn-danger"  ID="btnEliminar"   runat="server" ToolTip="Eliminar Vinilo del carrito" />
       </th>
       </tr>
            
     </tbody>
     </table>
 <p>Total: <asp:Label ID="lblTotal" runat="server" text="200" /></p>
-     <asp:Button Text="Realizar Compras" CssClass="btn btn-danger"  ID="BtnComprar" Onclick="BtnComprar_Click" runat="server" />
+     <asp:Button Text="Realizar Compras" CssClass="btn btn-danger"  ID="BtnComprar" Onclick="BtnComprar_Click" runat="server" ToolTip="Comprar Vinilos" />
          
 </asp:Content>

@@ -12,7 +12,7 @@
       <th scope="col">ImgContratapa</th>--%>
       <th scope="col">Genero</th>
       <th scope="col">Categoria</th>    
-      <th> <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Vinilo" Cssclass="btn btn-outline-success" type="submit"  onclick="BtnAlta_Click" /> </th>   
+      <th> <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Vinilo" Cssclass="btn btn-primary" type="submit"  onclick="BtnAlta_Click" ToolTip="Agregar Vinilo a la lista" /> </th>   
     </tr>
       
      </thead>
@@ -35,8 +35,8 @@
                    }
         %> 
 
-       <asp:Button Text="Modificar" CssClass="btn btn-primary"  ID="btnmodificar"    runat="server" />             
-      <asp:Button Text="Eliminar" CssClass="btn btn-danger"  ID="btnEliminar"   runat="server" />
+       <asp:Button Text="Modificar" CssClass="btn btn-primary"  ID="btnmodificar"    runat="server" ToolTip="Modificar info del vinilo" />             
+      <asp:Button Text="Eliminar" CssClass="btn btn-danger"  ID="btnEliminar"   runat="server" ToolTip="Eliminar vinilo de la lista" />
       </th>
       </tr>
            

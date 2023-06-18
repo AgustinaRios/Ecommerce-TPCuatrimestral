@@ -1,10 +1,5 @@
 use master
 go
-<<<<<<< HEAD
-=======
-DROP DATABASE ECOMMERCE_TP_DB
-GO
->>>>>>> 5140054ee6baf4512d456b085dc192dd06210764
 create database ECOMMERCE_TP_DB
 go
 use ECOMMERCE_TP_DB
