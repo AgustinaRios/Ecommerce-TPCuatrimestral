@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="TiendaVinilos.Inicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"  runat="server">
-    <div class="container-fluid">
-   
+    <div class="container-fluid"> 
          <br /> 
     <div id="carouselExampleIndicators" class="carousel slide">
   <div class="carousel-indicators">
@@ -46,24 +45,16 @@
                     <p class="card-text"> <%:album.FechaLanzamiento %></p>
                      <div class="d-grid gap-2">
                      <a href="Detalle.aspx?id=<%:album.Id %>" class="btn btn-success">Ver Detalle</a>
-                     <a href="Carrito.aspx?id=<%:album.Id %>" class="btn btn-success">Carrito</a>
+                     <a href="Inicio.aspx?id=<%:album.Id %>" class="btn btn-success">Carrito</a>
                     </div>                                   
                 </div>
             </div>
             </div>
          </div>
           <%}%>
-     </div>
-    
-    
-</div>
-    </li>
-  </ul>
-
- 
+     </div>   
+</div>   
     <br />
-     
-
     <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
