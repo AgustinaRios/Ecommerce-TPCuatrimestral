@@ -4,7 +4,7 @@
      <div class="FormularioRegistro">
         <h4>Formulario </h4>
        <br />
-           <h3>Id*</h3>
+           <h3>Id</h3>
         <asp:TextBox ID="txtId" class="form-control" type="text" runat="server"></asp:TextBox>
        
         <h3>Titulo*</h3>
