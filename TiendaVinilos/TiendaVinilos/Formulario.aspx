@@ -13,7 +13,9 @@
          <h3> Imagen Tapa*</h3>
         <asp:TextBox ID="TxtImgTapa" class="form-control" type="text" placeholder="Ingrese url imagen tapa" runat="server"></asp:TextBox>
         <h3> Imagen ContraTapa*</h3>
-        <asp:TextBox ID="TxtImgContraTapa" class="form-control" type="text" placeholder="Ingrese url imagen Contratapa"  runat="server"></asp:TextBox>     
+        <asp:TextBox ID="TxtImgContraTapa" class="form-control" type="text" placeholder="Ingrese url imagen Contratapa"  runat="server"></asp:TextBox>
+          <h3>Precio*</h3>
+        <asp:TextBox ID="TxtPrecio" class="form-control" type="text" placeholder="Ingrese Precio"  runat="server"></asp:TextBox> 
         <h5> Campos Obligatorios(*)</h5>  
         <h3>Genero</h3>
         <asp:DropDownList runat="server" ID="ddlGenero"  CssClass="form-control-sm">
@@ -23,6 +25,7 @@
         </asp:DropDownList>
         <br />
         <asp:Button ID="BtnAgregar" Text="Agregar"  OnClick="BtnAgregar_Click" CssClass="btn btn-primary" runat="server"  ToolTip="click para agregar un vinilo" />
+        <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
         </div>       
         </div>    
 </asp:Content>

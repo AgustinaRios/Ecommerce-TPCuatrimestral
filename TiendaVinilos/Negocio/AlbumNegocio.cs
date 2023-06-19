@@ -28,7 +28,7 @@ namespace Negocio
                     aux.Titulo = (string)datos.Lector["Titulo"];
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
-                        aux.Artista.Nombre = (string)datos.Lector["Artista"];
+                    aux.Artista.Nombre = (string)datos.Lector["Artista"];
                     aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
                     aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
@@ -64,7 +64,38 @@ namespace Negocio
             }
         }
 
-        public void agregar(Categoria nuevo)
+        public void agregar(Album nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "INSERT INTO ALBUMES (Titulo, IdArtista, FechaLanzamiento, ImgTapa, ImgContratapa, IdGenero, IdCategoria, Precio) " +
+                                  "VALUES (@Titulo, @IdArtista, @FechaLanzamiento, @ImgTapa, @ImgContratapa, @IdGenero, @IdCategoria, @Precio)";
+
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@Titulo", nuevo.Titulo);
+                datos.setearParametro("@IdArtista", nuevo.Artista.Id);
+                datos.setearParametro("@FechaLanzamiento", nuevo.FechaLanzamiento);
+                datos.setearParametro("@ImgTapa", nuevo.ImgTapa);
+                datos.setearParametro("@ImgContratapa", nuevo.ImgContratapa);
+                datos.setearParametro("@IdGenero", nuevo.Genero.Id);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+                datos.setearParametro("@Precio", nuevo.Precio);
+
+                datos.ejectutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        /*public void agregar(Categoria nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -104,6 +135,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        */
         public Album ObtenerAlbum(Int32 id)
         {
             Album aux = new Album();
