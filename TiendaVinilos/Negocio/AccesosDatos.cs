@@ -49,22 +49,28 @@ namespace Negocio
 
         public void cerrarConexion()
         {
-            if (lector != null)
+            if (lector != null && !lector.IsClosed)
+            {
                 lector.Close();
-            conexion.Close();
+            }
+
+            if (conexion != null && conexion.State != ConnectionState.Closed)
+            {
+                conexion.Close();
+            }
         }
+
 
         public SqlDataReader Lector
         {
             get { return lector; }
         }
 
-        internal void ejectutarAccion()
+        public void ejectutarAccion()
         {
             comando.Connection = conexion;
             try
             {
-
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -72,7 +78,12 @@ namespace Negocio
             {
                 throw ex;
             }
+            finally
+            {
+                conexion.Close();
+            }
         }
+
 
 
 

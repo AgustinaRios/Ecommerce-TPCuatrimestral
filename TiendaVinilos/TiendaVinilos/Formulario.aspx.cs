@@ -172,6 +172,7 @@ namespace TiendaVinilos
                 }
                 else
                 {
+                    
                     albumNegocio.agregar(nuevo);
 
                     LblMensaje.Text = "El álbum se agregó exitosamente.";
