@@ -18,8 +18,7 @@
                 <th scope="col">Genero</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Activo</th>
-                <th scope="col">Modificar</th>
-                <th scope="col">Eliminar</th>
+                <th scope="col">Accion</th>
             </tr>
         </thead>
         <asp:Repeater runat="server" ID="repRepetidor">
@@ -39,9 +38,9 @@
                          <td><%# Eval("Activo")%></td>
 <td>
     <div class="button-group">
+        <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
        <asp:Button Text="Eliminar" Cssclass="btn btn-danger" ID="btnEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
        
-        <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
     </div>
 </td>
 

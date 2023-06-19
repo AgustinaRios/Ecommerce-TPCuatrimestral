@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
+
 namespace Negocio
 {
     public class AccesoDatos
@@ -28,7 +30,12 @@ namespace Negocio
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
         }
-
+        public void setearProcedimiento(string nombreProcedimiento)
+        {
+            comando = new SqlCommand();
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nombreProcedimiento;
+        }
         public void ejecutarLectura()
         {
             comando.Connection = conexion;

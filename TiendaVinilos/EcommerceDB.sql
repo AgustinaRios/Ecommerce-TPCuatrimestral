@@ -1,5 +1,7 @@
 use master
 go
+drop database ECOMMERCE_TP_DB
+go
 create database ECOMMERCE_TP_DB
 go
 use ECOMMERCE_TP_DB
@@ -81,13 +83,28 @@ ALTER TABLE ALBUMES
 ADD CONSTRAINT FK_Albumes_Genero foreign key (IdGenero) references GENEROS(Id)
 ALTER TABLE ALBUMES 
 ADD CONSTRAINT FK_Albumes_Artista foreign key (IdArtista) references ARTISTA(Id)
+go
+create procedure sp_modificarAlbum
+@Id int,
+@Titulo varchar(50),
+@IdArtista int,
+@FechaLanzamiento date,
+@ImgTapa varchar(250),
+@ImgContratapa varchar(250),
+@Precio money,
+@IdGenero int,
+@IdCategoria int
+as 
+update ALBUMES  set Titulo=@Titulo,IdArtista=@IdArtista,FechaLanzamiento=@FechaLanzamiento,ImgTapa=@ImgTapa,ImgContratapa=@ImgContratapa,
+Precio=@Precio,IdGenero=@IdGenero,IdCategoria=@IdCategoria where Id=@id
+go
 
 insert into GENEROS (Descripcion) values ('Folklore')
-
+go
 
 insert into ARTISTA (Nombre)
 VALUES ('FITO PAEZ'),('MERCEDES SOSA'),('LOS ABUELOS DE LA NADA'),('THE BEATLES'),('U2'),('HARRY STYLES'),('MICHAEL JACKSON')
-
+go
 
 INSERT INTO ALBUMES (Titulo, IdArtista, FechaLanzamiento, ImgTapa, ImgContratapa, Precio, IdGenero, IdCategoria)
 VALUES 
@@ -96,5 +113,6 @@ VALUES
 ('EL AMOR DESPUES DEL AMOR (2LP)', 5, '2019-06-01', 'https://http2.mlstatic.com/D_NQ_NP_834079-MLA54966560635_042023-W.jpg', 'https://http2.mlstatic.com/D_NQ_NP_889938-MLA48948891521_012022-O.webp', 19392, 1, 0),
 ('SODA STEREO', 4, '2015-11-01', 'https://http2.mlstatic.com/D_NQ_NP_863459-MLA48596431326_122021-O.webp', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnwsW-LClg87hvvxrOCAetLa3nJ1jllniy9g&usqp=CAU', 14900, 1, 0),
 ('CANTORA 1 (2LP)', 6, '2017-11-01', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmcspn-2qadfwn8s561CUEflepWiWCwNproo0tDS1OLqzqSMkrZwwMDuFgFiVIxTtZFM&usqp=CAU', 'https://http2.mlstatic.com/D_NQ_NP_898106-MLA49844455670_052022-O.webp',21800,7,3)
+
 
 

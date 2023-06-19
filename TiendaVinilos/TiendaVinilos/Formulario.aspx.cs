@@ -22,47 +22,85 @@ namespace TiendaVinilos
             {
                 if (!IsPostBack)
                 {
-                    listaGenero = genero.listar();
-                    ddlGenero.DataSource = listaGenero;
-                    ddlGenero.DataTextField = "Descripcion";
-                    ddlGenero.DataValueField = "Id";
-                    ddlGenero.DataBind();
-                    listaCategoria = categoria.listar();
-                    ddlCategoria.DataSource = listaCategoria;
-                    ddlCategoria.DataTextField = "Descripcion";
-                    ddlCategoria.DataValueField = "Id";
-                    ddlCategoria.DataBind();
+                    string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+                    if (Id != "")
+                    {
 
+                        Album seleccionado = new Album();
+                        seleccionado.Id = int.Parse(Id);
+                        int idbuscado = seleccionado.Id;
+                        seleccionado = negocio.ObtenerAlbum(idbuscado);
+
+                        txtId.Text = seleccionado.Id.ToString();
+                        txtId.ReadOnly = true;
+                        TxtTitulo.Text = seleccionado.Titulo.ToString();
+                        TxtArtista.Text = seleccionado.Artista.ToString();
+                        TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
+                        TxtPrecio.Text = seleccionado.Precio.ToString();
+                        TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
+                        TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();
+
+
+                        //////////////////////////////////////////////
+                        ///
+                        List<Categoria> filtrada = new List<Categoria>();
+                        Categoria catSeleccionada = new Categoria();
+
+
+                        filtrada = listaCategoria.FindAll(x => x.Descripcion == seleccionado.Categoria.ToString());
+                        catSeleccionada.Id = filtrada[0].Id;
+                        catSeleccionada.Descripcion = seleccionado.Categoria.ToString();
+
+
+                        ddlCategoria.SelectedValue = catSeleccionada.Id.ToString();
+
+                        ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
+
+                        ddlCategoria.SelectedIndex = catSeleccionada.Id;
+                        /////////////////////////////////////////////////
+
+                        List<Genero> genFiltrado = new List<Genero>();
+                        Genero genSeleccionado = new Genero();
+
+
+                        genFiltrado = listaGenero.FindAll(x => x.Descripcion == seleccionado.Genero.ToString());
+                        genSeleccionado.Id = genFiltrado[0].Id;
+                        genSeleccionado.Descripcion = seleccionado.Genero.ToString();
+
+
+                        ddlGenero.SelectedValue = genSeleccionado.Id.ToString();
+
+                        ddlGenero.SelectedValue = seleccionado.Genero.Id.ToString();
+
+                        ddlGenero.SelectedIndex = genSeleccionado.Id;
+
+
+
+                    }
+                    else
+                    {
+
+                        listaGenero = genero.listar();
+                        ddlGenero.DataSource = listaGenero;
+                        ddlGenero.DataTextField = "Descripcion";
+                        ddlGenero.DataValueField = "Id";
+                        ddlGenero.DataBind();
+                        listaCategoria = categoria.listar();
+                        ddlCategoria.DataSource = listaCategoria;
+                        ddlCategoria.DataTextField = "Descripcion";
+                        ddlCategoria.DataValueField = "Id";
+                        ddlCategoria.DataBind();
+                    }
                 }
-                string Id = Request.QueryString["Id"].ToString();
-                if (Id != "" && !IsPostBack)
-                {
-
-                    Album seleccionado = new Album();
-                    seleccionado.Id = int.Parse(Id);
-                    int idbuscado = seleccionado.Id;
-                    seleccionado = negocio.ObtenerAlbum(idbuscado);
-                    txtId.Text = seleccionado.Id.ToString();
-                    txtId.ReadOnly = true;
-                    TxtTitulo.Text = seleccionado.Titulo.ToString();
-                    TxtArtista.Text = seleccionado.Artista.ToString();
-                    TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString();
-                    TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
-                    TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();
-
-                    //////////////NO CARGA BIEN////////
-                    ddlCategoria.SelectedValue = seleccionado.Categoria.Descripcion.ToString();
-                    ddlGenero.SelectedValue = seleccionado.Genero.Descripcion.ToString();
 
 
-                }
 
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            
+
         }
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
@@ -124,20 +162,20 @@ namespace TiendaVinilos
                 //////
                 ///     PARA MODIFICAR UN ALBUM
                 ///     
-                if (Request.QueryString["Id"]!=null)
+                if (Request.QueryString["Id"] != null)
                 {
                     nuevo.Id = int.Parse(Request.QueryString["Id"]);
-                    albumNegocio.modificar(nuevo);
+                    albumNegocio.modificarConSP(nuevo);
                     LblMensaje.Text = "El álbum se modifico exitosamente.";
                     LblMensaje.Visible = true;
 
                 }
                 else
                 {
-                albumNegocio.agregar(nuevo);
+                    albumNegocio.agregar(nuevo);
 
-                LblMensaje.Text = "El álbum se agregó exitosamente.";
-                LblMensaje.Visible = true;
+                    LblMensaje.Text = "El álbum se agregó exitosamente.";
+                    LblMensaje.Visible = true;
 
                 }
             }
