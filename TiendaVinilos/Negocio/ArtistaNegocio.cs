@@ -50,6 +50,8 @@ namespace Negocio
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
 
+                datos.comando.Connection = datos.conexion; // Asignar la conexión al objeto SqlCommand
+
                 datos.conexion.Open(); // Abre la conexión a la base de datos
 
                 int idArtista = Convert.ToInt32(datos.comando.ExecuteScalar());
