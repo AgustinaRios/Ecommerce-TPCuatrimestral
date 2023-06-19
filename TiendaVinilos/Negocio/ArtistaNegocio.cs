@@ -49,6 +49,7 @@ namespace Negocio
                 string consulta = "INSERT INTO ARTISTA (Nombre) VALUES (@Nombre); SELECT SCOPE_IDENTITY();";
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
+              
 
                 int idArtista = Convert.ToInt32(datos.comando.ExecuteScalar());
 
@@ -67,8 +68,6 @@ namespace Negocio
             }
         }
 
-
-
         public Artista ObtenerArtistaPorNombre(string nombre)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -77,7 +76,8 @@ namespace Negocio
                 string consulta = "SELECT Id, Nombre FROM Artista WHERE Nombre = @Nombre";
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@Nombre", nombre);
-                datos.ejecutarLectura();
+
+                datos.ejecutarLectura(); // Agregar esta línea para abrir la conexión y ejecutar la consulta
 
                 if (datos.Lector.Read())
                 {
@@ -85,12 +85,10 @@ namespace Negocio
                     artista.Id = datos.Lector.GetInt32(0);
                     artista.Nombre = datos.Lector.GetString(1);
 
-                    datos.cerrarConexion();
                     return artista;
                 }
                 else
                 {
-                    datos.cerrarConexion();
                     return null;
                 }
             }
@@ -103,6 +101,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
 
 
 
