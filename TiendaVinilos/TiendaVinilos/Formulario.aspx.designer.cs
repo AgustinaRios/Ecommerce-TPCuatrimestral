@@ -15,6 +15,15 @@ namespace TiendaVinilos
     {
 
         /// <summary>
+        /// Control txtId.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtId;
+
+        /// <summary>
         /// Control TxtTitulo.
         /// </summary>
         /// <remarks>
@@ -87,13 +96,13 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
 
         /// <summary>
-        /// Control BtnAgregar.
+        /// Control BtnAceptar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAgregar;
+        protected global::System.Web.UI.WebControls.Button BtnAceptar;
 
         /// <summary>
         /// Control LblMensaje.

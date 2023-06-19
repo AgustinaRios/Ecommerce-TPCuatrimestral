@@ -1,7 +1,5 @@
 use master
-go
 
-DROP DATABASE ECOMMERCE_TP_DB
 GO
 
 create database ECOMMERCE_TP_DB
@@ -84,6 +82,15 @@ ALTER TABLE ALBUMES
 ADD CONSTRAINT FK_Albumes_Genero foreign key (IdGenero) references GENEROS(Id)
 ALTER TABLE ALBUMES 
 ADD CONSTRAINT FK_Albumes_Artista foreign key (IdArtista) references ARTISTA(Id)
+go
+create procedure sp_modificarAlbum
+@id int,@titulo varchar(50),@artista int,@fechaLanzamiento date,@imgTapa varchar(250),@imgContratapa varchar(250),@precio money,
+@idGenero int,@idCategoria int
+as 
+update ALBUMES  set Titulo=@titulo,IdArtista=@artista,FechaLanzamiento=@fechaLanzamiento,ImgTapa=@imgTapa,ImgContratapa=@imgContratapa,
+Precio=@precio,IdGenero=@idGenero,IdCategoria=@idCategoria where Id=@id
+go
+
 
 insert into GENEROS (Descripcion) values ('Folklore')
 
@@ -100,5 +107,4 @@ VALUES
 ('CANTORA 1 (2LP)',6,'01/11/2017','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmcspn-2qadfwn8s561CUEflepWiWCwNproo0tDS1OLqzqSMkrZwwMDuFgFiVIxTtZFM&usqp=CAU','https://http2.mlstatic.com/D_NQ_NP_898106-MLA49844455670_052022-O.webp',21880,7,3),
 ('BOHEMIAN RHAPSODY',1,'31/10/1975','https://contentv2.tap-commerce.com/cover/large/50087408435_1.jpg?id_com=1156','https://tiendateatral.com/6549-large_default/cd-bohemian-rhapsody-original-soundtrack.jpg',1810,1,0),
 ('FINE LINE',10,'2019','https://http2.mlstatic.com/D_NQ_NP_832207-MLA40089208872_122019-O.jpg','',43200,2,0)
-	
 	

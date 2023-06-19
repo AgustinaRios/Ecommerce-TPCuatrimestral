@@ -4,6 +4,9 @@
      <div class="FormularioRegistro">
         <h4>Formulario </h4>
        <br />
+           <h3>Id*</h3>
+        <asp:TextBox ID="txtId" class="form-control" type="text" runat="server"></asp:TextBox>
+       
         <h3>Titulo*</h3>
         <asp:TextBox ID="TxtTitulo" class="form-control" type="text" placeholder="Ingrese Titulo"  runat="server"></asp:TextBox>
         <h3> Artista*</h3>
@@ -24,7 +27,7 @@
         <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control-sm">  
         </asp:DropDownList>
         <br />
-        <asp:Button ID="BtnAgregar" Text="Agregar"  OnClick="BtnAgregar_Click" CssClass="btn btn-primary" runat="server"  ToolTip="click para agregar un vinilo" />
+        <asp:Button ID="BtnAceptar" Text="Aceptar"  OnClick="BtnAceptar_Click" CssClass="btn btn-primary" runat="server"  ToolTip="click para agregar un vinilo" />
         <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
         </div>       
         </div>    

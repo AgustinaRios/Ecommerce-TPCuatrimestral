@@ -93,6 +93,35 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificar(Album nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "INSERT INTO ALBUMES (Titulo, IdArtista, FechaLanzamiento, ImgTapa, ImgContratapa, IdGenero, IdCategoria, Precio) " +
+                                  "VALUES (@Titulo, @IdArtista, @FechaLanzamiento, @ImgTapa, @ImgContratapa, @IdGenero, @IdCategoria, @Precio)";
+
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@Titulo", nuevo.Titulo);
+                datos.setearParametro("@IdArtista", nuevo.Artista.Id);
+                datos.setearParametro("@FechaLanzamiento", nuevo.FechaLanzamiento);
+                datos.setearParametro("@ImgTapa", nuevo.ImgTapa);
+                datos.setearParametro("@ImgContratapa", nuevo.ImgContratapa);
+                datos.setearParametro("@IdGenero", nuevo.Genero.Id);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+                datos.setearParametro("@Precio", nuevo.Precio);
+
+                datos.ejectutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
 
         /*public void agregar(Categoria nuevo)
