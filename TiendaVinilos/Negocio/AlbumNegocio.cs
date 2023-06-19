@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria");
+                datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa,A.Activo, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -46,7 +46,7 @@ namespace Negocio
                         aux.Precio = Decimal.Parse(DosDecimal.ToString("0.00"));
                     }
 
-
+                    aux.Activo = (bool)datos.Lector["Activo"];
 
 
                     lista.Add(aux);
@@ -124,47 +124,7 @@ namespace Negocio
         }
 
 
-        /*public void agregar(Categoria nuevo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                string valores = "values( '" + nuevo.Descripcion + "')";
-                datos.setearConsulta("insert into  CATEGORIAS (Descripcion) " + valores);
-
-                datos.ejectutarAccion();
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
-        public void EliminarFisico(Int32 Id)
-        {
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                datos.setearConsulta("delete from GENEROS where Id = @id");
-                datos.setearParametro("@id", Id);
-                datos.ejectutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-        */
+        
         public Album ObtenerAlbum(Int32 id)
         {
             Album aux = new Album();
@@ -227,10 +187,33 @@ namespace Negocio
             }
         }
 
+         public void BajaLogica(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.setearConsulta("UPDATE ALBUMES set Activo = 0 where Id= @id");
+                datos.setearParametro("@id", Id);
 
+                datos.ejectutarAccion();
+            }
 
+            catch (Exception ex)
+            {
+                throw new Exception("Error al dar de baja el álbum.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
 
     }
+
+
+
+    
 }
 

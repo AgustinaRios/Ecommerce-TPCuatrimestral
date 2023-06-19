@@ -17,7 +17,9 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Genero</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Activo</th>
                 <th scope="col">Modificar</th>
+                <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <asp:Repeater runat="server" ID="repRepetidor">
@@ -34,10 +36,15 @@
                         <td><%# Eval("Precio")%></td>
                         <td><%# Eval("Genero")%></td>
                         <td><%# Eval("Categoria")%></td>
-  <td> 
-      <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
+                         <td><%# Eval("Activo")%></td>
+<td>
+    <div class="button-group">
+       <asp:Button Text="Eliminar" Cssclass="btn btn-danger" ID="btnEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
+       
+        <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
+    </div>
+</td>
 
- </td>
                     </tr>
 
                 </tbody>
@@ -47,7 +54,7 @@
 
     <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Vinilo" CssClass="btn btn-outline-success" type="submit" OnClick="BtnAlta_Click" />
 
-    <asp:Button Text="Eliminar" CssClass="btn btn-danger" ID="btnEliminar" runat="server" />
+   <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
 
 
 </asp:Content>

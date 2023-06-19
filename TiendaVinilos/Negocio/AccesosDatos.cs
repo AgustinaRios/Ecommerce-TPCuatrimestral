@@ -17,7 +17,7 @@ namespace Negocio
         public AccesoDatos()
         {
 
-            conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog=ECOMMERCE_TP_DB; integrated security=true");
+            conexion = new SqlConnection("data source=.\\; initial catalog=ECOMMERCE_TP_DB; integrated security=true");
             comando = new SqlCommand();
         }
 

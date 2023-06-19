@@ -18,5 +18,7 @@ namespace Dominio
         public decimal Precio { get; set; }
         public Genero Genero { get; set; }
         public Categoria Categoria { get; set; }
+
+        public bool Activo { get; set; }
     }
 }
