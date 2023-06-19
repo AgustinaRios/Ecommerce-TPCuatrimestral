@@ -49,7 +49,8 @@ namespace Negocio
                 string consulta = "INSERT INTO ARTISTA (Nombre) VALUES (@Nombre); SELECT SCOPE_IDENTITY();";
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
-              
+
+                datos.conexion.Open(); // Abre la conexión a la base de datos
 
                 int idArtista = Convert.ToInt32(datos.comando.ExecuteScalar());
 
@@ -67,6 +68,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
 
         public Artista ObtenerArtistaPorNombre(string nombre)
         {
