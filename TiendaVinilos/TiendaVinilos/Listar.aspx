@@ -21,7 +21,11 @@
                 <th scope="col">Categoria</th>
                 <th scope="col">Activo</th>
                 <th scope="col">Accion</th>
+                <th scope="col">Accion</th>
             </tr>
+            <tr>
+             <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Vinilo" CssClass="btn btn-outline-success" type="submit" OnClick="BtnAlta_Click" />
+             </tr>
         </thead>
         <asp:Repeater runat="server" ID="repRepetidor">
             <ItemTemplate>
@@ -33,10 +37,10 @@
                         <td><%# Eval("Artista")%></td>
                         <td><%# Eval("FechaLanzamiento")%></td>
                         <td>
-                            <img src='<%# Eval("ImgTapa") %>' class="card-img-top img-small" alt="Imagen del producto" />
+                            <img src='<%# Eval("ImgTapa") %>' class="ImgItemListar" alt="Imagen del producto" />
                         </td>
                          <td>
-                            <img src='<%# Eval("ImgContratapa")%>' class="card-img-top img-small" alt="Imagen del producto" />
+                            <img src='<%# Eval("ImgContratapa")%>' class="ImgItemListar" alt="Imagen del producto" />
                         </td>
                        
                      
@@ -44,11 +48,12 @@
                         <td><%# Eval("Genero")%></td>
                         <td><%# Eval("Categoria")%></td>
                         <td><%# Eval("Activo")%></td>
-                        <td>
-                            <div class="button-group">
-                                <asp:Button Text="Modificar/Eliminar" CssClass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>' />
-                            </div>
-                        </td>
+                         <td>
+        <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
+    </td>
+    <td>     
+    <asp:Button Text="Eliminar" Cssclass="btn btn-danger" ID="btnEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>  
+  </td>
 
                     </tr>
 
@@ -56,9 +61,6 @@
             </ItemTemplate>
         </asp:Repeater>
     </table>
-
-    <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Vinilo" CssClass="btn btn-outline-success" type="submit" OnClick="BtnAlta_Click" />
-
     <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
 
 

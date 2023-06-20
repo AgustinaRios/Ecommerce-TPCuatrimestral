@@ -12,7 +12,11 @@ textarea {
 
 
 
-
+.ImgItemListar {
+    height:2rem;
+    
+    border:double;
+}
 .columnas {
     display: grid;
     grid-template-columns: repeat(2,1fr);
