@@ -52,24 +52,7 @@ namespace TiendaVinilos
         {
             Response.Redirect("Formulario.aspx");
         }
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string Id = ((Button)sender).CommandArgument;
-                AlbumNegocio negocio = new AlbumNegocio();
-
-                negocio.BajaLogica(int.Parse(Id));
-                lblMensaje.Text = "El álbum se dio de baja correctamente.";
-                lblMensaje.Visible = true;
-            }
-            catch (Exception ex)
-            {
-                lblMensaje.Text = "Error al dar de baja el álbum: " + ex.Message;
-                lblMensaje.CssClass = "error-message";
-                lblMensaje.Visible = true;
-            }
-        }
+       
 
 
 

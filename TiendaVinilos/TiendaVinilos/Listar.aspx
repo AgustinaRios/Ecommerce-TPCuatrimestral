@@ -46,9 +46,7 @@
                         <td><%# Eval("Activo")%></td>
                         <td>
                             <div class="button-group">
-                                <asp:Button Text="Modificar" CssClass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>' />
-                                <asp:Button Text="Eliminar" CssClass="btn btn-danger" ID="btnEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>' />
-
+                                <asp:Button Text="Modificar/Eliminar" CssClass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>' />
                             </div>
                         </td>
 

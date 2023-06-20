@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using Dominio;
 using Negocio;
 namespace TiendaVinilos
@@ -16,6 +18,7 @@ namespace TiendaVinilos
         CategoriaNegocio categoria = new CategoriaNegocio();
         List<Categoria> listaCategoria = new List<Categoria>();
         AlbumNegocio negocio = new AlbumNegocio();
+        public bool confirmaEliminacion { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +26,10 @@ namespace TiendaVinilos
             {
                 if (!IsPostBack)
                 {
+                    //se pone el checkbox en false para que solo aparecen cuando se elige eliminar
+                    confirmaEliminacion = false;
+
+
                     listaGenero = genero.listar();
                     ddlGenero.DataSource = listaGenero;
                     ddlGenero.DataTextField = "Descripcion";
@@ -33,10 +40,11 @@ namespace TiendaVinilos
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataBind();
-                    
+
                     txtId.ReadOnly = true;///Solo deja ver el Id sin posibilidad de modifcar
 
-                     ///Toma el Id del album se se viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
+
+                    ///Toma el Id del album se se viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
                     string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
                     if (Id != "")
 
@@ -64,7 +72,7 @@ namespace TiendaVinilos
 
                         ///se busca la categoria del Album seleccionado
                         filtrada = listaCategoria.FindAll(x => x.Descripcion == seleccionado.Categoria.ToString());
-                        catSeleccionada.Id = filtrada[0].Id; 
+                        catSeleccionada.Id = filtrada[0].Id;
                         catSeleccionada.Descripcion = seleccionado.Categoria.ToString();
 
 
@@ -104,8 +112,6 @@ namespace TiendaVinilos
             }
 
         }
-
-
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
@@ -155,8 +161,8 @@ namespace TiendaVinilos
 
                 nuevo.FechaLanzamiento = DateTime.Parse(TxtFechaLanza.Text);
                 //// Se valida que la fecha no sea posterior a la del dia actual
-                DateTime hoy=DateTime.Now;
-                if (nuevo.FechaLanzamiento>=hoy )
+                DateTime hoy = DateTime.Now;
+                if (nuevo.FechaLanzamiento >= hoy)
                 {
                     LblMensaje.Text = "No se puede cargar un album que no salio a la venta aun";
                     LblMensaje.Visible = true;
@@ -197,6 +203,54 @@ namespace TiendaVinilos
                 throw ex;
             }
         }
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Listar.aspx", false);
+        }
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
 
+            confirmaEliminacion = true;
+        }
+
+        protected void btnConfirmaEliminacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkConfirmaEliminacion.Checked)
+                {
+                    string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+                    if (Id != "")
+
+                    {
+                        AlbumNegocio negocio = new AlbumNegocio();
+                        Album seleccionado = new Album();
+                        seleccionado = negocio.ObtenerAlbum(int.Parse(Id));
+                        if (!seleccionado.Activo)
+                        {
+                            LblMensaje.Text = "El album ya se encuentra dado de baja";
+                            LblMensaje.CssClass = "error-message";
+                            LblMensaje.Visible = true;
+
+                        }
+                        else
+                        {
+
+                            negocio.BajaLogica(int.Parse(Id));
+                            LblMensaje.Text = "El álbum se dio de baja correctamente.";
+                            LblMensaje.Visible = true;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LblMensaje.Text = "Error al dar de baja el álbum: " + ex.Message;
+                LblMensaje.CssClass = "error-message";
+                LblMensaje.Visible = true;
+
+            }
+        }
     }
 }
