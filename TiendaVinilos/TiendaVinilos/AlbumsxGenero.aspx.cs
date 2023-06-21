@@ -1,26 +1,27 @@
-﻿using Dominio;
-using Negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 namespace TiendaVinilos
 {
-
-    public partial class Inicio : System.Web.UI.Page
+    public partial class AlbumsxGenero : System.Web.UI.Page
     {
         public List<Album> listaAlbum { get; set; }
-
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
-               
-                
-                listaAlbum = negocio.listar();
+
+                Int32 IdGenero = Int32.Parse(Request.QueryString["idgenero"]);
+                Session.Add("idGenero", IdGenero);
+
+                listaAlbum = negocio.listarxGenero(IdGenero);
                 Session.Add("Listaalbum", listaAlbum);
 
                 if (Request.QueryString["id"] != null)
@@ -34,13 +35,12 @@ namespace TiendaVinilos
                 }
 
             }
-             catch (Exception ex)
+            catch (Exception ex)
             {
                 Session.Add("error", ex);
                 throw;
             }
         }
-
 
     }
 }
