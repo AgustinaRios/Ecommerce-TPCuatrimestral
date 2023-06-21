@@ -1,13 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Formulario.aspx.cs" Inherits="TiendaVinilos.Formulario" %>
+﻿<%@ Page Title="Formulario" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Formulario.aspx.cs" Inherits="TiendaVinilos.Formulario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="CuerpoRegistro">
         <div class="FormularioRegistro">
-            <h4>Formulario </h4>
-            <br />
-            <h3>Id</h3>
-            <asp:TextBox ID="txtId" class="form-control" type="text" runat="server"></asp:TextBox>
+            <h4>
+                <asp:Label ID="Lbltitlulo" runat="server" Text="Label"></asp:Label>
 
+            </h4>
+            <br />
             <h3>Titulo*</h3>
             <asp:TextBox ID="TxtTitulo" class="form-control" type="text" placeholder="Ingrese Titulo" runat="server"></asp:TextBox>
             <h3>Artista*</h3>
@@ -51,5 +51,7 @@
 
         </div>
     </div>
+
+   
 
 </asp:Content>

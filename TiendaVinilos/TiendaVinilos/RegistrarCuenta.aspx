@@ -17,6 +17,7 @@
       <asp:TextBox ID="TxtNombre" class="controls" type="text" placeholder="Ingrese su Nombre"  aria-label="Ingrese Nombre" runat="server" ></asp:TextBox>
       <asp:TextBox ID="TxtApellido" class="controls" type="text" placeholder="Ingrese su Apellido" aria-label="Ingrese Nombre" runat="server" ></asp:TextBox>
       <asp:TextBox ID="TxtEmail" class="controls" type="email"  placeholder="Ingrese su Email" aria-label="Ingrese Nombre" runat="server" ></asp:TextBox>
+      <%//mas dtos posiblemente pensar bien que se necesita del usuario cuando se compre %>
       <asp:TextBox ID="TxtPass" class="controls" MaxLength="8" type="password" placeholder="Ingrese su Contraseña 8 caracteres max" aria-label="Ingrese Nombre" runat="server"></asp:TextBox>
       
     <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>

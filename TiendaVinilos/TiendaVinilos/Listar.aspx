@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Listar.aspx.cs" Inherits="TiendaVinilos.Listar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="Listar.aspx.cs" Inherits="TiendaVinilos.Listar" %>
 
 
 
@@ -32,7 +32,7 @@
                 <tbody>
                     <tr>
 
-                        <th scope="row"><%# Eval("Id")%></th>
+                        <th><%# Eval("Id")%>
                         <td><%# Eval("Titulo")%></td>
                         <td><%# Eval("Artista")%></td>
                         <td><%# Eval("FechaLanzamiento")%></td>
@@ -49,20 +49,19 @@
                         <td><%# Eval("Categoria")%></td>
                         <td><%# Eval("Activo")%></td>
                          <td>
-        <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
-    </td>
-    <td>     
-    <asp:Button Text="Eliminar" Cssclass="btn btn-danger" ID="btnEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>  
-  </td>
-
-                    </tr>
-
+                        <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
+                       </td>
+                       <td> 
+                           <asp:Button Text="Eliminar" Cssclass="btn btn-danger" ID="btnEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%> '/>  
+                       </td>
+                   </tr>
                 </tbody>
             </ItemTemplate>
         </asp:Repeater>
     </table>
     <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
 
+        
 
 </asp:Content>
 

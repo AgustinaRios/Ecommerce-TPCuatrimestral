@@ -19,7 +19,7 @@ namespace TiendaVinilos
         List<Categoria> listaCategoria = new List<Categoria>();
         AlbumNegocio negocio = new AlbumNegocio();
         public bool confirmaEliminacion { get; set; }
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -40,30 +40,26 @@ namespace TiendaVinilos
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataBind();
-
-                    txtId.ReadOnly = true;///Solo deja ver el Id sin posibilidad de modifcar
-
-
+                    Lbltitlulo.Text = "Alta de Albums";
                     ///Toma el Id del album se se viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
                     string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+
                     if (Id != "")
 
                     {
-
+                        Lbltitlulo.Text = "Modificando Albums";
                         Album seleccionado = new Album();
                         seleccionado.Id = int.Parse(Id);
                         int idbuscado = seleccionado.Id;
                         seleccionado = negocio.ObtenerAlbum(idbuscado);
                         //se carga los datos del Album que se selecciono modificar
-                        txtId.Text = seleccionado.Id.ToString();
-                        txtId.ReadOnly = true; ///Solo deja ver el Id sin posibilidad de modifcar
                         TxtTitulo.Text = seleccionado.Titulo.ToString();
                         TxtArtista.Text = seleccionado.Artista.ToString();
                         TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
                         TxtPrecio.Text = seleccionado.Precio.ToString();
                         TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
                         TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();
-
+                       
 
                         //////////////////////////////////////////////
                         ///
@@ -101,6 +97,7 @@ namespace TiendaVinilos
 
 
                     }
+                   
 
                 }
 
@@ -117,8 +114,8 @@ namespace TiendaVinilos
         {
             try
             {
-                //////
-                ///     PARA AGREGAR UN NUEVO ALBUM
+                ///
+                ///  PARA AGREGAR UN NUEVO ALBUM
                 ///     
                 Album nuevo = new Album();
                 nuevo.Titulo = TxtTitulo.Text;
@@ -235,8 +232,9 @@ namespace TiendaVinilos
                         }
                         else
                         {
-
-                            negocio.BajaLogica(int.Parse(Id));
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "confirm", "if(!confirm('esta seguro que quiere eliminar?')){window.location='Formulario.aspx'};",  true);
+                        
+                            
                             LblMensaje.Text = "El álbum se dio de baja correctamente.";
                             LblMensaje.Visible = true;
                         }

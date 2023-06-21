@@ -59,7 +59,7 @@ namespace TiendaVinilos
             {
                 string Id = ((Button)sender).CommandArgument;
                 AlbumNegocio negocio = new AlbumNegocio();
-
+                       
                 negocio.BajaLogica(int.Parse(Id));
                 lblMensaje.Text = "El álbum se dio de baja correctamente.";
                 lblMensaje.Visible = true;
@@ -69,7 +69,15 @@ namespace TiendaVinilos
                 lblMensaje.Text = "Error al dar de baja el álbum: " + ex.Message;
                 lblMensaje.CssClass = "error-message";
                 lblMensaje.Visible = true;
+                
             }
+        }
+
+       
+        protected void btnEliminarfalso_Click(object sender, EventArgs e)
+        {
+            string Id = ((Button)sender).CommandArgument;
+            Session.Add("Idalbum", Id);
         }
     }
 }
