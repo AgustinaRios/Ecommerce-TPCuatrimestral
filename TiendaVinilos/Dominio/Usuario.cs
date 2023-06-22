@@ -6,19 +6,16 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public enum TipoUsuario
-    {
-        NORMAL = 1,
-        ADMIN = 2
-    }
+  
     public class Usuario
     {
         public int ID { get; set; }
-        public string UserName { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Email { get; set; }
         public string Pass { get; set; }
 
-        public DatosPersonales Datos { get; set; }
-        public TipoUsuario TipoUsuario { get; set; }
+        public bool Admin { get; set; }
         public DateTime FechaCreacion { get; set; }
     }
 }
