@@ -132,3 +132,13 @@ CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 
 GO
+
+Create procedure InsertarNuevo (
+ 
+ @Nombre varchar(50),
+ @Apellido varchar(50),
+ @Email varchar (50),
+ @Pass varchar (50)
+)
+As
+ insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador) output inserted.Id values (@Nombre,@Apellido,@Email,@Pass,GETDATE(),0)
