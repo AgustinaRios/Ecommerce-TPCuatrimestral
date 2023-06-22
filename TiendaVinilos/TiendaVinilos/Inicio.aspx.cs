@@ -18,10 +18,17 @@ namespace TiendaVinilos
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
-               
-                
-                listaAlbum = negocio.listar();
-                Session.Add("Listaalbum", listaAlbum);
+                if (Request.QueryString["idgenero"] != null)
+                {
+                    Int32 IdGenero = Int32.Parse(Request.QueryString["idgenero"]);
+                    listaAlbum = negocio.listarxGenero(IdGenero);
+                    Session.Add("Listaalbum", listaAlbum);
+                }
+                else
+                {
+                     listaAlbum = negocio.listar();
+                     Session.Add("Listaalbum", listaAlbum);
+                }
 
                 if (Request.QueryString["id"] != null)
                 {

@@ -10,7 +10,7 @@
         <thead class="thead-dark">
             <tr>
 
-                <th scope="col" for="txtId">Id</th>
+                
                 <th scope="col" for="txtTitulo">Titulo</th>
                 <th scope="col">Artista</th>
                 <th scope="col">Fecha Lanzamiento</th>
@@ -19,7 +19,6 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Genero</th>
                 <th scope="col">Categoria</th>
-                <th scope="col">Activo</th>
                 <th scope="col">Accion</th>
                 <th scope="col">Accion</th>
             </tr>
@@ -32,7 +31,7 @@
                 <tbody>
                     <tr>
 
-                        <th><%# Eval("Id")%>
+                        
                         <td><%# Eval("Titulo")%></td>
                         <td><%# Eval("Artista")%></td>
                         <td><%# Eval("FechaLanzamiento")%></td>
@@ -43,16 +42,17 @@
                             <img src='<%# Eval("ImgContratapa")%>' class="ImgItemListar" alt="Imagen del producto" />
                         </td>
                        
-                     
+                      
                         <td><%# Eval("Precio")%></td>
                         <td><%# Eval("Genero")%></td>
                         <td><%# Eval("Categoria")%></td>
-                        <td><%# Eval("Activo")%></td>
+                        
                          <td>
                         <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>
                        </td>
                        <td> 
-                           <asp:Button Text="Eliminar" Cssclass="btn btn-danger" ID="btnEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%> '/>  
+
+                           <asp:Button Text="Eliminar" Cssclass="btn btn-danger" ID="btnEliminar" OnClientClick="return confirm('Esta seguro que quiere eleminar este album ?');" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%> '/>  
                        </td>
                    </tr>
                 </tbody>

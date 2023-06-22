@@ -29,25 +29,29 @@ namespace TiendaVinilos
                     //se pone el checkbox en false para que solo aparecen cuando se elige eliminar
                     confirmaEliminacion = false;
 
-
+                    //Genero
                     listaGenero = genero.listar();
                     ddlGenero.DataSource = listaGenero;
                     ddlGenero.DataTextField = "Descripcion";
                     ddlGenero.DataValueField = "Id";
                     ddlGenero.DataBind();
+                    //Categoria
                     listaCategoria = categoria.listar();
                     ddlCategoria.DataSource = listaCategoria;
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataBind();
-                    Lbltitlulo.Text = "Alta de Albums";
+                    
+                    Lbltitlulo.Text = "Alta de Albums"; //Cambia Dinamicamente dependiendo de donde entre
+
                     ///Toma el Id del album se se viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
                     string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
 
                     if (Id != "")
 
                     {
-                        Lbltitlulo.Text = "Modificando Albums";
+                        
+                        Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
                         Album seleccionado = new Album();
                         seleccionado.Id = int.Parse(Id);
                         int idbuscado = seleccionado.Id;
@@ -73,9 +77,7 @@ namespace TiendaVinilos
 
 
                         ddlCategoria.SelectedValue = catSeleccionada.Id.ToString();
-
                         ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
-
                         ddlCategoria.SelectedIndex = catSeleccionada.Id;
                         /////////////////////////////////////////////////
 
@@ -89,9 +91,7 @@ namespace TiendaVinilos
 
 
                         ddlGenero.SelectedValue = genSeleccionado.Id.ToString();
-
                         ddlGenero.SelectedValue = seleccionado.Genero.Id.ToString();
-
                         ddlGenero.SelectedIndex = genSeleccionado.Id;
 
 
@@ -181,8 +181,8 @@ namespace TiendaVinilos
                 {
                     nuevo.Id = int.Parse(Request.QueryString["Id"]);
                     albumNegocio.modificarConSP(nuevo);
-                    LblMensaje.Text = "El álbum se modifico exitosamente.";
-                    LblMensaje.Visible = true;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " +nuevo.Titulo  + " modificado exitosamente');window.location ='Listar.aspx';", true);
+                   // Response.Redirect("Listar.aspx");
 
                 }
                 else
@@ -190,8 +190,8 @@ namespace TiendaVinilos
 
                     albumNegocio.agregar(nuevo);
 
-                    LblMensaje.Text = "El álbum se agregó exitosamente.";
-                    LblMensaje.Visible = true;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
+                    // Response.Redirect("Listar.aspx");
 
                 }
             }
@@ -204,51 +204,8 @@ namespace TiendaVinilos
         {
             Response.Redirect("Listar.aspx", false);
         }
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
+       
 
-            confirmaEliminacion = true;
-        }
-
-        protected void btnConfirmaEliminacion_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (chkConfirmaEliminacion.Checked)
-                {
-                    string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
-                    if (Id != "")
-
-                    {
-                        AlbumNegocio negocio = new AlbumNegocio();
-                        Album seleccionado = new Album();
-                        seleccionado = negocio.ObtenerAlbum(int.Parse(Id));
-                        if (!seleccionado.Activo)
-                        {
-                            LblMensaje.Text = "El album ya se encuentra dado de baja";
-                            LblMensaje.CssClass = "error-message";
-                            LblMensaje.Visible = true;
-
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "confirm", "if(!confirm('esta seguro que quiere eliminar?')){window.location='Formulario.aspx'};",  true);
-                        
-                            
-                            LblMensaje.Text = "El álbum se dio de baja correctamente.";
-                            LblMensaje.Visible = true;
-                        }
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LblMensaje.Text = "Error al dar de baja el álbum: " + ex.Message;
-                LblMensaje.CssClass = "error-message";
-                LblMensaje.Visible = true;
-
-            }
-        }
+       
     }
 }

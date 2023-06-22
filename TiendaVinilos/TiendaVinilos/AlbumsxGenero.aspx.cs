@@ -24,9 +24,9 @@ namespace TiendaVinilos
                 listaAlbum = negocio.listarxGenero(IdGenero);
                 Session.Add("Listaalbum", listaAlbum);
 
-                if (Request.QueryString["id"] != null)
+                if (Request.QueryString["idfiltrado"] != null)
                 {
-                    Int32 IdArt = Int32.Parse(Request.QueryString["id"]);
+                    Int32 IdArt = Int32.Parse(Request.QueryString["idfiltrado"]);
                     Session.Add("idArtCarrito", IdArt);
 
                     Session.Add("items", 1);

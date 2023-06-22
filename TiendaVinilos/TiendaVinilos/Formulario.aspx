@@ -30,19 +30,11 @@
             <br />
             <updatepanel>
                 <contentemplate>
+
                     <asp:Button ID="BtnAceptar" Text="Aceptar" OnClick="BtnAceptar_Click" CssClass="btn btn-primary" runat="server" ToolTip="click para agregar un vinilo" />
-                    <asp:Button Text="Eliminar" CssClass="btn btn-danger" ID="btnEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server"/>
+                
                     <asp:Button Text="Cancelar" CssClass="btn btn-outline-info" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
                     
-                    <%if (confirmaEliminacion)
-                        {%>
-                    <div class="mb-3">
-                        <asp:CheckBox Text="Confirmar Eliminacion" ID="chkConfirmaEliminacion" runat="server" />
-                        
-                        <asp:Button Text="Eliminar" CssClass="btn btn-outline-danger" ID="btnConfirmaElimacion" OnClick="btnConfirmaEliminacion_Click" runat="server" CommandName="AlbumId" CommandArgument="txtId" />
-
-                    </div>
-                    <%} %>
                     <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
                    
                 </contentemplate>

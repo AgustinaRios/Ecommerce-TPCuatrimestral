@@ -19,7 +19,7 @@ namespace TiendaVinilos
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+          
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
@@ -52,17 +52,18 @@ namespace TiendaVinilos
         {
             Response.Redirect("Formulario.aspx");
         }
-
+       
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
+               
                 string Id = ((Button)sender).CommandArgument;
                 AlbumNegocio negocio = new AlbumNegocio();
-                       
-                negocio.BajaLogica(int.Parse(Id));
-                lblMensaje.Text = "El álbum se dio de baja correctamente.";
-                lblMensaje.Visible = true;
+                
+                negocio.BajaLogica(int.Parse(Id));               
+                Response.Redirect("Listar.aspx");
+
             }
             catch (Exception ex)
             {
@@ -74,10 +75,6 @@ namespace TiendaVinilos
         }
 
        
-        protected void btnEliminarfalso_Click(object sender, EventArgs e)
-        {
-            string Id = ((Button)sender).CommandArgument;
-            Session.Add("Idalbum", Id);
-        }
+        
     }
 }
