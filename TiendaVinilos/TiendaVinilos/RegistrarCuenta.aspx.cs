@@ -22,12 +22,17 @@ namespace TiendaVinilos
             {
                 Usuario usuario = new Usuario();
                 UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                EmailService emailService = new EmailService();
                 usuario.Nombre = TxtNombre.Text;
                 usuario.Apellido = TxtApellido.Text;
                 usuario.Email = TxtEmail.Text;
                 usuario.Pass = TxtPass.Text;
 
                 int id = usuarioNegocio.insertarNuevo(usuario);
+
+                emailService.armarCorreo(usuario.Email,"Bienvenidx a Tienda de Vinilos","Gracias por registrarte, esperamos que disfrutes tu experiencia!");
+                emailService.enviarEmail();
+                Response.Redirect("Inicio.aspx",false);
             }
             catch(Exception ex)
             {
