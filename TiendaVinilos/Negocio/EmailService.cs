@@ -16,11 +16,11 @@ namespace Negocio
         public EmailService()
         {
             server = new SmtpClient();
-            server.Credentials = new NetworkCredential("agustinariosv@hotmail.com", "HEAVYmetal");
+            server.Credentials = new NetworkCredential("3dad7b74e3f838", "********bfdb");
             server.UseDefaultCredentials = false;
             server.EnableSsl = true;
-            server.Port = 587;
-            server.Host = "smtp.office365.com";
+            server.Port = 2525;
+            server.Host = "sandbox.smtp.mailtrap.io";
         }
 
         public void armarCorreo(string mailDestino, string asunto, string cuerpo)

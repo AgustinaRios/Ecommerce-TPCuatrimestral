@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Dominio;
+﻿using Dominio;
 using Negocio;
+using System;
+using System.Collections.Generic;
 namespace TiendaVinilos
 {
     public partial class AlbumsxGenero : System.Web.UI.Page
@@ -17,12 +13,18 @@ namespace TiendaVinilos
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
-
-                Int32 IdGenero = Int32.Parse(Request.QueryString["idgenero"]);
-                Session.Add("idGenero", IdGenero);
-
-                listaAlbum = negocio.listarxGenero(IdGenero);
+                if (Request.QueryString["idgenero"]!=null)
+                {
+                    Int32 IdGenero = Int32.Parse(Request.QueryString["idgenero"]);
+                    Session.Add("idgenero", IdGenero);
+                    listaAlbum = negocio.listarxGenero(IdGenero);
+                    Session.Add("Listaalbum", listaAlbum);
+                }
+                else { 
+                Int32 IdGenero2 = (Int32)Session["idgenero"] ;
+                listaAlbum = negocio.listarxGenero(IdGenero2);
                 Session.Add("Listaalbum", listaAlbum);
+                }
 
                 if (Request.QueryString["idfiltrado"] != null)
                 {

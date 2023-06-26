@@ -25,7 +25,8 @@ namespace Negocio
                 {
                     Album aux = new Album();
                     aux.Id = (int)datos.Lector["Id"];
-                    aux.Titulo = (string)datos.Lector["Titulo"];
+                    aux.Titulo= (string)datos.Lector["Titulo"];
+                   
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                     aux.Artista.Nombre = (string)datos.Lector["Artista"];

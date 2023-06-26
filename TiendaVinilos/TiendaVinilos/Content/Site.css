@@ -14,7 +14,6 @@ textarea {
 
 .ImgItemListar {
     height:2rem;
-    
     border:double;
 }
 .columnas {
@@ -22,9 +21,13 @@ textarea {
     grid-template-columns: repeat(2,1fr);
     grid-gap: 2rem;
 }
+card-body {
+    height:100px;
+}
 .card-title {
     text-align: center;
-    color:forestgreen;
+    color:mediumseagreen;
+   
 }
 .card-text {
     text-align: center;
