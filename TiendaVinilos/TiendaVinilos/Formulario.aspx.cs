@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Security.Policy;
 using System.Web;
-using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
 using Dominio;
 using Negocio;
+
 namespace TiendaVinilos
 {
     public partial class Formulario : System.Web.UI.Page
@@ -110,6 +109,48 @@ namespace TiendaVinilos
 
         }
 
+        bool ValidarVacios()
+        {
+            TxtTitulo.BorderColor = Color.White;
+            TxtArtista.BorderColor = Color.White;
+            TxtImgTapa.BorderColor = Color.White;
+            TxtImgContraTapa.BorderColor = Color.White;
+            TxtFechaLanza.BorderColor = Color.White;
+
+            bool vacios = false;
+            if (TxtTitulo.Text == "")
+            {
+                TxtTitulo.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtArtista.Text == "")
+            {
+                TxtArtista.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtImgTapa.Text == "")
+            {
+                TxtImgTapa.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtImgContraTapa.Text == "")
+            {
+                TxtImgContraTapa.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtFechaLanza.Text == "")
+            {
+                TxtFechaLanza.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtPrecio.Text == "")
+            {
+                TxtPrecio.BorderColor = Color.Red;
+                vacios = true;
+            }
+
+            return vacios;
+        }
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -180,18 +221,29 @@ namespace TiendaVinilos
                 if (Request.QueryString["Id"] != null)
                 {
                     nuevo.Id = int.Parse(Request.QueryString["Id"]);
-                    albumNegocio.modificarConSP(nuevo);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " +nuevo.Titulo  + " modificado exitosamente');window.location ='Listar.aspx';", true);
-                   // Response.Redirect("Listar.aspx");
-
+                    if (ValidarVacios() == false)
+                    {
+                        albumNegocio.modificarConSP(nuevo);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " modificado exitosamente');window.location ='Listar.aspx';", true);
+                        // Response.Redirect("Listar.aspx");
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('complete todos los campos');</script>");
+                    }
                 }
                 else
                 {
-
-                    albumNegocio.agregar(nuevo);
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
-                    // Response.Redirect("Listar.aspx");
+                    if (ValidarVacios() == false)
+                    {
+                        albumNegocio.agregar(nuevo);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
+                        // Response.Redirect("Listar.aspx");
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('complete todos los campos');</script>");
+                    }
 
                 }
             }

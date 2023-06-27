@@ -12,6 +12,7 @@
             <asp:TextBox ID="TxtTitulo" class="form-control" type="text" placeholder="Ingrese Titulo" runat="server"></asp:TextBox>
             <h3>Artista*</h3>
             <asp:TextBox ID="TxtArtista" class="form-control" type="text" placeholder="Ingrese Artista" runat="server"></asp:TextBox>
+            <%//si chk se activa se pone en enable la lista de artistas y se activa el txtartistanuevo o btn nuevo artista pensarlo... %>
             <h3>Fecha Lanzamiento*</h3>
             <asp:TextBox ID="TxtFechaLanza" class="form-control" type="date" runat="server"></asp:TextBox>
             <h3>Imagen Tapa*</h3>
@@ -19,24 +20,34 @@
             <h3>Imagen ContraTapa*</h3>
             <asp:TextBox ID="TxtImgContraTapa" class="form-control" type="text" placeholder="Ingrese url imagen Contratapa" runat="server"></asp:TextBox>
             <h3>Precio*</h3>
-            <asp:TextBox ID="TxtPrecio" class="form-control" type="text" placeholder="Ingrese Precio" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TxtPrecio" class="form-control" type="text" placeholder="Ingrese Precio" runat="server" Text="1" ></asp:TextBox>
             <h5>Campos Obligatorios(*)</h5>
+            
+           
             <h3>Genero</h3>
             <asp:DropDownList runat="server" ID="ddlGenero" CssClass="form-control-sm">
             </asp:DropDownList>
+            </div>
+              
             <h3>Categoria</h3>
             <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control-sm">
             </asp:DropDownList>
-            <br />
+          
+            
             <updatepanel>
                 <contentemplate>
-
+                    <br />
+                   <div class="row justify-content-evenly">
+                   <div class="col-4">
                     <asp:Button ID="BtnAceptar" Text="Aceptar" OnClick="BtnAceptar_Click" CssClass="btn btn-primary" runat="server" ToolTip="click para agregar un vinilo" />
-                
-                    <asp:Button Text="Cancelar" CssClass="btn btn-outline-info" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
-                    
+                    </div>
+                    <div class="col-4">  
+                    <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
+                    </div>
+                    </div>
+                     <br />
                     <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
-                   
+
                 </contentemplate>
             </updatepanel>
 

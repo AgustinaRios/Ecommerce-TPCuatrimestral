@@ -22,7 +22,7 @@
       
     <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
     <asp:Button ID="BtnAgregar" OnClick="BtnAgregar_Click" Text="Registrar"  CssClass="btn btn-primary" runat="server" ToolTip="Click para darse de alta" />
-
+    <asp:Button Text="Cancelar" CssClass="btn btn-outline-info" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
     <p><a href="Login.aspx">¿Ya tengo Cuenta?</a></p>
          </div>
         </div>

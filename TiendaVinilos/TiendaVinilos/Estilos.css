@@ -9,17 +9,19 @@
     --negro: #000;
     --fuente-principal: 'Staatliches', cursive;
 }
-
+.body{
+    background-color:red;
+}
 .cover {
     background-image: url(https://i.pinimg.com/originals/f1/54/75/f15475b7bb11a662426a55cf4ea9f0c8.jpg);
     color: white;
-    background-size: cover;
+    background-size:auto;
     background-position: center;
-    background-color: rgba(0, 0, 0, 0.5);
+   
 }
 
 .cover-small {
-    height: 200px;
+    height: 400px;
     background-size: cover;
 }
 
@@ -38,6 +40,7 @@
     line-height: 1.5;
     background-image: url(https://i.pinimg.com/originals/f1/54/75/f15475b7bb11a662426a55cf4ea9f0c8.jpg);
     background-size: cover;
+   
 }
 
 
