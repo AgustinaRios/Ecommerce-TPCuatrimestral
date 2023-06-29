@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Microsoft.Ajax.Utilities;
 using Negocio;
 namespace TiendaVinilos
 {
@@ -66,7 +67,13 @@ namespace TiendaVinilos
 
         protected void BtnComprar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            Usuario usuario = Session["usuario"] != null ? (Usuario)Session["usuario"]:null;
+            if (!(usuario != null && usuario.ID != 0))
+            { Response.Redirect("Login.aspx"); }
+            else
+            {
+                Response.Redirect("Contact.aspx", false);
+            }
         }
 
         protected void lblTotal_Load(object sender, EventArgs e)

@@ -38,5 +38,39 @@ namespace Negocio
             
             
         }
+   
+    
+
+        public bool Login(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select id,email,pass,Administrador from USUARIOS where email=@email and pass=@pass");
+                datos.setearParametro("@email", usuario.Email);
+                datos.setearParametro("@pass", usuario.Pass);
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    usuario.ID = (int)datos.lector["id"];
+                    usuario.Admin = (bool)datos.lector["Administrador"];
+                    // mensaje para verificar los valores
+                    Console.WriteLine("Inicio de sesión exitoso. ID: " + usuario.ID + ", Admin: " + usuario.Admin);
+
+                    return true; 
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+    
     }
 }
