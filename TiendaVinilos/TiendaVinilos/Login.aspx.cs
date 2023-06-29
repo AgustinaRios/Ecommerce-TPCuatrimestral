@@ -17,7 +17,7 @@ namespace TiendaVinilos
 
         }
 
-        protected void BtnAgregar_Click(object sender, EventArgs e)
+        protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
             UsuarioNegocio negocio = new UsuarioNegocio();

@@ -20,7 +20,10 @@ namespace Negocio
         public static bool esAdmin(object user)
         {
             Usuario usuario = user != null ? (Usuario)user : null;
-            return usuario.Admin;
+            return usuario != null ? usuario.Admin : false;
+            
         }
     }
 }
+
+
