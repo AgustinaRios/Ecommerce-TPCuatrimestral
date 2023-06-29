@@ -19,6 +19,7 @@ namespace TiendaVinilos
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
           
             AlbumNegocio negocio = new AlbumNegocio();
             try

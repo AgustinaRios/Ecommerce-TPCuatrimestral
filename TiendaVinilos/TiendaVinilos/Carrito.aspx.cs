@@ -67,13 +67,9 @@ namespace TiendaVinilos
 
         protected void BtnComprar_Click(object sender, EventArgs e)
         {
-            Usuario usuario = Session["usuario"] != null ? (Usuario)Session["usuario"]:null;
-            if (!(usuario != null && usuario.ID != 0))
-            { Response.Redirect("Login.aspx"); }
-            else
-            {
-                Response.Redirect("Contact.aspx", false);
-            }
+            if (!Seguridad.sesionActiva(Session["usuario"]))
+             Response.Redirect("Login.aspx",false); 
+        
         }
 
         protected void lblTotal_Load(object sender, EventArgs e)
