@@ -24,9 +24,12 @@ namespace TiendaVinilos
                     usuario = (Usuario)Session["usuario"];
 
                     int id = usuario.ID;
-                    TxtNombre.Text = usuario.Nombre;
+
                     TxtApellido.Text = usuario.Apellido;
+
+                    TxtNombre.Text = usuario.Nombre;
                     TxtEmail.Text = usuario.Email;
+
 
                 }
 
@@ -34,7 +37,7 @@ namespace TiendaVinilos
         }
         public void BtnAceptar_Click(object sender, EventArgs e)
         {
-            UsuarioNegocio negocio=new UsuarioNegocio();
+            UsuarioNegocio negocio = new UsuarioNegocio();
             Usuario usuario = new Usuario();
             usuario = (Usuario)Session["usuario"];
 
@@ -44,11 +47,11 @@ namespace TiendaVinilos
 
             negocio.modificar(usuario);
             Response.Redirect("MiPerfil.aspx", false);
-            
+
 
         }
 
-        public void btnCancelar_Click(object sender, EventArgs e)
+        public void BtnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Inicio.aspx", false);
         }
