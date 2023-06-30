@@ -119,7 +119,7 @@ CREATE TABLE USUARIOS (
 Id int identity(1,1) NOT NULL,
 Nombre varchar(50) NULL,
 Apellido varchar(50)NULL,
-Email varchar(50)NULL,
+Email varchar(50)NULL unique,
 Pass varchar(50)NULL,
 FechaCreacion date NULL,
 Administrador bit NULL
@@ -143,5 +143,6 @@ As
  insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador) 
  output inserted.Id values (@Nombre,@Apellido,@Email,@Pass,GETDATE(),0)
  go
- insert into USUARIOS (Nombre,Email,Pass,Administrador)
-values ('adm','adm@adm.com','adm',1)
+ insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador)
+values ('adm','adm','adm@adm.com','adm',GETDATE(),1)
+

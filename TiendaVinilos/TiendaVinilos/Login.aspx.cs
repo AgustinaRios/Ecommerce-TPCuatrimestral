@@ -32,7 +32,7 @@ namespace TiendaVinilos
                 {
                     Session.Add("usuario", completo);
 
-                    if (Seguridad.esAdmin(Session["completo"]))
+                    if (Seguridad.esAdmin(Session["usuario"]))
                     {
                         Response.Redirect("Inicio.aspx", false);
                     }
