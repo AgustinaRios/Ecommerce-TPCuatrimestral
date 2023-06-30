@@ -145,6 +145,7 @@ namespace TiendaVinilos
             }
             if (TxtPrecio.Text == "")
             {
+               
                 TxtPrecio.BorderColor = Color.Red;
                 vacios = true;
             }

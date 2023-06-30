@@ -20,6 +20,10 @@
             <h3>Imagen ContraTapa*</h3>
             <asp:TextBox ID="TxtImgContraTapa" class="form-control" type="text" placeholder="Ingrese url imagen Contratapa" runat="server"></asp:TextBox>
             <h3>Precio*</h3>
+            <asp:RangeValidator ID="rvclass" runat="server" ControlToValidate="TxtPrecio" 
+            ErrorMessage="Solo numero positivos" MaximumValue="10000" 
+            MinimumValue="1" Type="Double">
+            </asp:RangeValidator>
             <asp:TextBox ID="TxtPrecio" class="form-control" type="text" placeholder="Ingrese Precio" runat="server" Text="1"></asp:TextBox>
             <h5>Campos Obligatorios(*)</h5>
 
