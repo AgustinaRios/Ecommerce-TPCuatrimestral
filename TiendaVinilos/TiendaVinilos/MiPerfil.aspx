@@ -24,7 +24,7 @@
 
 
                 <asp:TextBox ID="TxtEmail" CssClass="controls" type="Mail" aria-label="Email" runat="server" />
-                <asp:Button ID="BtnAceptar" Text="GUARDAR" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" />
+                <asp:Button ID="BtnAceptar" Text="GUARDAR CAMBIOS" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" />
                 <asp:Button ID="BtnCancelar" Text="CANCELAR" OnClick="BtnCancelar_Click" runat="server" CssClass="btn btn-success" />
 
             </div>

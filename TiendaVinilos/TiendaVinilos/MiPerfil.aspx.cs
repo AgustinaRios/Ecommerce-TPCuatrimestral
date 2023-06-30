@@ -46,7 +46,7 @@ namespace TiendaVinilos
             usuario.Email = TxtEmail.Text;
 
             negocio.modificar(usuario);
-            Response.Redirect("MiPerfil.aspx", false);
+            Response.Redirect("Inicio.aspx", false);
 
 
         }

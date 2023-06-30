@@ -28,18 +28,10 @@ namespace TiendaVinilos
                 usuario.Pass = TxtPass.Text;
                 completo = negocio.Login(usuario);
 
-               if (completo.ID!=0)
+                if (completo.ID != 0)
                 {
                     Session.Add("usuario", completo);
-
-                    if (Seguridad.esAdmin(Session["usuario"]))
-                    {
-                        Response.Redirect("Inicio.aspx", false);
-                    }
-                    else
-                    {
-                        Response.Redirect("MiPerfil.aspx", false);
-                    }
+                    Response.Redirect("Inicio.aspx", false);
                 }
                 else
                 {
