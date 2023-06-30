@@ -54,5 +54,10 @@ namespace TiendaVinilos
                 Response.Redirect("error.aspx");
             }
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Inicio.aspx");
+        }
     }
 }

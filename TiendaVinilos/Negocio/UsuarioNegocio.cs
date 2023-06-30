@@ -153,6 +153,28 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public int ExisteUsuarioPorEmail(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(*) FROM USUARIOS WHERE Email = @Email");
+                datos.setearParametro("@Email", usuario.Email);
+
+                int count = (int)datos.ejectutarAccionScalar();
+
+                return count;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
         public void Eliminar(int Id)
         {

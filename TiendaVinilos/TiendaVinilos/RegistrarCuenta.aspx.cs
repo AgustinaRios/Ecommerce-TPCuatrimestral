@@ -60,6 +60,14 @@ namespace TiendaVinilos
                 usuario.Apellido = TxtApellido.Text;
                 usuario.Email = TxtEmail.Text;
                 usuario.Pass = TxtPass.Text;
+                if (usuarioNegocio.ExisteUsuarioPorEmail(usuario) != 0)
+                {
+                    // Mostrar mensaje de error indicando que el correo electrónico ya está en uso
+
+                    LblMensaje.Text = "El correo electrónico ya está registrado. Por favor, utilice otro correo electrónico.";
+                    LblMensaje.Visible = true;
+                    return;
+                }
                 if (ValidarVacios() == false) { 
                     int id = usuarioNegocio.insertarNuevo(usuario);
                 emailService.EnviarCorreo(usuario.Email,"Bienvenidx a Tienda de Vinilos","Gracias por registrarte, esperamos que disfrutes tu experiencia!");
