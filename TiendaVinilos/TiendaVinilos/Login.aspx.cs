@@ -20,16 +20,26 @@ namespace TiendaVinilos
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
+            Usuario completo = new Usuario();
             UsuarioNegocio negocio = new UsuarioNegocio();
             try
             {
                 usuario.Email = TxtEmail.Text;
                 usuario.Pass = TxtPass.Text;
+                completo = negocio.Login(usuario);
 
-               if(negocio.Login(usuario))
+               if (completo.ID!=0)
                 {
-                    Session.Add("usuario", usuario);
-                    Response.Redirect("Inicio.aspx",false);
+                    Session.Add("usuario", completo);
+
+                    if (Seguridad.esAdmin(Session["completo"]))
+                    {
+                        Response.Redirect("Inicio.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("MiPerfil.aspx", false);
+                    }
                 }
                 else
                 {
