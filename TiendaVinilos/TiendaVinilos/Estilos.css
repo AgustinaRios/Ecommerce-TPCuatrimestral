@@ -38,9 +38,9 @@
     background: rgb(235,235,235);
     font-size: 1.6rem;
     line-height: 1.5;
-    background-image: url(https://i.pinimg.com/originals/f1/54/75/f15475b7bb11a662426a55cf4ea9f0c8.jpg);
-    background-size: cover;
-   
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(100,43,115,1) 0%, rgba(4,0,4,1) 90% );
+    height: 800px;
+    
 }
 
 
@@ -49,11 +49,14 @@
     background: #24303c;
     padding: 30px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 10px;
     border-radius: 4px;
     font-family: Calibri;
     color: white;
     box-shadow: 7px 13px 37px #000;
+    background-image: url(https://i.pinimg.com/originals/f1/54/75/f15475b7bb11a662426a55cf4ea9f0c8.jpg);
+    background-size: cover;
+   
 }
 
     .FormularioRegistro h4 {
