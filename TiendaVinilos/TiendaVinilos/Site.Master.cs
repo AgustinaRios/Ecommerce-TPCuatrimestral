@@ -17,7 +17,12 @@ namespace TiendaVinilos
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page is Listar)
+            if (Page is Listar||Page is ListarUsuarios)
+            {
+                if (!Seguridad.esAdmin(Session["usuario"]))
+                    Response.Redirect("Login.aspx", false);
+            }
+            if (Page is MiPerfil)
             {
                 if (!Seguridad.sesionActiva(Session["usuario"]))
                     Response.Redirect("Login.aspx", false);
