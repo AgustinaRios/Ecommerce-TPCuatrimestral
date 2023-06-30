@@ -1,48 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
+//using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
-
+using EASendMail;//No olvides instalar el paquete EASendMail para poder utilizar esta referencia
 namespace Negocio
 {
     public class EmailService
     {
-        private MailMessage email;
-        private SmtpClient server;
-
-        public EmailService()
+        public string EnviarCorreo(string correoDestino, string asunto, string mensajeCorreo)
         {
-            server = new SmtpClient();
-            server.Credentials = new NetworkCredential("3dad7b74e3f838", "********bfdb");
-            server.UseDefaultCredentials = false;
-            server.EnableSsl = true;
-            server.Port = 2525;
-            server.Host = "sandbox.smtp.mailtrap.io";
-        }
+            string mensaje = "Error al enviar correo.";
 
-        public void armarCorreo(string mailDestino, string asunto, string cuerpo)
-        {
-            email = new MailMessage();
-            email.From = new MailAddress("tiendaVinilos@ecommerce.com");
-            email.To.Add(mailDestino);
-            email.Subject=(asunto);
-            email.IsBodyHtml = true;
-            email.Body = cuerpo;
-        }
-
-        public void enviarEmail()
-        {
             try
             {
-                server.Send(email);
+                SmtpMail objetoCorreo = new SmtpMail("TryIt");
+
+                objetoCorreo.From = "consorcioapputn@gmail.com";
+                objetoCorreo.To = correoDestino;
+                objetoCorreo.Subject = asunto;
+                objetoCorreo.TextBody = mensajeCorreo;
+
+                SmtpServer objetoServidor = new SmtpServer("smtp.gmail.com");
+
+                objetoServidor.User = "consorcioapputn@gmail.com";
+                objetoServidor.Password = "ubtulagppbqrfqaw";
+                objetoServidor.Port = 25;
+                objetoServidor.ConnectType = SmtpConnectType.ConnectSSLAuto;
+
+                SmtpClient objetoCliente = new SmtpClient();
+                objetoCliente.SendMail(objetoServidor, objetoCorreo);
+                mensaje = "Correo Enviado Correctamente.";
+
+
             }
             catch (Exception ex)
             {
-                throw ex;
+                mensaje = "Error al enviar correo." + ex.Message;
             }
+            return mensaje;
         }
+
     }
 }

@@ -62,10 +62,10 @@ namespace TiendaVinilos
                 usuario.Pass = TxtPass.Text;
                 if (ValidarVacios() == false) { 
                     int id = usuarioNegocio.insertarNuevo(usuario);
-                emailService.armarCorreo(usuario.Email,"Bienvenidx a Tienda de Vinilos","Gracias por registrarte, esperamos que disfrutes tu experiencia!");
-                emailService.enviarEmail();
+                emailService.EnviarCorreo(usuario.Email,"Bienvenidx a Tienda de Vinilos","Gracias por registrarte, esperamos que disfrutes tu experiencia!");
+               
                     //Response.Redirect("Inicio.aspx",false); 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('  usuario creado exitosamente');window.location ='Inicio.aspx';", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('  usuario creado exitosamente ,Hola "+usuario.Nombre+"');window.location ='Inicio.aspx';", true);
 
                 }
                 else

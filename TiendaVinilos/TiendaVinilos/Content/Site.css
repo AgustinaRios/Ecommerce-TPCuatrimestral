@@ -85,12 +85,11 @@ card-body {
     background-color:red;
 }
 .ImgCarrusel {
-    height: 250px;
-    width: 1300px;
+    height: 200px;
+    width:inherit;
 }
-.ContenedorInicio {
-    background-color: #a8aab7;
-  
+.contenedorprincipal {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(100,43,115,1) 0%, rgba(4,0,4,1) 90% );
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
