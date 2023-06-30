@@ -69,7 +69,8 @@ namespace TiendaVinilos
                     return;
                 }
                 if (ValidarVacios() == false) { 
-                    int id = usuarioNegocio.insertarNuevo(usuario);
+                    usuario.ID = usuarioNegocio.insertarNuevo(usuario);
+                    Session.Add("Usuario", usuario);
                 emailService.EnviarCorreo(usuario.Email,"Bienvenidx a Tienda de Vinilos","Gracias por registrarte, esperamos que disfrutes tu experiencia!");
                
                     //Response.Redirect("Inicio.aspx",false); 
