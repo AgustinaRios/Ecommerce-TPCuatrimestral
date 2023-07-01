@@ -16,13 +16,13 @@ textarea {
     position: relative;
 }
 
-    .tooltip:hover {
-        text-decoration: underline;
-    }
+.tooltip:hover {
+    text-decoration: underline;
+}
 
-        .tooltip:hover .tooltip-box {
-            display: inline-block;
-        }
+    .tooltip:hover .tooltip-box {
+        display: inline-block;
+    }
 
 .tooltip-box {
     display: none;
@@ -53,44 +53,50 @@ textarea {
 
 
 .ImgItemListar {
-    height:2rem;
-    border:double;
+    height: 2rem;
+    border: double;
 }
+
 .columnas {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-gap: 2rem;
 }
+
 card-body {
-    height:100px;
+    height: 100px;
 }
+
 .card-title {
     text-align: center;
-    color:mediumseagreen;
-   
+    color: mediumseagreen;
 }
+
 .card-text {
     text-align: center;
     color: red;
-    
 }
+
 .TituloDetalle {
     text-align: center;
     color: red;
 }
+
 .list-group {
     text-align: center;
 }
+
 .footer {
-    background-color:red;
+    background-color: red;
 }
+
 .ImgCarrusel {
-    height: 200px;
-    width:inherit;
+    height: 250px;
+    width: 1300px;
 }
-.contenedorprincipal {
-    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(100,43,115,1) 0%, rgba(4,0,4,1) 90% );
-    height: 600px;
+
+.ContenedorInicio {
+    background-color: #a8aab7;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

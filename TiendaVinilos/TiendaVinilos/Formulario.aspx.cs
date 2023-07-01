@@ -56,6 +56,7 @@ namespace TiendaVinilos
                         int idbuscado = seleccionado.Id;
                         seleccionado = negocio.ObtenerAlbum(idbuscado);
                         //se carga los datos del Album que se selecciono modificar
+                        
                         TxtTitulo.Text = seleccionado.Titulo.ToString();
                         TxtArtista.Text = seleccionado.Artista.ToString();
                         TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
