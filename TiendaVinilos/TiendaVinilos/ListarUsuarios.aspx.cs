@@ -54,13 +54,34 @@ namespace TiendaVinilos
                 string Id = ((Button)sender).CommandArgument;
                 UsuarioNegocio negocio = new UsuarioNegocio();
 
-                negocio.Eliminar(int.Parse(Id));
+                negocio.BajaLogica(int.Parse(Id));
                 Response.Redirect("ListarUsuarios.aspx");
 
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = "Error al eliminar usuario: " + ex.Message;
+                lblMensaje.Text = "Error al desactivar usuario: " + ex.Message;
+                lblMensaje.CssClass = "error-message";
+                lblMensaje.Visible = true;
+
+            }
+        }
+
+        protected void BtnActivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string Id = ((Button)sender).CommandArgument;
+                UsuarioNegocio negocio = new UsuarioNegocio();
+
+                negocio.AltaLogica(int.Parse(Id));
+                Response.Redirect("ListarUsuarios.aspx");
+
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al activar usuario: " + ex.Message;
                 lblMensaje.CssClass = "error-message";
                 lblMensaje.Visible = true;
 

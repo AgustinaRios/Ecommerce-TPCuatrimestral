@@ -30,26 +30,34 @@ namespace TiendaVinilos
 
                 if (completo.ID != 0)
                 {
-                    Session.Add("usuario", completo);
-                    Response.Redirect("Inicio.aspx", false);
+                    if (completo.Activo == true)
+                    {
+                        Session.Add("usuario", completo);
+                        Response.Redirect("Inicio.aspx", false);
+                    }
+                    else
+                    {
+                        Session.Add("error", "Su usario se encuentra inactivo contáctese con el administrador");
+                        Response.Redirect("error.aspx", false);
+                    }
                 }
                 else
                 {
                     Session.Add("error", "Usuario o contraseña incorrectos");
-                    Response.Redirect("error.aspx");
+                    Response.Redirect("error.aspx",false);
                 }
 
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());
-                Response.Redirect("error.aspx");
+                Response.Redirect("error.aspx",false);
             }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Inicio.aspx");
+            Response.Redirect("Inicio.aspx",false);
         }
     }
 }

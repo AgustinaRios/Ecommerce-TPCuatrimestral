@@ -48,7 +48,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select ID, Nombre, Apellido, Email, Pass,FechaCreacion, Administrador from USUARIOS  where email=@email and pass=@pass");
+                datos.setearConsulta("select ID, Nombre, Apellido, Email, Pass,FechaCreacion, Administrador,Activo from USUARIOS  where email=@email and pass=@pass");
 
                 datos.setearParametro("@email", usuario.Email);
                 datos.setearParametro("@pass", usuario.Pass);
@@ -69,6 +69,8 @@ namespace Negocio
                         aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Administrador"))))
                         aux.Admin = (bool)datos.Lector["Administrador"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Activo"))))
+                        aux.Activo = (bool)datos.Lector["Activo"];
 
                     ///
 
@@ -125,7 +127,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id,Nombre,Apellido,Email,FechaCreacion,Administrador from USUARIOS");
+                datos.setearConsulta("select Id,Nombre,Apellido,Email,FechaCreacion,Administrador,Activo from USUARIOS");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -137,6 +139,7 @@ namespace Negocio
                     aux.Email = (string)datos.Lector["Email"];
                     aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
                     aux.Admin = (bool)datos.Lector["Administrador"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
 
 
                     lista.Add(aux);
@@ -176,13 +179,13 @@ namespace Negocio
         }
 
 
-        public void Eliminar(int Id)
+        public void BajaLogica(int Id)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("Delete from usuarios where Id= @id");
+                datos.setearConsulta("UPDATE USUARIOS set Activo = 0 where Id= @id");
                 datos.setearParametro("@id", Id);
 
                 datos.ejectutarAccion();
@@ -190,7 +193,7 @@ namespace Negocio
 
             catch (Exception ex)
             {
-                throw new Exception("Error al eliminar usuario.", ex);
+                throw new Exception("Error al dar desactivar al usuario.", ex);
             }
             finally
             {
@@ -199,5 +202,27 @@ namespace Negocio
 
         }
 
+        public void AltaLogica(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE USUARIOS set Activo = 1 where Id= @id");
+                datos.setearParametro("@id", Id);
+
+                datos.ejectutarAccion();
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Error al dar activar al usuario.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }

@@ -14,8 +14,9 @@ namespace Dominio
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Pass { get; set; }
-
         public bool Admin { get; set; }
+
+        public bool Activo { get; set; }
         public DateTime FechaCreacion { get; set; }
     }
 }

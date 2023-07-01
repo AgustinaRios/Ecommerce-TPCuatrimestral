@@ -1,7 +1,5 @@
 use master
 go
-drop database ECOMMERCE_TP_DB
-go
 create database ECOMMERCE_TP_DB
 go
 use ECOMMERCE_TP_DB
@@ -122,8 +120,9 @@ Apellido varchar(50)NULL,
 Email varchar(50)NULL unique,
 Pass varchar(50)NULL,
 FechaCreacion date NULL,
-Administrador bit NULL
-
+Administrador bit not null default 0,
+Activo bit not null default 1
+)
 CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -132,7 +131,7 @@ CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED
 
 GO
 
-Create procedure InsertarNuevo (
+Alter procedure InsertarNuevo (
  
  @Nombre varchar(50),
  @Apellido varchar(50),
@@ -140,9 +139,11 @@ Create procedure InsertarNuevo (
  @Pass varchar (50)
 )
 As
- insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador) 
- output inserted.Id values (@Nombre,@Apellido,@Email,@Pass,GETDATE(),0)
+ insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador,Activo) 
+ output inserted.Id values (@Nombre,@Apellido,@Email,@Pass,GETDATE(),0,1)
  go
- insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador)
-values ('adm','adm','adm@adm.com','adm',GETDATE(),1)
+ insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador,Activo)
+values ('adm','adm','adm@adm.com','adm',GETDATE(),1,1)
 
+
+select * from USUARIOS
