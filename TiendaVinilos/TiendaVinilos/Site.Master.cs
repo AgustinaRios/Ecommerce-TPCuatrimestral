@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
@@ -14,7 +15,7 @@ namespace TiendaVinilos
 
         public ProductosCarrito carrito = new ProductosCarrito();
         Album producto = new Album();
-        AlbumNegocio negocio= new AlbumNegocio();   
+        GeneroNegocio generonegocio = new GeneroNegocio(); 
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +34,21 @@ namespace TiendaVinilos
 
                 if (!IsPostBack)
                 {
-                    
+                    List<Genero> listaGenero = generonegocio.listar();
+
+                    // Agregar un elemento adicional al inicio de la lista
+                    listaGenero.Insert(0, new Genero { Id = -1, Descripcion = "Seleccionar género" });
+
+                    Session["listaGenero"] = listaGenero;
+                    ddlGenero.DataSource = listaGenero;
+                    ddlGenero.DataTextField = "Descripcion";
+                    ddlGenero.DataValueField = "ID";
+                    ddlGenero.DataBind();
+
+                    // Establecer el elemento predeterminado
+                    ddlGenero.SelectedIndex = 0;
+
+
                     ////cuando se carga x 1era vez el menu entra aca y carga a la session un 0( el carrito esta vacio)
                     if (Session["ItemCount"] == null)
                     {
@@ -116,6 +131,12 @@ namespace TiendaVinilos
                 Session.Add("error", ex);
                 throw;
             }
+        }
+        protected void ddlGenero_SelectedIndexChanged (object sender, EventArgs e)
+        {
+            int id=int.Parse(ddlGenero.SelectedValue);
+            Response.Redirect("AlbumsxGenero.aspx?Id=" + id, false);
+            
         }
 
         public void btnLogout_Click(object sender, EventArgs e)

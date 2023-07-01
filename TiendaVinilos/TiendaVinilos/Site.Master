@@ -68,6 +68,7 @@
                                 </svg></a>
                             <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-style: inherit; font-size: x-small; font-weight: lighter; color: #000000; text-align: center;">Inicio</p>
                         </li>
+                            <p style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-style: inherit; font-size: x-small; font-weight: lighter; color: #000000">Generos</p>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
@@ -75,13 +76,13 @@
                                     <path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z" />
                                 </svg>
                             </a>
-                            <p style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-style: inherit; font-size: x-small; font-weight: lighter; color: #000000">Generos</p>
+                            <asp:DropDownList runat="server" ID="ddlGenero" class="dropdown-item" AutoPostBack="true" OnSelectedIndexChanged="ddlGenero_SelectedIndexChanged"/>
                             
-                            <ul class="dropdown-menu">
+                            <%--<ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="AlbumsxGenero.aspx?idgenero=1">Rock</a></li>
                                 <li><a class="dropdown-item" href="AlbumsxGenero.aspx?idgenero=2">Pop</a></li>
 
-                            </ul>
+                            </ul>--%>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Contact.aspx">

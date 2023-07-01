@@ -64,7 +64,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
+        
         public List<Album> listarxGenero(int idgenero)
         {
             List<Album> lista = new List<Album>();
@@ -146,6 +146,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
         public void modificarConSP(Album nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
