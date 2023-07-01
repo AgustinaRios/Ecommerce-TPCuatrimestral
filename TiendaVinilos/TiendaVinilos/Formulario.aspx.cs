@@ -49,14 +49,21 @@ namespace TiendaVinilos
                     if (Id != "")
 
                     {
-                        
-                        Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
                         Album seleccionado = new Album();
                         seleccionado.Id = int.Parse(Id);
                         int idbuscado = seleccionado.Id;
                         seleccionado = negocio.ObtenerAlbum(idbuscado);
                         //se carga los datos del Album que se selecciono modificar
-                        
+                        if (!seleccionado.Activo)
+                        {
+                            Lbltitlulo.Text = "Alta de Albums";
+                        }
+                        else 
+                        {
+                            Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
+
+                        }
+
                         TxtTitulo.Text = seleccionado.Titulo.ToString();
                         TxtArtista.Text = seleccionado.Artista.ToString();
                         TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
@@ -215,6 +222,7 @@ namespace TiendaVinilos
                 nuevo.Genero.Id = int.Parse(ddlGenero.SelectedValue);
                 nuevo.Categoria = new Categoria();
                 nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+                nuevo.Activo = true;
 
 
                 //////

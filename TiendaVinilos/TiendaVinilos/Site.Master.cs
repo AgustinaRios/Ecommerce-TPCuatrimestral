@@ -14,6 +14,7 @@ namespace TiendaVinilos
 
         public ProductosCarrito carrito = new ProductosCarrito();
         Album producto = new Album();
+        AlbumNegocio negocio= new AlbumNegocio();   
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,7 +33,8 @@ namespace TiendaVinilos
 
                 if (!IsPostBack)
                 {
-                    //cuando se carga x 1era vez el menu entra aca y carga a la session un 0( el carrito esta vacio)
+                    
+                    ////cuando se carga x 1era vez el menu entra aca y carga a la session un 0( el carrito esta vacio)
                     if (Session["ItemCount"] == null)
                     {
                         Session["ItemCount"] = 0;

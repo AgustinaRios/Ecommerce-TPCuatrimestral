@@ -19,6 +19,7 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Genero</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Activo</th>
                 <th scope="col">Accion</th>
                 <th scope="col">Accion</th>
             </tr>
@@ -46,6 +47,7 @@
                         <td><%# Eval("Precio")%></td>
                         <td><%# Eval("Genero")%></td>
                         <td><%# Eval("Categoria")%></td>
+                         <td><%# Eval("Activo")%></td>
                         
                          <td>
                         <asp:Button Text="Modificar" Cssclass="btn btn-success" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>

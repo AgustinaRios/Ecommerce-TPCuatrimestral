@@ -76,6 +76,7 @@
                                 </svg>
                             </a>
                             <p style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-style: inherit; font-size: x-small; font-weight: lighter; color: #000000">Generos</p>
+                            
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="AlbumsxGenero.aspx?idgenero=1">Rock</a></li>
                                 <li><a class="dropdown-item" href="AlbumsxGenero.aspx?idgenero=2">Pop</a></li>
