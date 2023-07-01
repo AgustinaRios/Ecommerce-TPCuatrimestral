@@ -114,6 +114,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AlbumsxGenero.aspx" />
+    <Content Include="Artistas.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -139,6 +140,7 @@
     <Content Include="Estilos.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="FormAltaArtista.aspx" />
     <Content Include="Formulario.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -207,6 +209,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Artistas.aspx.cs">
+      <DependentUpon>Artistas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Artistas.aspx.designer.cs">
+      <DependentUpon>Artistas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Carrito.aspx.cs">
       <DependentUpon>Carrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -241,6 +250,13 @@
     </Compile>
     <Compile Include="error.aspx.designer.cs">
       <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormAltaArtista.aspx.cs">
+      <DependentUpon>FormAltaArtista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormAltaArtista.aspx.designer.cs">
+      <DependentUpon>FormAltaArtista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formulario.aspx.cs">
       <DependentUpon>Formulario.aspx</DependentUpon>

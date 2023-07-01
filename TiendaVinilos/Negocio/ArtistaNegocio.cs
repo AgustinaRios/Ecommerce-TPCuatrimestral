@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select Id,Nombre from ARTISTA");
+                datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -25,7 +25,7 @@ namespace Negocio
                     Artista aux = new Artista();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-
+                    aux.Activo = (bool)datos.Lector["Activo"];
                     lista.Add(aux);
                 }
 
@@ -106,9 +106,51 @@ namespace Negocio
             }
         }
 
+        public void BajaLogica(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.setearConsulta("UPDATE ARTISTA set Activo = 0 where Id= @id");
+                datos.setearParametro("@id", Id);
 
+                datos.ejectutarAccion();
+            }
 
+            catch (Exception ex)
+            {
+                throw new Exception("Error al dar de baja al artista.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public void AltaLogica(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE ARTISTA set Activo = 1 where Id= @id");
+                datos.setearParametro("@id", Id);
+
+                datos.ejectutarAccion();
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Error al dar de alta al artista.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
 
     }
 
