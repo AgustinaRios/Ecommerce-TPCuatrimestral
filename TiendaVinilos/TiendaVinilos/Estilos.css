@@ -62,14 +62,15 @@ body {
 
 .FormularioRegistro {
     width: 400px;
-    background: #24303c;
+    background: #243ed3;
     padding: 30px;
     margin: auto;
     margin-top: 100px;
     border-radius: 4px;
-    font-family: Calibri;
-    color: white;
+    
+   
     box-shadow: 7px 13px 37px #000;
+    align-items: center;
 }
 
     .FormularioRegistro h4 {

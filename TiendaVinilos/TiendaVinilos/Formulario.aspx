@@ -4,7 +4,7 @@
     
         <div class="CuerpoRegistro">
 
-            <div class="FormularioRegistro">
+            <div class="FormularioRegistro "> 
                 <asp:Label ID="Lbltitlulo" runat="server"  Font-Size="Smaller"></asp:Label>
                 <div>    
                     <asp:TextBox ID="TxtTitulo" runat="server" type="text" placeholder="Ingrese un Titulo" class="controls"></asp:TextBox>                   
