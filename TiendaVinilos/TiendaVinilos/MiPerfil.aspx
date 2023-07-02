@@ -1,10 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="TiendaVinilos.MiPerfil" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!DOCTYPE html>
-
-
-<body>
-  
+    
         <div class="CuerpoRegistro">
             <div class="FormularioRegistro">
                 <h4>Mi Perfil</h4>
@@ -22,8 +18,6 @@
 
             </div>
         </div>
-</body>
-</html>
 
 
 </asp:Content>
