@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,24 @@ namespace TiendaVinilos
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Artista nuevo = new Artista();
+                nuevo.Nombre = TxtNombre.Text;
+                ArtistaNegocio negocio = new ArtistaNegocio();
+                negocio.agregar(nuevo);
+                LblMensaje.Text = "Artista agregado exitosamente";
+                LblMensaje.Visible = true;
+
+                Response.Redirect("Artistas.aspx", false);
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("error.aspx", false);
+
+            }
 
         }
 

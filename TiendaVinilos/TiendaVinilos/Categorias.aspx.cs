@@ -1,29 +1,26 @@
-﻿using Dominio;
-using Negocio;
+﻿using Negocio;
+using Dominio;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TiendaVinilos
 {
-    public partial class Artistas : System.Web.UI.Page
+    public partial class Categorias : System.Web.UI.Page
     {
-        public List<Artista> listaArtista { get; set; }
+        public List<Categoria> listaCategoria { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            ArtistaNegocio negocio = new ArtistaNegocio();
+            CategoriaNegocio negocio = new CategoriaNegocio();
             try
             {
 
                 if (!IsPostBack)
                 {
-                    listaArtista = negocio.listar();
+                    listaCategoria = negocio.listar();
 
                     repRepetidor.DataSource = negocio.listar();
                     repRepetidor.DataBind();
@@ -36,31 +33,6 @@ namespace TiendaVinilos
                 throw ex;
             }
 
-
-
-
-        }
-
-        protected void btnActivar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                string Id = ((Button)sender).CommandArgument;
-                ArtistaNegocio negocio = new ArtistaNegocio();
-
-                negocio.AltaLogica(int.Parse(Id));
-                Response.Redirect("Artistas.aspx");
-
-            }
-            catch (Exception ex)
-            {
-                lblMensaje.Text = "Error al dar de alta al artista: " + ex.Message;
-                lblMensaje.CssClass = "error-message";
-                lblMensaje.Visible = true;
-
-            }
-
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -69,15 +41,36 @@ namespace TiendaVinilos
             {
 
                 string Id = ((Button)sender).CommandArgument;
-                ArtistaNegocio negocio = new ArtistaNegocio();
+                CategoriaNegocio negocio = new CategoriaNegocio();
 
                 negocio.BajaLogica(int.Parse(Id));
-                Response.Redirect("Artistas.aspx");
+                Response.Redirect("Categorias.aspx");
 
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = "Error al dar de baja al artista: " + ex.Message;
+                lblMensaje.Text = "Error al dar de alta la categoría: " + ex.Message;
+                lblMensaje.CssClass = "error-message";
+                lblMensaje.Visible = true;
+
+            }
+        }
+
+        protected void btnActivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string Id = ((Button)sender).CommandArgument;
+                CategoriaNegocio negocio = new CategoriaNegocio();
+
+                negocio.AltaLogica(int.Parse(Id));
+                Response.Redirect("Categorias.aspx");
+
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al dar de alta la categoría: " + ex.Message;
                 lblMensaje.CssClass = "error-message";
                 lblMensaje.Visible = true;
 
@@ -86,9 +79,7 @@ namespace TiendaVinilos
 
         protected void btnAgregarNuevo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("FormAltaArtista.aspx");
+            Response.Redirect("FormAltaCategoria.aspx");
         }
-
-      
     }
 }

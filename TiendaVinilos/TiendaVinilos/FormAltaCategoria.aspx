@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormAltaArtista.aspx.cs" Inherits="TiendaVinilos.FormAltaArtista" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormAltaCategoria.aspx.cs" Inherits="TiendaVinilos.FormAltaCategoria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
  
@@ -10,11 +10,11 @@
     
         <div class="CuerpoRegistro">
             <div class="FormularioRegistro">
-                <asp:Label ID="LblNombre" runat="server" Text="Nuevo Artista"></asp:Label>
+                <asp:Label ID="LblNombre" runat="server" Text="Nueva Categoria"></asp:Label>
                 <div>
 
-                    <label for="TxtNombre">Nombre</label>
-                    <asp:TextBox ID="TxtNombre" runat="server" type="text" placeholder="Ingrese Nombre" class="controls"></asp:TextBox>
+                    <label for="TxtDescripcion">Descripcion</label>
+                    <asp:TextBox ID="TxtDescripcion" runat="server" type="text" placeholder="Ingrese Descripción" class="controls"></asp:TextBox>
                    
 
                    

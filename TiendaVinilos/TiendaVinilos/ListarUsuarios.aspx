@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListarUsuarios.aspx.cs" Inherits="TiendaVinilos.ListarUsuarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+  
     <table class="table">
         <thead class="thead-dark">
             <tr>

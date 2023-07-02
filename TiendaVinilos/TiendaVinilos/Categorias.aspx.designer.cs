@@ -11,52 +11,34 @@ namespace TiendaVinilos
 {
 
 
-    public partial class FormAltaArtista
+    public partial class Categorias
     {
 
         /// <summary>
-        /// Control LblNombre.
+        /// Control btnAgregarNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNombre;
+        protected global::System.Web.UI.WebControls.Button btnAgregarNuevo;
 
         /// <summary>
-        /// Control TxtNombre.
+        /// Control repRepetidor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
+        protected global::System.Web.UI.WebControls.Repeater repRepetidor;
 
         /// <summary>
-        /// Control BtnAceptar.
+        /// Control lblMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAceptar;
-
-        /// <summary>
-        /// Control btnCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
-
-        /// <summary>
-        /// Control LblMensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblMensaje;
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
     }
 }

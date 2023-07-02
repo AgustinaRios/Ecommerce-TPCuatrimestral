@@ -11,7 +11,7 @@ namespace TiendaVinilos
 {
 
 
-    public partial class FormAltaArtista
+    public partial class FormAltaCategoria
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.Label LblNombre;
 
         /// <summary>
-        /// Control TxtNombre.
+        /// Control TxtDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
+        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
 
         /// <summary>
         /// Control BtnAceptar.

@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA");
+                datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA ORDER BY Nombre ASC");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
