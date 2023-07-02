@@ -1,16 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarCuenta.aspx.cs" Inherits="TiendaVinilos.RegistrarCuenta" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrarCuenta.aspx.cs" Inherits="TiendaVinilos.RegistrarCuenta" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="Estilos.css" rel="stylesheet" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <title></title>
-</head>
 <body>
-    <form id="form1" runat="server"> 
+    
       <div class="CuerpoRegistro">
       <div class="FormularioRegistro">
       <h4>Formulario Registro</h4>
@@ -30,6 +24,9 @@
     <p><a href="Login.aspx">¿Ya tengo Cuenta?</a></p>
          </div>
         </div>
-    </form>
+    
 </body>
 </html>
+
+
+</asp:Content>

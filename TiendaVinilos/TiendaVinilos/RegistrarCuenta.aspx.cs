@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Dominio; 
+using Dominio;
 using Negocio;
 
 
@@ -24,7 +24,7 @@ namespace TiendaVinilos
             TxtPass.BorderColor = Color.White;
             TxtApellido.BorderColor = Color.White;
             TxtNombre.BorderColor = Color.White;
-            
+
             bool vacios = false;
             if (TxtNombre.Text == "")
             {
@@ -46,7 +46,7 @@ namespace TiendaVinilos
                 TxtPass.BorderColor = Color.Red;
                 vacios = true;
             }
-            
+
             return vacios;
         }
         protected void BtnAgregar_Click(object sender, EventArgs e)
@@ -68,13 +68,14 @@ namespace TiendaVinilos
                     LblMensaje.Visible = true;
                     return;
                 }
-                if (ValidarVacios() == false) { 
+                if (ValidarVacios() == false)
+                {
                     usuario.ID = usuarioNegocio.insertarNuevo(usuario);
                     Session.Add("Usuario", usuario);
-                emailService.EnviarCorreo(usuario.Email,"Bienvenidx a Tienda de Vinilos","Gracias por registrarte, esperamos que disfrutes tu experiencia!");
-               
+                    emailService.EnviarCorreo(usuario.Email, "Bienvenidx a Tienda de Vinilos", "Gracias por registrarte, esperamos que disfrutes tu experiencia!");
+
                     //Response.Redirect("Inicio.aspx",false); 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('  usuario creado exitosamente ,Hola "+usuario.Nombre+"');window.location ='Inicio.aspx';", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('  usuario creado exitosamente ,Hola " + usuario.Nombre + "');window.location ='Inicio.aspx';", true);
 
                 }
                 else
@@ -83,7 +84,7 @@ namespace TiendaVinilos
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

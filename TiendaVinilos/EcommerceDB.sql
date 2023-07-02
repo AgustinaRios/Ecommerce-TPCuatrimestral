@@ -141,8 +141,3 @@ VALUES
 go
  insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador,Activo)
 values ('adm','adm','adm@adm.com','adm',GETDATE(),1,1)
-
-select * from ARTISTA
-select * from USUARIOS
-select * from GENEROS
-select * from CATEGORIA

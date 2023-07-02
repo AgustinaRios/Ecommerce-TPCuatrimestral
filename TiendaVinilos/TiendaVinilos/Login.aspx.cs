@@ -24,6 +24,7 @@ namespace TiendaVinilos
             UsuarioNegocio negocio = new UsuarioNegocio();
             try
             {
+
                 usuario.Email = TxtEmail.Text;
                 usuario.Pass = TxtPass.Text;
                 completo = negocio.Login(usuario);
@@ -44,20 +45,20 @@ namespace TiendaVinilos
                 else
                 {
                     Session.Add("error", "Usuario o contraseña incorrectos");
-                    Response.Redirect("error.aspx",false);
+                    Response.Redirect("error.aspx", false);
                 }
 
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());
-                Response.Redirect("error.aspx",false);
+                Response.Redirect("error.aspx", false);
             }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Inicio.aspx",false);
+            Response.Redirect("Inicio.aspx", false);
         }
     }
 }

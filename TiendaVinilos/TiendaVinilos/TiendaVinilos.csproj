@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AlbumFiltrado.aspx" />
     <Content Include="AlbumsxGenero.aspx" />
     <Content Include="Artistas.aspx" />
     <Content Include="Carrito.aspx" />
@@ -193,6 +194,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumFiltrado.aspx.cs">
+      <DependentUpon>AlbumFiltrado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlbumFiltrado.aspx.designer.cs">
+      <DependentUpon>AlbumFiltrado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AlbumsxGenero.aspx.cs">
       <DependentUpon>AlbumsxGenero.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,17 +1,13 @@
-﻿<%@ Page Title="Formulario" Language="C#" AutoEventWireup="true" CodeBehind="FormAltaArtista.aspx.cs" Inherits="TiendaVinilos.FormAltaArtista" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormAltaArtista.aspx.cs" Inherits="TiendaVinilos.FormAltaArtista" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+ 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="Estilos.css" rel="stylesheet" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <title></title>
-</head>
+
 
 <body>
-    <form id="form1" runat="server">
+    
         <div class="CuerpoRegistro">
             <div class="FormularioRegistro">
                 <asp:Label ID="Lbltitlulo" runat="server" Text="Nuevo Artista"></asp:Label>
@@ -37,6 +33,8 @@
                         </div>
             </div>
         </div>
-    </form>
+ 
 </body>
 </html>
+
+</asp:Content>

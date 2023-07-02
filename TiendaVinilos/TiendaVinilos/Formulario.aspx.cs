@@ -18,7 +18,7 @@ namespace TiendaVinilos
         List<Categoria> listaCategoria = new List<Categoria>();
         AlbumNegocio negocio = new AlbumNegocio();
         public bool confirmaEliminacion { get; set; }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -40,7 +40,7 @@ namespace TiendaVinilos
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataBind();
-                    
+
                     Lbltitlulo.Text = "Alta de Albums"; //Cambia Dinamicamente dependiendo de donde entre
 
                     ///Toma el Id del album se se viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
@@ -58,7 +58,7 @@ namespace TiendaVinilos
                         {
                             Lbltitlulo.Text = "Alta de Albums";
                         }
-                        else 
+                        else
                         {
                             Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
 
@@ -70,7 +70,7 @@ namespace TiendaVinilos
                         TxtPrecio.Text = seleccionado.Precio.ToString();
                         TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
                         TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();
-                       
+
 
                         //////////////////////////////////////////////
                         ///
@@ -104,7 +104,7 @@ namespace TiendaVinilos
 
 
                     }
-                   
+
 
                 }
 
@@ -153,7 +153,7 @@ namespace TiendaVinilos
             }
             if (TxtPrecio.Text == "")
             {
-               
+
                 TxtPrecio.BorderColor = Color.Red;
                 vacios = true;
             }
@@ -266,8 +266,8 @@ namespace TiendaVinilos
         {
             Response.Redirect("Listar.aspx", false);
         }
-       
 
-       
+
+
     }
 }

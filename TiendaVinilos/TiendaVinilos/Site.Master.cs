@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.DynamicData;
@@ -46,7 +47,7 @@ namespace TiendaVinilos
                     ddlGenero.DataBind();
 
                     // Establecer el elemento predeterminado
-                    ddlGenero.SelectedIndex = 0;
+                    ddlGenero.SelectedIndex = -1;
 
 
                     ////cuando se carga x 1era vez el menu entra aca y carga a la session un 0( el carrito esta vacio)
@@ -134,9 +135,27 @@ namespace TiendaVinilos
         }
         protected void ddlGenero_SelectedIndexChanged (object sender, EventArgs e)
         {
-            int id=int.Parse(ddlGenero.SelectedValue);
-            Response.Redirect("AlbumsxGenero.aspx?Id=" + id, false);
             
+            int id=int.Parse(ddlGenero.SelectedValue);
+            if (id>0)
+            { 
+            Response.Redirect("AlbumsxGenero.aspx?Id=" + id, false);
+            }
+            
+        }
+
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            List<Album> listafiltrada = new List<Album>();
+            AlbumNegocio negocio = new AlbumNegocio();
+            string buscar = txtFiltro.Text;
+            listafiltrada = negocio.listaFiltradaXTitulo(buscar);
+            Session["listaFiltrada"] = listafiltrada;
+            listafiltrada = negocio.listaFiltradaXArtista(buscar);
+            Session["listaFiltrada"] = listafiltrada;
+            Response.Redirect("AlbumFiltrado.aspx", false);
+
         }
 
         public void btnLogout_Click(object sender, EventArgs e)
