@@ -42,15 +42,6 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.TextBox TxtArtista;
 
         /// <summary>
-        /// Control TxtFechaLanza.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtFechaLanza;
-
-        /// <summary>
         /// Control TxtImgTapa.
         /// </summary>
         /// <remarks>
@@ -69,15 +60,6 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.TextBox TxtImgContraTapa;
 
         /// <summary>
-        /// Control rvclass.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rvclass;
-
-        /// <summary>
         /// Control TxtPrecio.
         /// </summary>
         /// <remarks>
@@ -87,6 +69,33 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.TextBox TxtPrecio;
 
         /// <summary>
+        /// Control LblFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblFecha;
+
+        /// <summary>
+        /// Control TxtFechaLanza.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaLanza;
+
+        /// <summary>
+        /// Control LblGenero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblGenero;
+
+        /// <summary>
         /// Control ddlGenero.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace TiendaVinilos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlGenero;
+
+        /// <summary>
+        /// Control LblCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblCategoria;
 
         /// <summary>
         /// Control ddlCategoria.
@@ -130,5 +148,14 @@ namespace TiendaVinilos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblMensaje;
+
+        /// <summary>
+        /// Control rvclass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvclass;
     }
 }
