@@ -20,16 +20,24 @@ namespace TiendaVinilos
             ArtistaNegocio negocio = new ArtistaNegocio();
             try
             {
-
-                if (!IsPostBack)
+                if (Session["listaArtista"] != null)
                 {
-                    listaArtista = negocio.listar();
-
-                    repRepetidor.DataSource = negocio.listar();
+                    listaArtista = (List<Artista>)Session["listaArtista"];
+                    repRepetidor.DataSource = listaArtista;
                     repRepetidor.DataBind();
 
                 }
+                else
+                {
+                    listaArtista = new List<Artista>();
+
+                    listaArtista = negocio.listar();
+
+                    repRepetidor.DataSource = listaArtista;
+                    repRepetidor.DataBind();
+                }
             }
+
             catch (Exception ex)
             {
 
@@ -89,6 +97,6 @@ namespace TiendaVinilos
             Response.Redirect("FormAltaArtista.aspx");
         }
 
-      
+
     }
 }

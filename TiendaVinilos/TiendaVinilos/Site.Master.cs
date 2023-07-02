@@ -16,14 +16,19 @@ namespace TiendaVinilos
 
         public ProductosCarrito carrito = new ProductosCarrito();
         Album producto = new Album();
-        GeneroNegocio generonegocio = new GeneroNegocio(); 
+        GeneroNegocio generonegocio = new GeneroNegocio();
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page is Listar||Page is ListarUsuarios)
+            if (Page is Artistas || Page is Categorias || Page is FormAltaArtista
+                || Page is FormAltaCategoria || Page is Listar || Page is ListarUsuarios)
             {
                 if (!Seguridad.esAdmin(Session["usuario"]))
-                    Response.Redirect("Login.aspx", false);
+                {
+                    Session.Add("error", "No tiene permisos para ingresar a esta pantalla");
+                    Response.Redirect("error.aspx");
+
+                }
             }
             if (Page is MiPerfil)
             {
@@ -133,30 +138,64 @@ namespace TiendaVinilos
                 throw;
             }
         }
-        protected void ddlGenero_SelectedIndexChanged (object sender, EventArgs e)
+        protected void ddlGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            int id=int.Parse(ddlGenero.SelectedValue);
-            if (id>0)
-            { 
-            Response.Redirect("AlbumsxGenero.aspx?Id=" + id, false);
+
+            int id = int.Parse(ddlGenero.SelectedValue);
+            if (id > 0)
+            {
+                Response.Redirect("AlbumsxGenero.aspx?Id=" + id, false);
             }
-            
+
         }
 
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            List<Album> listafiltrada = new List<Album>();
+            List<Album> listaFiltrada = new List<Album>();
             AlbumNegocio negocio = new AlbumNegocio();
             string buscar = txtFiltro.Text;
-            listafiltrada = negocio.listaFiltradaXTitulo(buscar);
-            Session["listaFiltrada"] = listafiltrada;
-            listafiltrada = negocio.listaFiltradaXArtista(buscar);
-            Session["listaFiltrada"] = listafiltrada;
-            Response.Redirect("AlbumFiltrado.aspx", false);
+
+            listaFiltrada = negocio.listaFiltrada(buscar);
+
+            // Guardar la lista actualizada en la sesión
+            Session["listaFiltrada"] = listaFiltrada;
+            if (Page is Listar)
+            {
+                Response.Redirect("Listar.aspx", false);
+
+            }
+            else
+            {
+                if (Page is ListarUsuarios)
+                {
+                    List<Usuario> listaUsuarios = new List<Usuario>();
+                    UsuarioNegocio negocioUsuario = new UsuarioNegocio();
+                    listaUsuarios = negocioUsuario.listar(buscar);
+                    Session["ListarUsuarios"] = listaUsuarios;
+                    Response.Redirect("ListarUsuarios.aspx", false);
+                }
+                else
+                {
+                   if (Page is Artistas)
+                    {
+                        List<Artista> listaArtista= new List<Artista>();
+                        ArtistaNegocio artistaNegocio = new ArtistaNegocio();
+                        listaArtista = artistaNegocio.listar(buscar);
+                        Session["listaArtista"]=listaArtista;
+                        Response.Redirect("Artistas.aspx", false);
+                    }
+                   else
+                    { 
+                        ////pag inicio
+                    Response.Redirect("AlbumFiltrado.aspx", false);
+                    }
+
+                }
+            }
 
         }
+
 
         public void btnLogout_Click(object sender, EventArgs e)
         {

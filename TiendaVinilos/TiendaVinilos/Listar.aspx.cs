@@ -21,18 +21,29 @@ namespace TiendaVinilos
         protected void Page_Load(object sender, EventArgs e)
         {
 
-          
+
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
 
                 if (!IsPostBack)
                 {
-                    listaAlbum = negocio.listar();
+                    if (Session["listaFiltrada"] != null)
+                    {
+                        listaAlbum = (List<Album>)Session["listaFiltrada"];
+                        repRepetidor.DataSource = listaAlbum;
+                        repRepetidor.DataBind();
 
-                    repRepetidor.DataSource = negocio.listar();
-                    repRepetidor.DataBind();
+                    }
+                    else
+                    {
+                        listaAlbum = new List<Album>();
 
+                        listaAlbum = negocio.listar();
+
+                        repRepetidor.DataSource = negocio.listar();
+                        repRepetidor.DataBind();
+                    }
                 }
             }
             catch (Exception ex)
@@ -54,16 +65,16 @@ namespace TiendaVinilos
         {
             Response.Redirect("Formulario.aspx");
         }
-       
+
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-               
+
                 string Id = ((Button)sender).CommandArgument;
                 AlbumNegocio negocio = new AlbumNegocio();
-                
-                negocio.BajaLogica(int.Parse(Id));               
+
+                negocio.BajaLogica(int.Parse(Id));
                 Response.Redirect("Listar.aspx");
 
             }
@@ -72,11 +83,11 @@ namespace TiendaVinilos
                 lblMensaje.Text = "Error al dar de baja el álbum: " + ex.Message;
                 lblMensaje.CssClass = "error-message";
                 lblMensaje.Visible = true;
-                
+
             }
         }
 
-       
-        
+
+
     }
 }

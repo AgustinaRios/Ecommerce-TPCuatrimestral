@@ -40,6 +40,36 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public List<Artista> listar(string buscar)
+        {
+            List<Artista> lista = new List<Artista>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA where Nombre like '%"+buscar+"%'");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Artista aux = new Artista();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
         public int agregar(Artista nuevo)
         {

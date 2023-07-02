@@ -156,6 +156,44 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<Usuario> listar(string buscar)
+        {
+            List<Usuario> lista = new List<Usuario>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select Id,Nombre,Apellido,Email,FechaCreacion,Administrador,Activo from USUARIOS where Apellido like '%" + buscar + "%' or Nombre like '%" + buscar + "%'");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario aux = new Usuario();
+                    aux.ID = (int)datos.Lector["Id"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Apellido = (string)datos.Lector["Apellido"];
+                    aux.Email = (string)datos.Lector["Email"];
+                    aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+                    aux.Admin = (bool)datos.Lector["Administrador"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
+
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public int ExisteUsuarioPorEmail(Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();

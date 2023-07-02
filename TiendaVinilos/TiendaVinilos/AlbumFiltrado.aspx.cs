@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace TiendaVinilos
 {
     public partial class AlbumFiltrado : System.Web.UI.Page
@@ -17,9 +18,9 @@ namespace TiendaVinilos
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
-                    listaAlbum = (List<Album>)Session["listaFiltrada"];
-                
-                if (listaAlbum!= null)
+                listaAlbum = (List<Album>)Session["listaFiltrada"];
+
+                if (listaAlbum != null)
                 {
 
                     Session.Add("listaAlbum", listaAlbum);
@@ -29,7 +30,7 @@ namespace TiendaVinilos
                     Response.Redirect("Inicio.aspx", false);
 
                 }
-               
+
                 if (Request.QueryString["idfiltrado"] != null)
                 {
                     Int32 IdArt = Int32.Parse(Request.QueryString["idfiltrado"]);

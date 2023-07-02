@@ -286,8 +286,63 @@ namespace Negocio
             }
         }
 
+        public List<Album> listaFiltrada(string buscar)
+        {
+            List<Album> lista = new List<Album>();
+            AccesoDatos datos = new AccesoDatos();
 
-        
+            try
+            {
+
+                datos.setearConsulta("select distinct A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria,A.Activo from ALBUMES A inner join GENEROS G on G.id=A.IdGenero INNER JOIN ARTISTA Art ON ART.Id=A.IdArtista INNER JOIN CATEGORIA C ON C.Id=A.IdCategoria WHERE A.Activo=1 and Titulo LIKE '%" + buscar + "%' or Art.Nombre like '%" + buscar + "%'ORDER BY A.Id");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Album aux = new Album();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Titulo = (string)datos.Lector["Titulo"];
+                    aux.Artista = new Artista();
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
+                        aux.Artista.Nombre = (string)datos.Lector["Artista"];
+                    aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
+                    aux.ImgTapa = (string)datos.Lector["ImgTapa"];
+                    aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
+                    aux.Genero = new Genero();
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Genero"))))
+                        aux.Genero.Descripcion = (string)datos.Lector["Genero"];
+                    aux.Categoria = new Categoria();
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Categoria"))))
+                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Precio"))))
+                    {
+                        decimal DosDecimal;
+                        DosDecimal = (decimal)datos.Lector["Precio"];
+                        aux.Precio = Decimal.Parse(DosDecimal.ToString("0.00"));
+                    }
+
+                    aux.Activo = (bool)datos.Lector["Activo"];
+
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
+
         public Album ObtenerAlbum(Int32 id)
         {
             Album aux = new Album();

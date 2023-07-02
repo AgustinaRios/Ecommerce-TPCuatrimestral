@@ -14,22 +14,34 @@ namespace TiendaVinilos
         public List<Usuario> listaUsuarios { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Seguridad.esAdmin(Session["usuario"]))
-            {
-                Session.Add("error", "No tiene permisos para ingresar a esta pantalla");
-                Response.Redirect("error.aspx");
-            }
-
             UsuarioNegocio negocio = new UsuarioNegocio();
             try
             {
 
+
                 if (!IsPostBack)
                 {
-                    listaUsuarios = negocio.listar();
 
-                    repRepetidor.DataSource = negocio.listar();
-                    repRepetidor.DataBind();
+                    if (Session["ListarUsuarios"] != null)
+                    {
+                        listaUsuarios = (List<Usuario>)Session["ListarUsuarios"];
+
+                        repRepetidor.DataSource = listaUsuarios;
+                        repRepetidor.DataBind();
+
+
+                    }
+                    else
+
+                    {
+                        listaUsuarios = new List<Usuario>();
+                        listaUsuarios = negocio.listar();
+
+                        repRepetidor.DataSource = negocio.listar();
+                        repRepetidor.DataBind();
+
+                    }
+
 
                 }
             }
