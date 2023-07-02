@@ -99,5 +99,10 @@ namespace TiendaVinilos
 
             }
         }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

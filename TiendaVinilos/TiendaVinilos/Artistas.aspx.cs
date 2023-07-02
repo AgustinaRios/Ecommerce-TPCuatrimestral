@@ -97,6 +97,9 @@ namespace TiendaVinilos
             Response.Redirect("FormAltaArtista.aspx");
         }
 
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
