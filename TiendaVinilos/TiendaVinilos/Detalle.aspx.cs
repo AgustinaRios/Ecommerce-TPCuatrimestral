@@ -18,14 +18,15 @@ namespace TiendaVinilos
         {
             try
             {
-
-                string ID = Request.QueryString["id"];
-                int id = Int32.Parse(ID);
-
+              if (Request.QueryString["id"] != null)
+                {
+                Int32 id =Int32.Parse(Request.QueryString["id"]);          
                 AlbumNegocio negocio = new AlbumNegocio();
-
                 albumSeleccionado = negocio.ObtenerAlbum(id);
-                Session.Add("producto", albumSeleccionado);
+                Session.Add("producto", albumSeleccionado);                                  
+                    Session.Add("idArtCarrito", id);
+                    Session.Add("items", 1);
+                }
 
 
 
@@ -39,8 +40,6 @@ namespace TiendaVinilos
 
         }
 
-
-
-
+        
     }
 }

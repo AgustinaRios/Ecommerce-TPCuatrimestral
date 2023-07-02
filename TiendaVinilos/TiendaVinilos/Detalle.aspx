@@ -23,7 +23,7 @@
                                     <div class="col">
                                         <h2><%= album.Titulo %></h2>
                                     </div>
-                                    <div class="col text-right"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                    <div class="col text-right"><a href="Detalle.aspx?id=<%:album.Id %>"><i class="fa fa-heart-o"></i></a></div>
                                 </div>
                                 
                                 <span class="fa fa-star checked"></span>
@@ -47,10 +47,8 @@
                                 </div>
                             </div>
                         </div>
-
-                        <button type="button" id="btn Carrito" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                            Agregar Carrito
-                        </button>
+                                                                                                           
+                       
                     </div>
                 </div>
             </div>
