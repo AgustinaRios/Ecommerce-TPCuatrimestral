@@ -1,13 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormAltaCategoria.aspx.cs" Inherits="TiendaVinilos.FormAltaCategoria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
- 
-<!DOCTYPE html>
-
-
-
-<body>
-    
         <div class="CuerpoRegistro">
             <div class="FormularioRegistro">
                 <asp:Label ID="LblNombre" runat="server" Text="Nueva Categoria"></asp:Label>
@@ -34,7 +27,4 @@
             </div>
         </div>
  
-</body>
-</html>
-
 </asp:Content>

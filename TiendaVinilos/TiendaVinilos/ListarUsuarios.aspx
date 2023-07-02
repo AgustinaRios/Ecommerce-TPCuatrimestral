@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListarUsuarios.aspx.cs" Inherits="TiendaVinilos.ListarUsuarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="CuerpoRegistro">
   
-    <table class="table">
-        <thead class="thead-dark">
+    <table class="table table-hover">
+        <thead >
             <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
@@ -37,4 +38,5 @@
         </tbody>
     </table>
     <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
+            </div>
 </asp:Content>

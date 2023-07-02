@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TiendaVinilos.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-       <!DOCTYPE html>
-  
-    <body>
-    
+     
         <div class="CuerpoRegistro">
             <div class="FormularioRegistro">
                 <h4>Ingrese su Cuenta</h4>
@@ -15,8 +12,6 @@
                 <p><a href="RegistrarCuenta.aspx" aria-describedby="cxcxxcxc">Registrarme</a></p>
             </div>
         </div>
-</body>
-</html>
 
 
 

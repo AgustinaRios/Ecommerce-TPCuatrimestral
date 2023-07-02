@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Carrito.aspx.cs" Inherits="TiendaVinilos.Carrito" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="CuerpoRegistro">
     <table class="table table-striped">
   
     <thead>
@@ -33,5 +34,5 @@
     </table>
 <p>Total: <asp:Label ID="lblTotal" runat="server" OnLoad="lblTotal_Load" /></p>
      <asp:Button Text="Realizar Compras" CssClass="btn btn-danger"  ID="BtnComprar" Onclick="BtnComprar_Click" runat="server" ToolTip="Comprar Vinilos" />
-         
+   </div>      
 </asp:Content>

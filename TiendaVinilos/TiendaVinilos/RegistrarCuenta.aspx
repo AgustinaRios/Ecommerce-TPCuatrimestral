@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrarCuenta.aspx.cs" Inherits="TiendaVinilos.RegistrarCuenta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+        <div class="CuerpoRegistro">
    
     
       <div class="CuerpoRegistro">
@@ -21,7 +22,7 @@
          </div>
         </div>
     
-
+</div>
 
 
 </asp:Content>

@@ -5,8 +5,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
+        <div class="CuerpoRegistro">
 
-    <table class="table">
+    <table class="table-hover"">
         <thead class="thead-dark">
             <tr>
 
@@ -63,7 +64,7 @@
     </table>
     <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
 
-        
+        </div>
 
 </asp:Content>
 

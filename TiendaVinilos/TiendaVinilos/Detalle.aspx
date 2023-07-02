@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="TiendaVinilos.Detalle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="CuerpoRegistro">
+
     <div class="container">
         <div id="demo" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -54,7 +56,7 @@
             </div>
         </div>
 
-
+        </div>
     </div>
 
     <%--OTRO DISEÑO DE BOOTSTRAP PERO HABRIA QUE ARREGLAR EL ENCABEZADO

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Categorias.aspx.cs" Inherits="TiendaVinilos.Categorias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="CuerpoRegistro">
+
     <style>
         .table {
             width: 100%;
@@ -18,7 +20,7 @@
         }
     </style>
         <div class="btn-add-new-container">
-        <asp:Button Text="Agregar Nuevo" CssClass="btn-outline-success" ID="btnAgregarNuevo" OnClick="btnAgregarNuevo_Click" runat="server" />
+        <asp:Button Text=" Nueva Categoria" CssClass="btn btn-outline-success" ID="btnAgregarNuevo" OnClick="btnAgregarNuevo_Click" runat="server" />
     </div>
 
     <table class="table">
@@ -48,5 +50,6 @@
         </tbody>
     </table>
     <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
+            </div>
 </asp:Content>
 

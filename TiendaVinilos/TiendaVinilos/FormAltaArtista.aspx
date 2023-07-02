@@ -1,13 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormAltaArtista.aspx.cs" Inherits="TiendaVinilos.FormAltaArtista" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
- 
-<!DOCTYPE html>
-
-
-
-<body>
-    
         <div class="CuerpoRegistro">
             <div class="FormularioRegistro">
                 <asp:Label ID="LblNombre" runat="server" Text="Nuevo Artista"></asp:Label>
@@ -33,8 +26,5 @@
                         </div>
             </div>
         </div>
- 
-</body>
-</html>
 
 </asp:Content>
