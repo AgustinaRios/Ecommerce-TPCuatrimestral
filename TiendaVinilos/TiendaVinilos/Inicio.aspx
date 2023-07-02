@@ -45,6 +45,7 @@
             <div class="card" >               
                 <img src="<%:album.ImgTapa%>" class="card-img-top" alt=".Imagen del producto">
                 <div class="card-body">
+                    <p class="card-text"> "<%:album.Titulo %>"</p>  
                     <p class="card-text"> <%:album.Artista %></p>  
                     <div class="columna">
                      <a href="Detalle.aspx?id=<%:album.Id %>" class="btn btn-success">Detalle</a>
