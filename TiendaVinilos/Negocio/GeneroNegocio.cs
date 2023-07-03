@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select Id,Descripcion from GENEROS");
+                datos.setearConsulta("Select Id,Descripcion,activo from GENEROS");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -24,7 +24,7 @@ namespace Negocio
                     Genero aux = new Genero();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
-
+                    aux.Activo = (bool)datos.Lector["Activo"];
                     lista.Add(aux);
                 }
 
@@ -40,15 +40,20 @@ namespace Negocio
             }
         }
 
-        public void agregar(Categoria nuevo)
+        public void agregar(Genero nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string valores = "values( '" + nuevo.Descripcion + "')";
-                datos.setearConsulta("insert into  CATEGORIAS (Descripcion) " + valores);
+                string consulta = "INSERT INTO Generos (Descripcion) VALUES (@Descripcion); SELECT SCOPE_IDENTITY();";
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@Descripcion", nuevo.Descripcion);
 
-                datos.ejectutarAccion();
+                datos.comando.Connection = datos.conexion; // Asignar la conexión al objeto SqlCommand
+
+                datos.conexion.Open(); // Abre la conexión a la base de datos
+
+
 
             }
             catch (Exception ex)
@@ -60,25 +65,50 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
-        public void EliminarFisico(Int32 Id)
+        public void BajaLogica(int Id)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("delete from GENEROS where Id = @id");
+                datos.setearConsulta("UPDATE GENEROS set Activo = 0 where Id= @id");
                 datos.setearParametro("@id", Id);
+
                 datos.ejectutarAccion();
             }
+
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al dar de baja el genero.", ex);
             }
             finally
             {
                 datos.cerrarConexion();
             }
+
+        }
+
+        public void AltaLogica(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE GENEROS set Activo = 1 where Id= @id");
+                datos.setearParametro("@id", Id);
+
+                datos.ejectutarAccion();
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Error al dar de alta el genero.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
     }
 }

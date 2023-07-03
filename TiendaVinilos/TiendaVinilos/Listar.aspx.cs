@@ -72,7 +72,7 @@ namespace TiendaVinilos
             {
 
                 string Id = ((Button)sender).CommandArgument;
-                CategoriaNegocio negocio = new CategoriaNegocio();
+                AlbumNegocio negocio = new AlbumNegocio();
 
                 negocio.BajaLogica(int.Parse(Id));
                 Response.Redirect("Listar.aspx");
@@ -93,7 +93,7 @@ namespace TiendaVinilos
             {
 
                 string Id = ((Button)sender).CommandArgument;
-                CategoriaNegocio negocio = new CategoriaNegocio();
+                AlbumNegocio negocio = new AlbumNegocio();
 
                 negocio.AltaLogica(int.Parse(Id));
                 Response.Redirect("Listar.aspx");

@@ -52,7 +52,7 @@
                          <td><%# Eval("Activo")%></td>
                         <td> 
 
-                           <asp:Button Text="Desactivar" Cssclass="btn btn-danger" ID="btnEliminar" OnClientClick="return confirm('Esta seguro que quiere eleminar este album ?');" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%> '/>  
+                           <asp:Button Text="Desactivar" Cssclass="btn btn-danger" ID="btnEliminar" OnClientClick="return confirm('Esta seguro de que quiere dejar INACTIVO este album ?');" OnClick="btnEliminar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%> '/>  
                        </td>
                         <td>
                             <asp:Button Text="Activar" CssClass="btn btn-success" ID="btnActivar" OnClientClick="return confirm('¿Está seguro de que quiere ACTIVAR este album?');" OnClick="btnActivar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id") %>' />

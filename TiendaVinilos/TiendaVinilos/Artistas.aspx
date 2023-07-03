@@ -25,10 +25,10 @@
                         <td><%# Eval("Nombre") %></td>
                         <td><%# Eval("Activo") %></td>
                         <td>
-                            <asp:Button Text="Desactivar" CssClass="btn btn-danger" ID="btnEliminar" OnClientClick="return confirm('¿Está seguro de que quiere dejar INACTIVO a este Artista?');" OnClick="btnEliminar_Click" runat="server" CommandName="UsuarioId" CommandArgument='<%# Eval("Id") %>' />
+                            <asp:Button Text="Desactivar" CssClass="btn btn-danger" ID="btnEliminar" OnClientClick="return confirm('¿Está seguro de que quiere dejar INACTIVO a este Artista?');" OnClick="btnEliminar_Click" runat="server" CommandName="ArtistaId" CommandArgument='<%# Eval("Id") %>' />
                         </td> 
                          <td>
-                            <asp:Button Text="Activar" CssClass="btn btn-success" ID="btnActivar" OnClientClick="return confirm('¿Está seguro de que quiere ACTIVAR a este Artista?');" OnClick="btnActivar_Click" runat="server" CommandName="UsuarioId" CommandArgument='<%# Eval("Id") %>' />
+                            <asp:Button Text="Activar" CssClass="btn btn-success" ID="btnActivar" OnClientClick="return confirm('¿Está seguro de que quiere ACTIVAR a este Artista?');" OnClick="btnActivar_Click" runat="server" CommandName="ArtistaId" CommandArgument='<%# Eval("Id") %>' />
                         </td>
                          <td>
                         <asp:Button Text="Modificar" Cssclass="btn btn-secondary" ID="btnModificar" AutoPostBack="true" OnClick="btnModificar_Click" runat="server" CommandName="AlbumId" CommandArgument='<%# Eval("Id")%>'/>

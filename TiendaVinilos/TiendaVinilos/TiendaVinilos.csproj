@@ -145,8 +145,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FormAltaArtista.aspx" />
     <Content Include="FormAltaCategoria.aspx" />
+    <Content Include="FormAltaGenero.aspx" />
     <Content Include="Formulario.aspx" />
     <Content Include="FormularioCompra.aspx" />
+    <Content Include="Generos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -291,6 +293,13 @@
     <Compile Include="FormAltaCategoria.aspx.designer.cs">
       <DependentUpon>FormAltaCategoria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormAltaGenero.aspx.cs">
+      <DependentUpon>FormAltaGenero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormAltaGenero.aspx.designer.cs">
+      <DependentUpon>FormAltaGenero.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formulario.aspx.cs">
       <DependentUpon>Formulario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -304,6 +313,13 @@
     </Compile>
     <Compile Include="FormularioCompra.aspx.designer.cs">
       <DependentUpon>FormularioCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Generos.aspx.cs">
+      <DependentUpon>Generos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Generos.aspx.designer.cs">
+      <DependentUpon>Generos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
