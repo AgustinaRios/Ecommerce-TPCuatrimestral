@@ -72,7 +72,7 @@ namespace TiendaVinilos
             {
 
                 string Id = ((Button)sender).CommandArgument;
-                AlbumNegocio negocio = new AlbumNegocio();
+                CategoriaNegocio negocio = new CategoriaNegocio();
 
                 negocio.BajaLogica(int.Parse(Id));
                 Response.Redirect("Listar.aspx");
@@ -80,14 +80,32 @@ namespace TiendaVinilos
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = "Error al dar de baja el álbum: " + ex.Message;
+                lblMensaje.Text = "Error al dar de alta la Albums: " + ex.Message;
                 lblMensaje.CssClass = "error-message";
                 lblMensaje.Visible = true;
 
             }
         }
 
+        protected void btnActivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
 
+                string Id = ((Button)sender).CommandArgument;
+                CategoriaNegocio negocio = new CategoriaNegocio();
 
+                negocio.AltaLogica(int.Parse(Id));
+                Response.Redirect("Listar.aspx");
+
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al dar de alta el albums: " + ex.Message;
+                lblMensaje.CssClass = "error-message";
+                lblMensaje.Visible = true;
+
+            }
+        }
     }
 }

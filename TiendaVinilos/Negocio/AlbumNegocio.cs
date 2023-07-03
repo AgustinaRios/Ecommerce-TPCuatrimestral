@@ -480,6 +480,29 @@ namespace Negocio
 
         }
 
+        public void AltaLogica(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE ALBUMES set Activo = 1 where Id= @id");
+                datos.setearParametro("@id", Id);
+
+                datos.ejectutarAccion();
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Error al dar de alta al Album.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 
 
