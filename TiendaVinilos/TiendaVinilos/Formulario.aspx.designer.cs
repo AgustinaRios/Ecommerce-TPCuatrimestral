@@ -33,13 +33,13 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.TextBox TxtTitulo;
 
         /// <summary>
-        /// Control TxtArtista.
+        /// Control ddlArtista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtArtista;
+        protected global::System.Web.UI.WebControls.DropDownList ddlArtista;
 
         /// <summary>
         /// Control TxtImgTapa.
@@ -87,15 +87,6 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.TextBox TxtFechaLanza;
 
         /// <summary>
-        /// Control LblGenero.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblGenero;
-
-        /// <summary>
         /// Control ddlGenero.
         /// </summary>
         /// <remarks>
@@ -103,15 +94,6 @@ namespace TiendaVinilos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlGenero;
-
-        /// <summary>
-        /// Control LblCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblCategoria;
 
         /// <summary>
         /// Control ddlCategoria.

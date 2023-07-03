@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
 
+
 namespace TiendaVinilos
 {
     public partial class SiteMaster : MasterPage
@@ -17,6 +18,7 @@ namespace TiendaVinilos
         public ProductosCarrito carrito = new ProductosCarrito();
         Album producto = new Album();
         GeneroNegocio generonegocio = new GeneroNegocio();
+        CategoriaNegocio negocioCategoria = new CategoriaNegocio();
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,9 +43,11 @@ namespace TiendaVinilos
                 if (!IsPostBack)
                 {
                     List<Genero> listaGenero = generonegocio.listar();
+                    List<Categoria> listaCategoria = negocioCategoria.listar();
 
                     // Agregar un elemento adicional al inicio de la lista
                     listaGenero.Insert(0, new Genero { Id = -1, Descripcion = "" });
+                    listaCategoria.Insert(0, new Categoria { Id = -1, Descripcion = "Lo más..." });
 
                     Session["listaGenero"] = listaGenero;
                     ddlGenero.DataSource = listaGenero;
@@ -51,9 +55,15 @@ namespace TiendaVinilos
                     ddlGenero.DataValueField = "ID";
                     ddlGenero.DataBind();
 
+                    Session["listaCategoria"] = listaCategoria;
+                    ddlCategoria.DataSource = listaCategoria;
+                    ddlCategoria.DataTextField = "Descripcion";
+                    ddlCategoria.DataValueField = "ID";
+                    ddlCategoria.DataBind();
+
                     // Establecer el elemento predeterminado
                     ddlGenero.SelectedIndex = -1;
-
+                    ddlCategoria.SelectedIndex = -1;
 
                     ////cuando se carga x 1era vez el menu entra aca y carga a la session un 0( el carrito esta vacio)
                     if (Session["ItemCount"] == null)
@@ -138,7 +148,7 @@ namespace TiendaVinilos
                 throw;
             }
         }
-        protected void ddlGenero_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlGenero_SelectedIndexChanged (object sender, EventArgs e)
         {
 
             int id = int.Parse(ddlGenero.SelectedValue);
@@ -147,6 +157,15 @@ namespace TiendaVinilos
                 Response.Redirect("AlbumsxGenero.aspx?Id=" + id, false);
             }
 
+        }
+
+        protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = int.Parse(ddlCategoria.SelectedValue);
+            if (id > 0)
+            {
+                Response.Redirect("AlbumsxCategoria.aspx?Id=" + id, false);
+            }
         }
 
 
@@ -177,18 +196,18 @@ namespace TiendaVinilos
                 }
                 else
                 {
-                   if (Page is Artistas)
+                    if (Page is Artistas)
                     {
-                        List<Artista> listaArtista= new List<Artista>();
+                        List<Artista> listaArtista = new List<Artista>();
                         ArtistaNegocio artistaNegocio = new ArtistaNegocio();
                         listaArtista = artistaNegocio.listar(buscar);
-                        Session["listaArtista"]=listaArtista;
+                        Session["listaArtista"] = listaArtista;
                         Response.Redirect("Artistas.aspx", false);
                     }
-                   else
-                    { 
+                    else
+                    {
                         ////pag inicio
-                    Response.Redirect("AlbumFiltrado.aspx", false);
+                        Response.Redirect("AlbumFiltrado.aspx", false);
                     }
 
                 }

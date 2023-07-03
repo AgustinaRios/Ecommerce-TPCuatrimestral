@@ -14,8 +14,13 @@ namespace TiendaVinilos
     {
         GeneroNegocio genero = new GeneroNegocio();
         List<Genero> listaGenero = new List<Genero>();
+
         CategoriaNegocio categoria = new CategoriaNegocio();
         List<Categoria> listaCategoria = new List<Categoria>();
+
+        ArtistaNegocio artista = new ArtistaNegocio();
+        List<Artista> listaArtista = new List<Artista>();
+
         AlbumNegocio negocio = new AlbumNegocio();
         public bool confirmaEliminacion { get; set; }
 
@@ -30,16 +35,35 @@ namespace TiendaVinilos
 
                     //Genero
                     listaGenero = genero.listar();
+                    listaGenero.Insert(0, new Genero { Id = -1, Descripcion = "Elegir Genero" });
                     ddlGenero.DataSource = listaGenero;
                     ddlGenero.DataTextField = "Descripcion";
                     ddlGenero.DataValueField = "Id";
                     ddlGenero.DataBind();
+
+                    ddlGenero.SelectedIndex = -1;
+
                     //Categoria
                     listaCategoria = categoria.listar();
+                    listaCategoria.Insert(0, new Categoria { Id = -1, Descripcion = "Elegir Categoria" });
                     ddlCategoria.DataSource = listaCategoria;
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataBind();
+
+                    ddlCategoria.SelectedIndex = -1;
+
+                    //Artista
+
+                    listaArtista = artista.listar();
+
+                    listaArtista.Insert(0, new Artista { Id = -1, Nombre = "Elegir Artista" });
+                    ddlArtista.DataSource = listaArtista;
+                    ddlArtista.DataTextField = "Nombre";
+                    ddlArtista.DataValueField = "Id";
+                    ddlArtista.DataBind();
+
+                    ddlArtista.SelectedIndex = -1;
 
                     Lbltitlulo.Text = "Alta de Albums"; //Cambia Dinamicamente dependiendo de donde entre
 
@@ -65,7 +89,6 @@ namespace TiendaVinilos
                         }
 
                         TxtTitulo.Text = seleccionado.Titulo.ToString();
-                        TxtArtista.Text = seleccionado.Artista.ToString();
                         TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
                         TxtPrecio.Text = seleccionado.Precio.ToString();
                         TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
@@ -100,6 +123,19 @@ namespace TiendaVinilos
                         ddlGenero.SelectedValue = genSeleccionado.Id.ToString();
                         ddlGenero.SelectedValue = seleccionado.Genero.Id.ToString();
                         ddlGenero.SelectedIndex = genSeleccionado.Id;
+                        /////////////////////////////////////////////////////
+
+                        List<Artista> artFiltrado = new List<Artista>();
+                        Artista artSeleccionado = new Artista();
+
+                        artFiltrado = listaArtista.FindAll(x => x.Nombre == seleccionado.Artista.ToString());
+                        artSeleccionado.Id = artFiltrado[0].Id;
+                        artSeleccionado.Nombre = seleccionado.Artista.ToString();
+
+                        ddlArtista.SelectedValue = artSeleccionado.Id.ToString();
+                        ddlArtista.SelectedValue = seleccionado.Artista.Id.ToString();
+                        ddlArtista.SelectedIndex = artSeleccionado.Id;
+
 
 
 
@@ -120,7 +156,6 @@ namespace TiendaVinilos
         bool ValidarVacios()
         {
             TxtTitulo.BorderColor = Color.White;
-            TxtArtista.BorderColor = Color.White;
             TxtImgTapa.BorderColor = Color.White;
             TxtImgContraTapa.BorderColor = Color.White;
             TxtFechaLanza.BorderColor = Color.White;
@@ -129,11 +164,6 @@ namespace TiendaVinilos
             if (TxtTitulo.Text == "")
             {
                 TxtTitulo.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (TxtArtista.Text == "")
-            {
-                TxtArtista.BorderColor = Color.Red;
                 vacios = true;
             }
             if (TxtImgTapa.Text == "")
@@ -170,41 +200,42 @@ namespace TiendaVinilos
                 Album nuevo = new Album();
                 nuevo.Titulo = TxtTitulo.Text;
 
-                string nombreArtista = TxtArtista.Text;
+                //string nombreArtista = TxtArtista.Text;
 
                 // Verificar si el artista ya existe
-                ArtistaNegocio artistaNegocio = new ArtistaNegocio();
-                Artista artistaExistente = artistaNegocio.ObtenerArtistaPorNombre(nombreArtista);
+                // ArtistaNegocio artistaNegocio = new ArtistaNegocio();
+                // Artista artistaExistente = artistaNegocio.ObtenerArtistaPorNombre(nombreArtista);
+
                 AlbumNegocio albumNegocio = new AlbumNegocio();
 
-                if (artistaExistente != null)
-                {
-                    // El artista ya existe, utiliza el artista existente
-                    nuevo.Artista = new Artista();
-                    nuevo.Artista.Id = artistaExistente.Id;
-                    nuevo.Artista.Nombre = artistaExistente.Nombre;
+                //if (artistaExistente != null)
+                //{
+                //    // El artista ya existe, utiliza el artista existente
+                //    nuevo.Artista = new Artista();
+                //    nuevo.Artista.Id = artistaExistente.Id;
+                //    nuevo.Artista.Nombre = artistaExistente.Nombre;
 
-                }
-                else
-                {
-                    // El artista no existe, crea un nuevo artista
-                    Artista nuevoArtista = new Artista();
-                    nuevoArtista.Nombre = TxtArtista.Text;
-                    artistaNegocio.agregar(nuevoArtista);
-                    int idArtista = nuevoArtista.Id;
-                    if (idArtista != -1)
-                    {
-                        // Asigna el ID del nuevo artista al objeto nuevo.Artista
-                        nuevo.Artista = new Artista();
-                        nuevo.Artista.Id = idArtista;
-                        nuevo.Artista.Nombre = nuevoArtista.Nombre;
-                    }
-                    else
-                    {
-                        // Ocurrió un error al agregar el artista
+                //}
+                //else
+                //{
+                //    // El artista no existe, crea un nuevo artista
+                //    Artista nuevoArtista = new Artista();
+                //    nuevoArtista.Nombre = TxtArtista.Text;
+                //    artistaNegocio.agregar(nuevoArtista);
+                //    int idArtista = nuevoArtista.Id;
+                //    if (idArtista != -1)
+                //    {
+                //        // Asigna el ID del nuevo artista al objeto nuevo.Artista
+                //        nuevo.Artista = new Artista();
+                //        nuevo.Artista.Id = idArtista;
+                //        nuevo.Artista.Nombre = nuevoArtista.Nombre;
+                //    }
+                //    else
+                //    {
+                //        // Ocurrió un error al agregar el artista
 
-                    }
-                }
+                //    }
+                //}
 
                 nuevo.FechaLanzamiento = DateTime.Parse(TxtFechaLanza.Text);
                 //// Se valida que la fecha no sea posterior a la del dia actual
@@ -222,6 +253,8 @@ namespace TiendaVinilos
                 nuevo.Genero.Id = int.Parse(ddlGenero.SelectedValue);
                 nuevo.Categoria = new Categoria();
                 nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+                nuevo.Artista = new Artista();
+                nuevo.Artista.Id = int.Parse(ddlArtista.SelectedValue);
                 nuevo.Activo = true;
 
 
