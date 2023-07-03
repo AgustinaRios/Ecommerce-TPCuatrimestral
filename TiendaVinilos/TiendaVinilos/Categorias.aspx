@@ -5,7 +5,7 @@
     <table>
         <thead>
              <tr>
-                  <asp:Button Text=" Nueva Categoria" CssClass="btn btn-primary" ID="btnAgregarNuevo" OnClick="btnAgregarNuevo_Click" runat="server" />   
+                   <asp:Button Text=" Nueva Categoria" CssClass="btn btn-primary" ID="btnAgregarNuevo" OnClick="btnAgregarNuevo_Click" runat="server" />   
              </tr>
             <tr>
                 <th scope="col">Id</th>

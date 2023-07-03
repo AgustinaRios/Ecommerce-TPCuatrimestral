@@ -41,7 +41,7 @@ namespace TiendaVinilos
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Artistas.aspx", false);
         }
     }
 }
