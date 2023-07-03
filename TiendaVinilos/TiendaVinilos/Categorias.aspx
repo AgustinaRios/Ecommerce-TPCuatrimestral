@@ -1,25 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Categorias.aspx.cs" Inherits="TiendaVinilos.Categorias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="CuerpoRegistro">
-
-    <style>
-        .table {
-            width: 100%;
-        }
-
-        .table th,
-        .table td {
-            text-align: left;
-            vertical-align: top;
-            padding: 8px;
-        }
-
-        .table .btn {
-            padding: 4px 8px;
-            font-size: 14px;
-        }
-    </style>
-
+     <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="CuerpoRegistro">
     <table class="table">
         <thead class="thead-dark">
              

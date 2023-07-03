@@ -47,7 +47,7 @@ namespace TiendaVinilos
 
                     // Agregar un elemento adicional al inicio de la lista
                     listaGenero.Insert(0, new Genero { Id = -1, Descripcion = "" });
-                    listaCategoria.Insert(0, new Categoria { Id = -1, Descripcion = "Lo más..." });
+                    listaCategoria.Insert(0, new Categoria { Id = -1, Descripcion = "" });
 
                     Session["listaGenero"] = listaGenero;
                     ddlGenero.DataSource = listaGenero;

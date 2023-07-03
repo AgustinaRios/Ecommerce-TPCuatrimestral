@@ -1,7 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListarUsuarios.aspx.cs" Inherits="TiendaVinilos.ListarUsuarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="CuerpoRegistro">
-  
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="CuerpoRegistro">
     <table class="table table-hover">
         <thead >
             <tr>

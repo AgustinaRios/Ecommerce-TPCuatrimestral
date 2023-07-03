@@ -1,5 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Carrito.aspx.cs" Inherits="TiendaVinilos.Carrito" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <div class="CuerpoRegistro">
     <table class="table table-striped">
   
