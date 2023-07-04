@@ -40,12 +40,12 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void agregar(Categoria nuevo)
+        public int agregar(Categoria nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "INSERT INTO Categoria (Descripcion) VALUES (@Descripcion); SELECT SCOPE_IDENTITY();";
+                string consulta = "INSERT INTO Categoria (Descripcion) VALUES (@Descripcion); SELECT SCOPE_IDENTITY(); ";
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
 
@@ -53,8 +53,12 @@ namespace Negocio
 
                 datos.conexion.Open(); // Abre la conexión a la base de datos
 
-     
-             
+                int idcategoria = Convert.ToInt32(datos.comando.ExecuteScalar());
+
+                // Asignar el ID generado al objeto Artista
+                nuevo.Id = idcategoria;
+
+                return idcategoria;
             }
             catch (Exception ex)
             {

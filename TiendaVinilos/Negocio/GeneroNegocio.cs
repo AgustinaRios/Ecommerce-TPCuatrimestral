@@ -40,7 +40,7 @@ namespace Negocio
             }
         }
 
-        public void agregar(Genero nuevo)
+        public int agregar(Genero nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -48,13 +48,16 @@ namespace Negocio
                 string consulta = "INSERT INTO Generos (Descripcion) VALUES (@Descripcion); SELECT SCOPE_IDENTITY();";
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
-
                 datos.comando.Connection = datos.conexion; // Asignar la conexión al objeto SqlCommand
 
                 datos.conexion.Open(); // Abre la conexión a la base de datos
 
+                int idgenero = Convert.ToInt32(datos.comando.ExecuteScalar());
 
+                // Asignar el ID generado al objeto Artista
+                nuevo.Id = idgenero;
 
+                return idgenero;
             }
             catch (Exception ex)
             {
