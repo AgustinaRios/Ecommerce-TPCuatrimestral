@@ -1,85 +1,103 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="TiendaVinilos.Detalle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="CuerpoRegistro">
+    <style>
+        /* Estilos personalizados */
+        .album-details {
+            margin-top: 20px;
+        }
 
-    <div class="container">
-        <div id="demo" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="card">
-                        
-                        <% 
-                            Dominio.Album album = albumSeleccionado;
+        .album-details h2 {
+            font-size: 24px;
+            color: #333;
+        }
 
-                        %>
-                        <div class="row">
-                            <div class="col-md-6 text-center align-self-center">
-                                <img class="img-fluid" src="<%= album.ImgTapa %>">
-                                <img class="img-fluid" src="<%= album.ImgContratapa %>">
-                            </div>
-                            <div class="col-md-6 info">
-                                <div class="row title">
-                                    <div class="col">
-                                        <h2><%= album.Titulo %></h2>
-                                    </div>
-                                    <div class="col text-right"><a href="Detalle.aspx?id=<%:album.Id %>"><i class="fa fa-heart-o"></i></a></div>
+        .rating {
+            margin-bottom: 10px;
+        }
+
+        .rating .fa-star {
+            color: #f1c40f;
+        }
+
+        .rating .fa-star-half-full {
+            color: #f1c40f;
+        }
+
+        .artist,
+        .release-date,
+        .genre,
+        .category,
+        .price {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #f1c40f;
+        }
+    </style>
+
+    <div class="CuerpoRegistro">
+        <div class="container">
+            <div class="card">
+                <% Dominio.Album album = albumSeleccionado; %>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <div id="albumCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="img-fluid rounded" src="<%= album.ImgTapa %>" alt="Tapa del álbum">
                                 </div>
-                                
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star-half-full"></span>
-                             
-                                <div class="row price">
-                                    <label class="radio">
-                                       
-                                        <span>
-                                            <div class="row"><big><b>Artista: <%= album.Artista %></b></big></div>
-                                            <div class="row"><big><b>Fecha Lanzamiento: <%= album.FechaLanzamiento%></b></big></div>
-                                            <div class="row"><big><b>Genero: <%= album.Genero %></b></big></div>
-                                            <div class="row"><big><b>Categoria: <%= album.Categoria %></b></big></div>
-                                            <div class="row"><big><b>Precio: $<%= album.Precio %></b></big></div>
-                                            </a> </span>
-                                    </label>
-
+                                <div class="carousel-item">
+                                    <img class="img-fluid rounded" src="<%= album.ImgContratapa %>" alt="Contratapa del álbum">
                                 </div>
                             </div>
+                            <a class="carousel-control-prev" href="#albumCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Anterior</span>
+                            </a>
+                            <a class="carousel-control-next" href="#albumCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Siguiente</span>
+                            </a>
                         </div>
-                                                                                                           
-                       
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                $('.carousel').carousel();
+                            });
+                        </script>
                     </div>
-                </div>
-            </div>
+                  <div class="col-md-6 info">
+    <div class="row title">
+        <div class="col">
+            <h2><%= album.Titulo %></h2>
         </div>
-
+        <div class="col text-right">
+            <a href="Detalle.aspx?id=<%: album.Id %>"><i class="fa fa-heart-o"></i></a>
         </div>
     </div>
-
-    <%--OTRO DISEÑO DE BOOTSTRAP PERO HABRIA QUE ARREGLAR EL ENCABEZADO
-                PARA VER CUAL QUEDA MEJOR--%>
-
-    <%--<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <% 
-                            Dominio.Album album = albumSeleccionado;
-
-                        %>
-    <div class='container-fluid'>
-        <div class="card mx-auto col-md-3 col-10 mt-5">
-            <img class='mx-auto img-thumbnail'
-                src="<%=album.ImgTapa%>"
-                 <%--src="<%album.ImgContratapa %>"--%>
-    <%--  width="auto" height="auto"/>
-            <div class="card-body text-center mx-auto">
-                <div class='cvp'>
-                    <h5 class="card-title font-weight-bold">Yail wrist watch</h5>
-                    <p class="card-text">$299</p>
-                    <a href="#" class="btn details px-auto">view details</a><br />
-                    <a href="#" class="btn cart px-auto">ADD TO CART</a>
-                </div>
-            </div>
+    <div class="rating">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star-half-full"></span>
+    </div>
+    <div class="row album-details">
+        <div class="col">
+            <p class="artist"><b>Artista:</b> <%= album.Artista %></p>
+            <p class="release-date"><b>Fecha Lanzamiento:</b> <%= album.FechaLanzamiento %></p>
+            <p class="genre"><b>Género:</b> <%= album.Genero %></p>
+            <p class="category"><b>Categoría:</b> <%= album.Categoria %></p>
+            <p class="price"><b>Precio:</b> $<%= album.Precio %></p>
         </div>
+    </div>
+</div>
+                        
 
-    </div>--%>
 </asp:Content>
