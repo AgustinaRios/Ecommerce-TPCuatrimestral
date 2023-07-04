@@ -154,7 +154,7 @@ namespace TiendaVinilos
             int id = int.Parse(ddlGenero.SelectedValue);
             if (id > 0)
             {
-                Response.Redirect("AlbumsxGenero.aspx?Id=" + id, false);
+                Response.Redirect("AlbumsxGenero.aspx?IdGenero=" + id, false);
             }
 
         }

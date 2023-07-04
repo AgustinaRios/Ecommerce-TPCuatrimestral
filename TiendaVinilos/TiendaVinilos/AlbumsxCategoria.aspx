@@ -23,7 +23,7 @@
                             <div class="card-body">
                                 <p class="card-text"><%:album.Artista %></p>
                                 <div class="columna">
-                                    <a href="Detalle.aspx?id=<%:album.Id %>" class="btn btn-success">Ver Detalle</a>
+                                    <a href="Detalle.aspx?iddetalle=<%:album.Id %>" class="btn btn-success">Ver Detalle</a>
                                     <a href="AlbumsxCategoria.aspx?idfiltrado=<%:album.Id %>">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 576 512">
                                             <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
