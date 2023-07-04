@@ -2,10 +2,6 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 
 namespace TiendaVinilos
@@ -18,18 +14,7 @@ namespace TiendaVinilos
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
-                listaAlbum = (List<Album>)Session["listaFiltrada"];
-
-                if (listaAlbum != null)
-                {
-
-                    Session.Add("listaAlbum", listaAlbum);
-                }
-                else
-                {
-                    Response.Redirect("Inicio.aspx", false);
-
-                }
+                //no va a carrito terminar la logica
 
                 if (Request.QueryString["idfiltrado"] != null)
                 {
@@ -40,6 +25,21 @@ namespace TiendaVinilos
 
 
                 }
+                listaAlbum = (List<Album>)Session["listaFiltrada"];
+
+                if (listaAlbum != null)
+                {
+
+                    Session.Add("listaAlbum", listaAlbum);
+
+                }
+                else
+                {
+                    Response.Redirect("Inicio.aspx", false);
+
+                }
+
+
 
             }
 

@@ -12,7 +12,7 @@ namespace TiendaVinilos
 
             AlbumNegocio negocio = new AlbumNegocio();
             try
-            {
+               {
                 string Id = Request.QueryString["IdGenero"]; 
                 if (Id != null)
                 {

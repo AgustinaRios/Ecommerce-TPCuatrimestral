@@ -14,21 +14,20 @@ namespace TiendaVinilos
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
-                string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
-
+                string Id = Request.QueryString["IdCategoria"];
                 if (Id != null)
                 {
-                    Int32 IdCategoria = Int32.Parse(Request.QueryString["Id"]);
-                    Session.Add("Id", IdCategoria);//se la necesita por que se pierde el id del gnero cuando se recrga la pg,por ejemplo cuando haces clic en btncarrito
-                    listaAlbum = negocio.listarxCategoria(IdCategoria);
-                    Session.Add("ListaAlbum", listaAlbum);
+                    Int32 IdCat = Int32.Parse(Request.QueryString["IdCategoria"]);
+                    Session.Add("IdCategoria", IdCat);//se la necesita por que se pierde el id del gnero cuando se recrga la pg,por ejemplo cuando haces clic en btncarrito
+                    listaAlbum = negocio.listarxCategoria(IdCat);
+                    Session.Add("Listaalbum", listaAlbum);
                 }
                 else
                 {
                     //si idgnero es nulo quiere decir que se cargo la pag por hacer click en btncarrito
-                    Int32 IdCategoria = (Int32)Session["Id"];
-                    listaAlbum = negocio.listarxCategoria(IdCategoria);
-                    Session.Add("ListaAlbum", listaAlbum);
+                    Int32 IdCat = (Int32)Session["IdCategoria"];
+                    listaAlbum = negocio.listarxCategoria(IdCat);
+                    Session.Add("Listaalbum", listaAlbum);
                 }
 
                 if (Request.QueryString["idfiltrado"] != null)
@@ -37,6 +36,8 @@ namespace TiendaVinilos
                     Session.Add("idArtCarrito", IdArt);
 
                     Session.Add("items", 1);
+
+
                 }
 
             }
