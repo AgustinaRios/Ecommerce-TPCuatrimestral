@@ -21,6 +21,9 @@ namespace Negocio
                 datos.setearParametro("@Apellido", nuevo.Apellido);
                 datos.setearParametro("@Email", nuevo.Email);
                 datos.setearParametro("@Pass", nuevo.Pass);
+                datos.setearParametro("@Dire", nuevo.Direccion);
+                datos.setearParametro("@Localidad", nuevo.Localidad);
+                datos.setearParametro("@Prov", nuevo.Provincia);
                 return datos.ejectutarAccionScalar();
 
                 
@@ -48,7 +51,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select ID, Nombre, Apellido, Email, Pass,FechaCreacion, Administrador,Activo from USUARIOS  where email=@email and pass=@pass");
+                datos.setearConsulta("select ID, Nombre, Apellido, Email, Pass,FechaCreacion,Direccion,Localidad,Provincia,Administrador,Activo from USUARIOS  where email=@email and pass=@pass");
 
                 datos.setearParametro("@email", usuario.Email);
                 datos.setearParametro("@pass", usuario.Pass);
@@ -67,6 +70,12 @@ namespace Negocio
                         aux.Pass = (string)datos.Lector["Pass"];
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("FechaCreacion"))))
                         aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Direccion"))))
+                        aux.Direccion = (string)datos.Lector["Direccion"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Localidad"))))
+                        aux.Localidad = (string)datos.Lector["Localidad"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Provincia"))))
+                        aux.Provincia = (string)datos.Lector["Provincia"];
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Administrador"))))
                         aux.Admin = (bool)datos.Lector["Administrador"];
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Activo"))))
@@ -98,11 +107,14 @@ namespace Negocio
             try
             {
 
-                datos.setearConsulta("update USUARIOS set Nombre=@nombre, Apellido=@apellido, Email=@email where Id=@id");
+                datos.setearConsulta("update USUARIOS set Nombre=@nombre, Apellido=@apellido, Email=@email, Direccion=@dire, Localidad=@localidad, Provincia=@prov where Id=@id");
                 datos.setearParametro("@id", usuario.ID);
                 datos.setearParametro("@nombre", usuario.Nombre);
                 datos.setearParametro("@apellido", usuario.Apellido);
                 datos.setearParametro("@email", usuario.Email);
+                datos.setearParametro("@dire", usuario.Direccion);
+                datos.setearParametro("@localidad", usuario.Localidad);
+                datos.setearParametro("@prov", usuario.Provincia);
                
 
                 datos.ejectutarAccion();
@@ -127,7 +139,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id,Nombre,Apellido,Email,FechaCreacion,Administrador,Activo from USUARIOS");
+                datos.setearConsulta("select Id,Nombre,Apellido,Email,FechaCreacion,Direccion,Localidad,Provincia,Administrador,Activo from USUARIOS");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -138,6 +150,9 @@ namespace Negocio
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Email = (string)datos.Lector["Email"];
                     aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+                    aux.Direccion = (string)datos.Lector["Direccion"];
+                    aux.Localidad = (string)datos.Lector["Localidad"];
+                    aux.Provincia = (string)datos.Lector["Provincia"];
                     aux.Admin = (bool)datos.Lector["Administrador"];
                     aux.Activo = (bool)datos.Lector["Activo"];
 
@@ -164,7 +179,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Id,Nombre,Apellido,Email,FechaCreacion,Administrador,Activo from USUARIOS where Apellido like '%" + buscar + "%' or Nombre like '%" + buscar + "%'");
+                datos.setearConsulta("select Id,Nombre,Apellido,Email,FechaCreacion,Direccion,Localidad,Provincia,Administrador,Activo from USUARIOS where Apellido like '%" + buscar + "%' or Nombre like '%" + buscar + "%'");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -173,6 +188,9 @@ namespace Negocio
                     aux.ID = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
+                    aux.Direccion = (string)datos.Lector["Direccion"];
+                    aux.Localidad = (string)datos.Lector["Localidad"];
+                    aux.Provincia = (string)datos.Lector["Provincia"];
                     aux.Email = (string)datos.Lector["Email"];
                     aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
                     aux.Admin = (bool)datos.Lector["Administrador"];

@@ -11,9 +11,9 @@ namespace TiendaVinilos
 {
     public partial class Carrito : System.Web.UI.Page
     {
-       
+
         public ProductosCarrito carrito = new ProductosCarrito();
-        Album producto= new Album();
+        Album producto = new Album();
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -68,8 +68,12 @@ namespace TiendaVinilos
         protected void BtnComprar_Click(object sender, EventArgs e)
         {
             if (!Seguridad.sesionActiva(Session["usuario"]))
-             Response.Redirect("Login.aspx",false); 
-        
+            { Response.Redirect("Login.aspx", false); }
+            else
+            {
+                { Response.Redirect("FormularioCompra.aspx", false); }
+            }
+
         }
 
         protected void lblTotal_Load(object sender, EventArgs e)
@@ -82,7 +86,7 @@ namespace TiendaVinilos
             try
             {
                 var cantidad = ((TextBox)sender).Text;
-               
+
             }
             catch (Exception ex)
             {

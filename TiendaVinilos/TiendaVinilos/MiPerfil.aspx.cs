@@ -29,7 +29,9 @@ namespace TiendaVinilos
 
                     TxtNombre.Text = usuario.Nombre;
                     TxtEmail.Text = usuario.Email;
-
+                    TxtDireccion.Text= usuario.Direccion;
+                    TxtLocalidad.Text= usuario.Localidad;
+                    TxtProvincia.Text=usuario.Provincia;
 
                 }
 
@@ -44,6 +46,9 @@ namespace TiendaVinilos
             usuario.Nombre = TxtNombre.Text;
             usuario.Apellido = TxtApellido.Text;
             usuario.Email = TxtEmail.Text;
+            usuario.Direccion = TxtDireccion.Text;
+            usuario.Localidad= TxtLocalidad.Text;
+            usuario.Provincia= TxtProvincia.Text;
 
             negocio.modificar(usuario);
             Response.Redirect("Inicio.aspx", false);

@@ -26,16 +26,16 @@ namespace TiendaVinilos
             TxtNombre.BorderColor = Color.White;
 
             bool vacios = false;
-            if (TxtNombre.Text == "")
-            {
-                TxtNombre.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (TxtApellido.Text == "")
-            {
-                TxtApellido.BorderColor = Color.Red;
-                vacios = true;
-            }
+            //if (TxtNombre.Text == "")
+            //{
+            //    TxtNombre.BorderColor = Color.Red;
+            //    vacios = true;
+            //}
+            //if (TxtApellido.Text == "")
+            //{
+            //    TxtApellido.BorderColor = Color.Red;
+            //    vacios = true;
+            //}
             if (TxtEmail.Text == "")
             {
                 TxtEmail.BorderColor = Color.Red;
@@ -58,6 +58,9 @@ namespace TiendaVinilos
                 EmailService emailService = new EmailService();
                 usuario.Nombre = TxtNombre.Text;
                 usuario.Apellido = TxtApellido.Text;
+                usuario.Direccion = TxtDireccion.Text;
+                usuario.Localidad = TxtLocalidad.Text;
+                usuario.Provincia = TxtProvincia.Text;
                 usuario.Email = TxtEmail.Text;
                 usuario.Pass = TxtPass.Text;
                 if (usuarioNegocio.ExisteUsuarioPorEmail(usuario) != 0)

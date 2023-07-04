@@ -57,13 +57,13 @@ namespace TiendaVinilos
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             string Id = ((Button)sender).CommandArgument;
-            Response.Redirect("Formulario.aspx?Id=" + Id, false);
+            Response.Redirect("FormularioVinilo.aspx?Id=" + Id, false);
 
         }
 
         protected void BtnAlta_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Formulario.aspx");
+            Response.Redirect("FormularioVinilo.aspx");
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

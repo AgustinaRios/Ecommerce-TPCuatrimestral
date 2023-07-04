@@ -10,7 +10,7 @@ using Negocio;
 
 namespace TiendaVinilos
 {
-    public partial class Formulario : System.Web.UI.Page
+    public partial class FormularioVinilo : System.Web.UI.Page
     {
         GeneroNegocio genero = new GeneroNegocio();
         List<Genero> listaGenero = new List<Genero>();

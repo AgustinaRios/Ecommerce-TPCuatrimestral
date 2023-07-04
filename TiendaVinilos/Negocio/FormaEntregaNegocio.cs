@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select Id,Descripcion from FormaEntrega");
+                datos.setearConsulta("Select Id,Descripcion from Forma_Entrega");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
