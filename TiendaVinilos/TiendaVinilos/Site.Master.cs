@@ -22,8 +22,8 @@ namespace TiendaVinilos
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page is Artistas || Page is Categorias || Page is FormAltaArtista
-                || Page is FormAltaCategoria || Page is Listar || Page is ListarUsuarios)
+            if (Page is Artistas || Page is Categorias || Page is FormAltaArtista || Page is FormAltaGenero
+              || Page is FormularioVinilo || Page is FormAltaCategoria || Page is Listar || Page is ListarUsuarios)
             {
                 if (!Seguridad.esAdmin(Session["usuario"]))
                 {

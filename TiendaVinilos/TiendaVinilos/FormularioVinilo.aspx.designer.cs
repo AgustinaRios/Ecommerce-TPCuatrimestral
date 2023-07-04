@@ -11,7 +11,7 @@ namespace TiendaVinilos
 {
 
 
-    public partial class Formulario
+    public partial class FormularioVinilo
     {
 
         /// <summary>

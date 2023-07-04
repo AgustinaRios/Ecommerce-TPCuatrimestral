@@ -100,6 +100,9 @@ CREATE TABLE USUARIOS (
     Email varchar(50) NULL unique,
     Pass varchar(50) NULL,
     FechaCreacion date NULL,
+    Direccion varchar (100) null,
+    Localidad varchar (100) null,
+    Provincia varchar (100) null, 
     Administrador bit not null default 0,
     Activo bit not null default 1
 
@@ -107,21 +110,47 @@ CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED
 (
     [Id] ASC
 ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)) ON [PRIMARY]
-GO
+ go
+ 
+CREATE TABLE FORMA_PAGO(
+	
+	Id int not null primary key identity (1, 1),
+	Descripcion varchar (50)not null unique)
+    go
 
+	create table FORMA_ENTREGA (
+    Id int not null primary key identity (1,1),
+    Descripcion varchar (50) not null unique
+    )
+    go
+    create table ESTADO_PEDIDO (
+    Id int not null primary key identity (1,1),
+    Descripcion varchar (50) not null unique
+)
+GO
 
 create procedure InsertarNuevo (
  
  @Nombre varchar(50),
  @Apellido varchar(50),
  @Email varchar (50),
- @Pass varchar (50)
-)
+ @Pass varchar (50),
+ @Dire varchar (100),
+ @Localidad varchar (100),
+ @Prov varchar (100)
+ )
 As
- insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador,Activo) 
- output inserted.Id values (@Nombre,@Apellido,@Email,@Pass,GETDATE(),0,1)
+insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Direccion,Localidad,Provincia,Administrador,Activo)
+ output inserted.Id values (@Nombre,@Apellido,@Email,@Pass,GETDATE(),@Dire,@Localidad,@Prov,0,1)
 
- go
+
+go
+INSERT INTO FORMA_ENTREGA values ('Delivery'),('Retiro')
+go
+insert into FORMA_PAGO values ('Efectivo'),('Tarjeta de Credito'),('Mercado Pago')
+go
+insert into ESTADO_PEDIDO values ('En preparacion'),('Listo para Entrega'),('Producto Entregado')
+go
  insert into GENEROS (Descripcion)values ('Rock'), ('Pop'), ('Clásico'), ('Tango'), ('Funk'),('Jazz'),('Folklore'),
  ('Reggae'),('Hip Hop'),('Electrónica'),('R&B'),('Country'),('Salsa')
  go
