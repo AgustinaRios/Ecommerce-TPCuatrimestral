@@ -280,5 +280,62 @@ namespace Negocio
             }
 
         }
+
+        public Usuario BuscarAdmin()
+        {
+
+            Usuario aux = new Usuario();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select ID, Nombre, Apellido, Email, Pass,FechaCreacion,Direccion,Localidad,Provincia,Administrador,Activo from USUARIOS  where Administrador=1");
+
+              
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+
+                    aux.ID = (Int32)datos.Lector["Id"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Nombre"))))
+                        aux.Nombre = (string)datos.Lector["Nombre"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Apellido"))))
+                        aux.Apellido = (string)datos.Lector["Apellido"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Email"))))
+                        aux.Email = (string)datos.Lector["Email"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Pass"))))
+                        aux.Pass = (string)datos.Lector["Pass"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("FechaCreacion"))))
+                        aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Direccion"))))
+                        aux.Direccion = (string)datos.Lector["Direccion"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Localidad"))))
+                        aux.Localidad = (string)datos.Lector["Localidad"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Provincia"))))
+                        aux.Provincia = (string)datos.Lector["Provincia"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Administrador"))))
+                        aux.Admin = (bool)datos.Lector["Administrador"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Activo"))))
+                        aux.Activo = (bool)datos.Lector["Activo"];
+
+                    ///
+
+
+
+                    // mensaje para verificar los valores
+                    Console.WriteLine("Inicio de sesión exitoso. ID: " + aux.ID + ", Admin: " + aux.Admin);
+
+                }
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

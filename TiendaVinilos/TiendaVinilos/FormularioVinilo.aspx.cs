@@ -200,43 +200,10 @@ namespace TiendaVinilos
                 Album nuevo = new Album();
                 nuevo.Titulo = TxtTitulo.Text;
 
-                //string nombreArtista = TxtArtista.Text;
-
-                // Verificar si el artista ya existe
-                // ArtistaNegocio artistaNegocio = new ArtistaNegocio();
-                // Artista artistaExistente = artistaNegocio.ObtenerArtistaPorNombre(nombreArtista);
-
+               
                 AlbumNegocio albumNegocio = new AlbumNegocio();
 
-                //if (artistaExistente != null)
-                //{
-                //    // El artista ya existe, utiliza el artista existente
-                //    nuevo.Artista = new Artista();
-                //    nuevo.Artista.Id = artistaExistente.Id;
-                //    nuevo.Artista.Nombre = artistaExistente.Nombre;
-
-                //}
-                //else
-                //{
-                //    // El artista no existe, crea un nuevo artista
-                //    Artista nuevoArtista = new Artista();
-                //    nuevoArtista.Nombre = TxtArtista.Text;
-                //    artistaNegocio.agregar(nuevoArtista);
-                //    int idArtista = nuevoArtista.Id;
-                //    if (idArtista != -1)
-                //    {
-                //        // Asigna el ID del nuevo artista al objeto nuevo.Artista
-                //        nuevo.Artista = new Artista();
-                //        nuevo.Artista.Id = idArtista;
-                //        nuevo.Artista.Nombre = nuevoArtista.Nombre;
-                //    }
-                //    else
-                //    {
-                //        // Ocurrió un error al agregar el artista
-
-                //    }
-                //}
-
+                
                 nuevo.FechaLanzamiento = DateTime.Parse(TxtFechaLanza.Text);
                 //// Se valida que la fecha no sea posterior a la del dia actual
                 DateTime hoy = DateTime.Now;

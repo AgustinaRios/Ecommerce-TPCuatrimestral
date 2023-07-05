@@ -128,6 +128,26 @@ CREATE TABLE FORMA_PAGO(
     Descripcion varchar (50) not null unique
 )
 GO
+create table PEDIDOS (
+  Id int not null primary key identity (1,1),
+ IdUsuario int not null references usuarios(Id),
+ IdFormaEntrega int not null references Forma_Entrega(Id),
+ Direccion varchar(100) not null,
+ Localidad varchar(100)not null,
+ Provincia Varchar (100)not null,
+ IdFormaPago int not null references Forma_Pago(Id),
+ Total money not null,
+ IdEstadoPedido int not null references Estado_Pedido(Id),
+ FechaCreacion date not null
+)
+go
+create table PRODUCTOS_POR_PEDIDO(
+  Id int identity(1,1) NOT NULL,
+  IdPedido int not null references Pedidos(Id),
+  IdAlbum int not null references Albumes(Id),
+  Cantidad int not null DEFAULT 0
+)
+go
 
 create procedure InsertarNuevo (
  
@@ -142,7 +162,22 @@ create procedure InsertarNuevo (
 As
 insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Direccion,Localidad,Provincia,Administrador,Activo)
  output inserted.Id values (@Nombre,@Apellido,@Email,@Pass,GETDATE(),@Dire,@Localidad,@Prov,0,1)
-
+ go
+ create procedure InsertarNuevoPedido (
+ 
+ @IdUsuario int,
+ @IdFormaEntrega int,
+ @Direccion varchar(100),
+ @Localidad varchar (100),
+ @Provincia varchar (100),
+ @IdFormaPago int,
+ @Total money,
+ @IdEstadoPedido int,
+ @FechaCreacion date
+ )
+As
+insert into PEDIDOS (IdUsuario,IdFormaEntrega,Direccion,Localidad,Provincia,IdFormaPago,Total,IdEstadoPedido,FechaCreacion)
+ output inserted.Id values (@IdUsuario, @IdFormaEntrega,@Direccion,@Localidad,@Provincia,@IdFormaPago,@Total,@IdEstadoPedido,GETDATE())
 
 go
 INSERT INTO FORMA_ENTREGA values ('Delivery'),('Retiro')
@@ -178,5 +213,7 @@ VALUES
 
 
 go
- insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Administrador,Activo)
-values ('adm','adm','adm@adm.com','adm',GETDATE(),1,1)
+ insert into USUARIOS 
+values ('adm','adm','adm@adm.com','adm','15/06/2023','Santo Tomé 4749','Monte Castro','Buenos Aires',1,1)
+select *from FORMA_PAGO
+select * from ESTADO_PEDIDO
