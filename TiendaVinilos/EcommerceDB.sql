@@ -178,6 +178,17 @@ insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Direccion,Localid
 As
 insert into PEDIDOS (IdUsuario,IdFormaEntrega,Direccion,Localidad,Provincia,IdFormaPago,Total,IdEstadoPedido,FechaCreacion)
  output inserted.Id values (@IdUsuario, @IdFormaEntrega,@Direccion,@Localidad,@Provincia,@IdFormaPago,@Total,@IdEstadoPedido,GETDATE())
+go
+
+create procedure InsertarProductoPorPedido (
+@IdPedido int,
+@IdAlbum int,
+@Cantidad int
+)
+as
+Insert into PRODUCTOS_POR_PEDIDO(IdPedido,IdAlbum,Cantidad)
+output inserted.Id values (@IdPedido,@IdAlbum,@Cantidad)
+
 
 go
 INSERT INTO FORMA_ENTREGA values ('Delivery'),('Retiro')

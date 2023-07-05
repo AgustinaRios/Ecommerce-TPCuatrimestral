@@ -27,7 +27,7 @@ namespace Negocio
                 datos.setearParametro("@IdFormaPago", pedido.IdFormaPago);
                 datos.setearParametro("@Total", pedido.Total);
                 datos.setearParametro("@IdEstadoPedido", pedido.IdEstado);
-              //  datos.setearParametro("@FechaCreacion", pedido.FechaCreacion);
+             
                 return datos.ejectutarAccionScalar();
 
 
@@ -46,5 +46,6 @@ namespace Negocio
 
         }
 
+       
     }
 }

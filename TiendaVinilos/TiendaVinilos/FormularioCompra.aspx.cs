@@ -104,15 +104,48 @@ namespace TiendaVinilos
             pedido.IdEstado = 1;
 
             pedido.Id = pedidoNegocio.insertarNuevo(pedido);
+            insertarProductoPorPedido(pedido);
             Session.Add("Pedido", pedido);
-
-            ///el mail mejor ponerlo en el formualario de confirmacion de compra
-            /// emailService.EnviarCorreo(usuario.Email, "Gracias por tu compra!", "Te estaremos avisando el avance de la compra!");
-
 
            
 
-            Response.Redirect("ConfirmacionCompra.aspx", false);
+
+                Response.Redirect("ConfirmacionCompra.aspx", false);
         }
+
+        public void insertarProductoPorPedido(Pedido pedido)
+        {
+            ProductosCarrito carrito = (ProductosCarrito)Session["carrito"];
+
+            foreach (var producto in carrito.lista)
+            {
+                AccesoDatos datos = new AccesoDatos();
+
+                try
+                {
+                    datos.setearProcedimiento("InsertarProductoPorPedido");
+                    datos.setearParametro("@IdPedido", pedido.Id);
+
+                    Album album = (Album)producto.Producto;
+                    int idAlbum = album.Id;
+                    int cantidad = producto.Cantidad;
+
+                    datos.setearParametro("@IdAlbum", idAlbum);
+                    datos.setearParametro("@Cantidad", cantidad);
+
+                    datos.ejectutarAccion();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    datos.cerrarConexion();
+                }
+            }
+        }
+
+
     }
 }
