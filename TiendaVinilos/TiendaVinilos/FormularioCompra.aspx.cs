@@ -107,10 +107,12 @@ namespace TiendaVinilos
             insertarProductoPorPedido(pedido);
             Session.Add("Pedido", pedido);
 
+
+
            
-
-
-                Response.Redirect("ConfirmacionCompra.aspx", false);
+            Session["Pedido"] = pedido;
+            Session["carrito"] = carrito;
+            Response.Redirect("ConfirmacionCompra.aspx", false);
         }
 
         public void insertarProductoPorPedido(Pedido pedido)

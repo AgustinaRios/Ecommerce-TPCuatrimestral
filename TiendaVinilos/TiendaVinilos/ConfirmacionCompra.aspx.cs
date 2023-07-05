@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,16 @@ namespace TiendaVinilos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                
+                Pedido pedido = (Pedido)Session["Pedido"];
 
+               
+                ProductosCarrito carrito = (ProductosCarrito)Session["carrito"];
+
+               
+            }
         }
     }
 }
