@@ -140,6 +140,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Detalle.aspx" />
+    <Content Include="DomicilioEntrega.aspx" />
     <Content Include="error.aspx" />
     <Content Include="Estilos.css" />
     <Content Include="favicon.ico" />
@@ -280,6 +281,13 @@
     </Compile>
     <Compile Include="Detalle.aspx.designer.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DomicilioEntrega.aspx.cs">
+      <DependentUpon>DomicilioEntrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DomicilioEntrega.aspx.designer.cs">
+      <DependentUpon>DomicilioEntrega.aspx</DependentUpon>
     </Compile>
     <Compile Include="error.aspx.cs">
       <DependentUpon>error.aspx</DependentUpon>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioCompra.aspx.cs" Inherits="TiendaVinilos.FormularioCompra" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="FormularioCompra.aspx.cs" Inherits="TiendaVinilos.FormularioCompra" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <updatepanel>
@@ -11,19 +11,9 @@
                 <div>
 
                     <asp:DropDownList runat="server" ID="ddlFormaEntrega" class="form-control" AutoPostBack="true" />
-
-                    <div class="form-inline">
-                        <label for="TxtDireccion">Direccion</label>
-                        <asp:TextBox ID="TxtDireccion" runat="server" class="controls"></asp:TextBox>
-                    </div>
-                    <div class="form-inline">
-                        <label for="TxtLocalidad">Localidad</label>
-                        <asp:TextBox ID="TxtLocalidad" runat="server" class="controls"></asp:TextBox>
-                    </div>
-                    <div class="form-inline">
-                        <label for="TxtProvincia">Provincia</label>
-                        <asp:TextBox ID="TxtProvincia" runat="server" class="controls"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="LblDomicilio" runat="server"  ></asp:Label>
+                    <asp:Button ID="BtnModificar" Cssclass="btn btn-secondary" visible="false" runat="server" Text="Cambiar" Onclick="BtnModificar_Click"  />
+                    
 
                     <asp:DropDownList runat="server" ID="ddlFormaPago" class="form-control" AutoPostBack="true" />
                     <% 
@@ -47,7 +37,7 @@
                     <asp:TextBox ID="TxtFechaVto" class="form-control" type="date" runat="server"></asp:TextBox>
 
                     <%} %>
-                      <asp:Button ID="BtnAceptar" Text="ENTRAR" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />
+                      <asp:Button ID="BtnAceptar" Text="Comprar" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />
                 <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
                  
 

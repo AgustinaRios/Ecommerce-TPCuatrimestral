@@ -39,6 +39,6 @@
     </tbody>
     </table>
 <p style="color: #FF0000">Total: <asp:Label ID="lblTotal" runat="server" OnLoad="lblTotal_Load" ForeColor="Red" /></p>
-     <asp:Button Text="Realizar Compras" CssClass="btn btn-danger"  ID="BtnComprar" Onclick="BtnComprar_Click" runat="server" ToolTip="Comprar Vinilos" />
+     <asp:Button Text="Comenzar la Compra" CssClass="btn btn-danger"  ID="BtnComprar" Onclick="BtnComprar_Click" runat="server" ToolTip="Comprar Vinilos" />
    </div>      
 </asp:Content>

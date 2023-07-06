@@ -33,8 +33,16 @@ namespace TiendaVinilos
                 {
                     if (completo.Activo == true)
                     {
+                        if (Session["VienedeCarrito"] != null || Session["usuario"] != null)
+                        {
+                            Session.Add("usuario", completo);
+                            Response.Redirect("FormularioCompra.aspx", false);
+                        }
+                        else
+                        { 
                         Session.Add("usuario", completo);
                         Response.Redirect("Inicio.aspx", false);
+                         }
                     }
                     else
                     {

@@ -33,31 +33,22 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.DropDownList ddlFormaEntrega;
 
         /// <summary>
-        /// Control TxtDireccion.
+        /// Control LblDomicilio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDireccion;
+        protected global::System.Web.UI.WebControls.Label LblDomicilio;
 
         /// <summary>
-        /// Control TxtLocalidad.
+        /// Control BtnModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtLocalidad;
-
-        /// <summary>
-        /// Control TxtProvincia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtProvincia;
+        protected global::System.Web.UI.WebControls.Button BtnModificar;
 
         /// <summary>
         /// Control ddlFormaPago.

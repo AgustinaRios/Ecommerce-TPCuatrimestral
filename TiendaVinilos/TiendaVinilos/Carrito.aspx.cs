@@ -67,11 +67,16 @@ namespace TiendaVinilos
 
         protected void BtnComprar_Click(object sender, EventArgs e)
         {
+            Session.Add("VienedeCarrito", 1);
             if (!Seguridad.sesionActiva(Session["usuario"]))
-            { Response.Redirect("Login.aspx", false); }
+            { 
+                Response.Redirect("Login.aspx", false);
+                
+            }
             else
             {
-                { Response.Redirect("FormularioCompra.aspx", false); }
+               Response.Redirect("FormularioCompra.aspx", false);
+                
             }
 
         }

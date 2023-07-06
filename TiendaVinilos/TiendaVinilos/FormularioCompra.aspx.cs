@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Dominio;
+﻿using Dominio;
 using Negocio;
+using System;
+using System.Collections.Generic;
 
 namespace TiendaVinilos
 {
@@ -25,7 +21,7 @@ namespace TiendaVinilos
             {
                 if (!IsPostBack)
                 {
-
+                   
                     listaFormaEntrega = negocioFormEntrega.listar();
                     listaFormaEntrega.Insert(0, new FormaEntrega { Id = -1, Descripcion = "Forma de Entrega" });
                     ddlFormaEntrega.DataSource = listaFormaEntrega;
@@ -36,7 +32,7 @@ namespace TiendaVinilos
                     ddlFormaEntrega.SelectedIndex = -1;
 
                     listaFormaPago = negocioFormPago.listar();
-                    listaFormaPago.Insert(0, new FormaPago { Id = -1, Descripcion = "" });
+                    listaFormaPago.Insert(0, new FormaPago { Id = -1, Descripcion = "Forma de Pago" });
                     ddlFormaPago.DataSource = listaFormaPago;
                     ddlFormaPago.DataTextField = "Descripcion";
                     ddlFormaPago.DataValueField = "Id";
@@ -51,22 +47,43 @@ namespace TiendaVinilos
                     usuario = (Usuario)Session["usuario"];
 
                     int id = usuario.ID;
+                    Pedido domicilioentrega = (Pedido)Session["DomicilioEntrega"];
+                    if (domicilioentrega != null)
+                    {
+                        LblDomicilio.Text = domicilioentrega.Direccion + ", " + domicilioentrega.Localidad + ", " + domicilioentrega.Provincia;
+                        BtnModificar.Visible = true;
 
-                    TxtDireccion.Text = usuario.Direccion;
-                    TxtLocalidad.Text = usuario.Localidad;
-                    TxtProvincia.Text = usuario.Provincia;
+                    }
+                    else
+                    {
+                        LblDomicilio.Text = usuario.Direccion + ", " + usuario.Localidad + ", " + usuario.Provincia;
+                        BtnModificar.Visible = true;
+
+                    }
+
+                    Pedido domicilio = new Pedido();
+                    domicilio.Direccion = usuario.Direccion;
+                    domicilio.Localidad = usuario.Localidad;
+                    domicilio.Provincia = usuario.Provincia;
+
+                    Session.Add("Domicilio", domicilio);
 
                 }
                 else
                 {
                     if (ddlFormaEntrega.SelectedIndex == 2)
                     {
+                        BtnModificar.Visible = false;
                         UsuarioNegocio adm = new UsuarioNegocio();
                         Usuario administrador = new Usuario();
                         administrador = (Usuario)adm.BuscarAdmin();
-                        TxtDireccion.Text = administrador.Direccion;
-                        TxtLocalidad.Text = administrador.Localidad;
-                        TxtProvincia.Text = administrador.Provincia;
+                        Pedido domicilio = new Pedido();
+                        domicilio.Direccion = administrador.Direccion;
+                        domicilio.Localidad = administrador.Localidad;
+                        domicilio.Provincia = administrador.Provincia;
+                        LblDomicilio.Text = administrador.Direccion + ", " + administrador.Localidad + ", " + administrador.Provincia;
+                        Session.Add("Domicilio", domicilio);
+                        Session["DomicilioEntrega"] = null;
                     }
                 }
 
@@ -88,19 +105,31 @@ namespace TiendaVinilos
             UsuarioNegocio negocio = new UsuarioNegocio();
             Pedido pedido = new Pedido();
             PedidoNegocio pedidoNegocio = new PedidoNegocio();
-           
+
             ProductosCarrito carrito = (ProductosCarrito)Session["carrito"];
 
 
             Usuario usuario = (Usuario)Session["usuario"];
             pedido.IdUsuario = usuario.ID;
             pedido.IdFormaEntrega = ddlFormaEntrega.SelectedIndex;
-            pedido.Direccion = TxtDireccion.Text;
-            pedido.Localidad = TxtLocalidad.Text;
-            pedido.Provincia = TxtProvincia.Text;
+            Pedido domicilioentrega = (Pedido)Session["DomicilioEntrega"];//sera nulo si no decidio ir al formulario Domicilioentrega y cambiar los datos
+            if (domicilioentrega != null)
+            {
+                pedido.Direccion = domicilioentrega.Direccion;
+                pedido.Localidad = domicilioentrega.Localidad;
+                pedido.Provincia = domicilioentrega.Provincia;
+            }
+            else
+            {
+                Pedido domicilio = (Pedido)Session["Domicilio"];
+                pedido.Direccion = domicilio.Direccion;
+                pedido.Localidad = domicilio.Localidad;
+                pedido.Provincia = domicilio.Provincia;
+            }
+
             pedido.IdFormaPago = ddlFormaPago.SelectedIndex;
             pedido.Total = carrito.totalCarrito(carrito);
-            
+
             pedido.IdEstado = 1;
 
             pedido.Id = pedidoNegocio.insertarNuevo(pedido);
@@ -109,7 +138,7 @@ namespace TiendaVinilos
 
 
 
-           
+
             Session["Pedido"] = pedido;
             Session["carrito"] = carrito;
             Response.Redirect("ConfirmacionCompra.aspx", false);
@@ -148,6 +177,9 @@ namespace TiendaVinilos
             }
         }
 
-
+        protected void BtnModificar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DomicilioEntrega.aspx", false);
+        }
     }
 }
