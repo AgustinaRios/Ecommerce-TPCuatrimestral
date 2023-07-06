@@ -138,7 +138,7 @@ create table PEDIDOS (
  IdFormaPago int not null references Forma_Pago(Id),
  Total money not null,
  IdEstadoPedido int not null references Estado_Pedido(Id),
- FechaCreacion date not null
+ FechaCreacion date null
 )
 go
 create table PRODUCTOS_POR_PEDIDO(
@@ -148,7 +148,6 @@ create table PRODUCTOS_POR_PEDIDO(
   Cantidad int not null DEFAULT 0
 )
 go
-
 create procedure InsertarNuevo (
  
  @Nombre varchar(50),
@@ -163,8 +162,7 @@ As
 insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Direccion,Localidad,Provincia,Administrador,Activo)
  output inserted.Id values (@Nombre,@Apellido,@Email,@Pass,GETDATE(),@Dire,@Localidad,@Prov,0,1)
  go
- create procedure InsertarNuevoPedido (
- 
+create procedure InsertarNuevoPedido ( 
  @IdUsuario int,
  @IdFormaEntrega int,
  @Direccion varchar(100),
@@ -172,14 +170,13 @@ insert into USUARIOS (Nombre,Apellido,Email,Pass,FechaCreacion,Direccion,Localid
  @Provincia varchar (100),
  @IdFormaPago int,
  @Total money,
- @IdEstadoPedido int,
- @FechaCreacion date
+ @IdEstadoPedido int
+
  )
 As
 insert into PEDIDOS (IdUsuario,IdFormaEntrega,Direccion,Localidad,Provincia,IdFormaPago,Total,IdEstadoPedido,FechaCreacion)
  output inserted.Id values (@IdUsuario, @IdFormaEntrega,@Direccion,@Localidad,@Provincia,@IdFormaPago,@Total,@IdEstadoPedido,GETDATE())
 go
-
 create procedure InsertarProductoPorPedido (
 @IdPedido int,
 @IdAlbum int,
@@ -188,9 +185,10 @@ create procedure InsertarProductoPorPedido (
 as
 Insert into PRODUCTOS_POR_PEDIDO(IdPedido,IdAlbum,Cantidad)
 output inserted.Id values (@IdPedido,@IdAlbum,@Cantidad)
-
-
 go
+
+
+
 INSERT INTO FORMA_ENTREGA values ('Delivery'),('Retiro')
 go
 insert into FORMA_PAGO values ('Efectivo'),('Tarjeta de Credito'),('Mercado Pago')
@@ -225,6 +223,12 @@ VALUES
 
 go
  insert into USUARIOS 
-values ('adm','adm','adm@adm.com','adm','15/06/2023','Santo Tomé 4749','Monte Castro','Buenos Aires',1,1)
+values ('adm','adm','adm@adm.com','adm','2023/06/15','Santo Tomé 4749','Monte Castro','Buenos Aires',1,1)
 select *from FORMA_PAGO
 select * from ESTADO_PEDIDO
+select * from usuarios
+
+select getdate()
+
+select * from pedidos
+select * from PRODUCTOS_POR_PEDIDO

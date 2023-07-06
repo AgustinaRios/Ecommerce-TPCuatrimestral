@@ -30,6 +30,9 @@ namespace Negocio
                 datos.setearParametro("@Total", pedido.Total);
                 datos.setearParametro("@IdEstadoPedido", pedido.IdEstado);
              
+
+
+
                 return datos.ejectutarAccionScalar();
 
 

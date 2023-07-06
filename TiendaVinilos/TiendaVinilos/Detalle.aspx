@@ -78,7 +78,7 @@
             <h2><%= album.Titulo %></h2>
         </div>
         <div class="col text-right">
-            <a href="Detalle.aspx?id=<%: album.Id %>"><i class="fa fa-heart-o"></i></a>
+            <a href="Detalle.aspx?id=<%: album.Id %>"><i class="fa-solid fa-cart-plus"></i></a>
         </div>
     </div>
     <div class="rating">

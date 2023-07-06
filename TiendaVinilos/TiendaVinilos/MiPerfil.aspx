@@ -30,7 +30,7 @@
                 <asp:TextBox ID="TxtProvincia" runat="server" class="controls"></asp:TextBox>
             </div>
             <asp:Button ID="BtnAceptar" Text="GUARDAR CAMBIOS" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" />
-            <asp:Button ID="BtnCancelar" Text="CANCELAR" OnClick="BtnCancelar_Click" runat="server" CssClass="btn btn-success" />
+            <asp:Button ID="BtnCancelar" Text="CANCELAR" OnClick="BtnCancelar_Click" runat="server" CssClass="btn btn-danger" />
 
         </div>
     </div>
