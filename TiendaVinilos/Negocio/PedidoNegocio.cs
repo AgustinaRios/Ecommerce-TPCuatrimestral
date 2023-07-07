@@ -60,24 +60,29 @@ namespace Negocio
             {
 
                 datos.setearParametro("@ID", id);
-                datos.setearConsulta("select IdFormaEntrega,Direccion,Localidad,Provincia,IdFormaPago,Total,IdEstadoPedido,FechaCreacion from PEDIDOS where IdUsuario=@ID");
+                datos.setearConsulta("select  fe.id,fe.descripcion as formaentrega, p.Direccion, p.Localidad, p.Provincia,fp.id, fp.Descripcion as formapago, p.Total, ep.Id, ep.Descripcion as estadopedido, p.FechaCreacion from PEDIDOS p , FORMA_ENTREGA  fe, FORMA_PAGO  fp, ESTADO_PEDIDO  ep where p.IdFormaEntrega = fe.Id  and p.IdFormaPago = fp.Id   and p.IdEstadoPedido = ep.Id  and p.IdUsuario=@ID");
                 datos.ejecutarLectura();
-               
+
                 while (datos.Lector.Read())
                 {
 
-                    
+
                     Pedido aux = new Pedido();
-       
-                    aux.IdFormaEntrega = (int)datos.Lector["IdFormaEntrega"];
-                    aux.Direccion= (string)datos.Lector["Direccion"];
-                    aux.Localidad = (string)datos.Lector["Localidad"];
-                    aux.Provincia = (string)datos.Lector["Provincia"];
-                    aux.IdFormaPago = (int)datos.Lector["IdFormaPago"];
-                    aux.Total = (decimal)datos.Lector["Total"];
-                    aux.IdEstado = (int)datos.Lector["IdEstadoPedido"];
-                    aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
-                    
+               
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("formaentrega"))))
+                        aux.FormaEntrega = (string)datos.Lector["formaentrega"];
+                        aux.Direccion = (string)datos.Lector["Direccion"];
+                        aux.Localidad = (string)datos.Lector["Localidad"];
+                        aux.Provincia = (string)datos.Lector["Provincia"];
+                   
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("formapago"))))
+                        aux.FormaPago = (string)datos.Lector["formapago"];
+                        aux.Total = (decimal)datos.Lector["Total"];
+                   
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("estadopedido"))))
+                        aux.Estado = (string)datos.Lector["estadopedido"];
+                        aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+
 
 
                     lista.Add(aux);
