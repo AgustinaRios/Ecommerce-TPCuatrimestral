@@ -146,16 +146,15 @@ namespace Negocio
                 {
                     Usuario aux = new Usuario();
                     aux.ID = (int)datos.Lector["Id"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Apellido = (string)datos.Lector["Apellido"];
-                    aux.Email = (string)datos.Lector["Email"];
-                    aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
-                    aux.Direccion = (string)datos.Lector["Direccion"];
-                    aux.Localidad = (string)datos.Lector["Localidad"];
-                    aux.Provincia = (string)datos.Lector["Provincia"];
-                    aux.Admin = (bool)datos.Lector["Administrador"];
-                    aux.Activo = (bool)datos.Lector["Activo"];
-
+                    aux.Nombre = datos.Lector["Nombre"] is DBNull ? null : (string)datos.Lector["Nombre"];
+                    aux.Apellido = datos.Lector["Apellido"] is DBNull ? null : (string)datos.Lector["Apellido"];
+                    aux.Email = datos.Lector["Email"] is DBNull ? null : (string)datos.Lector["Email"];
+                    aux.FechaCreacion = datos.Lector["FechaCreacion"] is DBNull ? default(DateTime) : (DateTime)datos.Lector["FechaCreacion"];
+                    aux.Direccion = datos.Lector["Direccion"] is DBNull ? null : (string)datos.Lector["Direccion"];
+                    aux.Localidad = datos.Lector["Localidad"] is DBNull ? null : (string)datos.Lector["Localidad"];
+                    aux.Provincia = datos.Lector["Provincia"] is DBNull ? null : (string)datos.Lector["Provincia"];
+                    aux.Admin = datos.Lector["Administrador"] is DBNull ? false : (bool)datos.Lector["Administrador"];
+                    aux.Activo = datos.Lector["Activo"] is DBNull ? false : (bool)datos.Lector["Activo"];
 
                     lista.Add(aux);
                 }
@@ -172,6 +171,7 @@ namespace Negocio
             }
         }
 
+
         public List<Usuario> listar(string buscar)
         {
             List<Usuario> lista = new List<Usuario>();
@@ -186,15 +186,15 @@ namespace Negocio
                 {
                     Usuario aux = new Usuario();
                     aux.ID = (int)datos.Lector["Id"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Apellido = (string)datos.Lector["Apellido"];
-                    aux.Direccion = (string)datos.Lector["Direccion"];
-                    aux.Localidad = (string)datos.Lector["Localidad"];
-                    aux.Provincia = (string)datos.Lector["Provincia"];
-                    aux.Email = (string)datos.Lector["Email"];
-                    aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
-                    aux.Admin = (bool)datos.Lector["Administrador"];
-                    aux.Activo = (bool)datos.Lector["Activo"];
+                    aux.Nombre = datos.Lector["Nombre"] is DBNull ? null : (string)datos.Lector["Nombre"];
+                    aux.Apellido = datos.Lector["Apellido"] is DBNull ? null : (string)datos.Lector["Apellido"];
+                    aux.Email = datos.Lector["Email"] is DBNull ? null : (string)datos.Lector["Email"];
+                    aux.FechaCreacion = datos.Lector["FechaCreacion"] is DBNull ? default(DateTime) : (DateTime)datos.Lector["FechaCreacion"];
+                    aux.Direccion = datos.Lector["Direccion"] is DBNull ? null : (string)datos.Lector["Direccion"];
+                    aux.Localidad = datos.Lector["Localidad"] is DBNull ? null : (string)datos.Lector["Localidad"];
+                    aux.Provincia = datos.Lector["Provincia"] is DBNull ? null : (string)datos.Lector["Provincia"];
+                    aux.Admin = datos.Lector["Administrador"] is DBNull ? false : (bool)datos.Lector["Administrador"];
+                    aux.Activo = datos.Lector["Activo"] is DBNull ? false : (bool)datos.Lector["Activo"];
 
 
                     lista.Add(aux);
@@ -337,5 +337,36 @@ namespace Negocio
             }
         }
 
+
+        public Usuario ObtenerUsuarioPorId(int idUsuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Usuario usuario = null;
+
+            try
+            {
+                datos.setearConsulta("SELECT Id, Nombre, Apellido FROM USUARIOS WHERE Id = @Id");
+                datos.setearParametro("@Id", idUsuario);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    usuario = new Usuario();
+                    usuario.ID = Convert.ToInt32(datos.Lector["Id"]);
+                    usuario.Nombre = Convert.ToString(datos.Lector["Nombre"]);
+                    usuario.Apellido = Convert.ToString(datos.Lector["Apellido"]);
+                }
+
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

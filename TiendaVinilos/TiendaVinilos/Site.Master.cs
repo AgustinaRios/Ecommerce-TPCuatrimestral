@@ -179,41 +179,42 @@ namespace TiendaVinilos
 
             // Guardar la lista actualizada en la sesión
             Session["listaFiltrada"] = listaFiltrada;
+
             if (Page is Listar)
             {
                 Response.Redirect("Listar.aspx", false);
-
+            }
+            else if (Page is ListarUsuarios)
+            {
+                List<Usuario> listaUsuarios = new List<Usuario>();
+                UsuarioNegocio negocioUsuario = new UsuarioNegocio();
+                listaUsuarios = negocioUsuario.listar(buscar);
+                Session["ListarUsuarios"] = listaUsuarios;
+                Response.Redirect("ListarUsuarios.aspx", false);
+            }
+            else if (Page is Artistas)
+            {
+                List<Artista> listaArtista = new List<Artista>();
+                ArtistaNegocio artistaNegocio = new ArtistaNegocio();
+                listaArtista = artistaNegocio.listar(buscar);
+                Session["listaArtista"] = listaArtista;
+                Response.Redirect("Artistas.aspx", false);
+            }
+            else if (Page is ComprasUsuarios) // "ComprasUsuarios.aspx"
+            {
+                List<Pedido> listaPedidos = new List<Pedido>();
+                PedidoNegocio pedidoNegocio = new PedidoNegocio();
+                listaPedidos = pedidoNegocio.Listar(buscar);
+                Session["listaCompras"] = listaPedidos;
+                Response.Redirect("ComprasUsuarios.aspx", false);
             }
             else
             {
-                if (Page is ListarUsuarios)
-                {
-                    List<Usuario> listaUsuarios = new List<Usuario>();
-                    UsuarioNegocio negocioUsuario = new UsuarioNegocio();
-                    listaUsuarios = negocioUsuario.listar(buscar);
-                    Session["ListarUsuarios"] = listaUsuarios;
-                    Response.Redirect("ListarUsuarios.aspx", false);
-                }
-                else
-                {
-                    if (Page is Artistas)
-                    {
-                        List<Artista> listaArtista = new List<Artista>();
-                        ArtistaNegocio artistaNegocio = new ArtistaNegocio();
-                        listaArtista = artistaNegocio.listar(buscar);
-                        Session["listaArtista"] = listaArtista;
-                        Response.Redirect("Artistas.aspx", false);
-                    }
-                    else
-                    {
-                        ////pag inicio
-                        Response.Redirect("AlbumFiltrado.aspx", false);
-                    }
-
-                }
+                // Redireccionar a la página de inicio
+                Response.Redirect("AlbumFiltrado.aspx", false);
             }
-
         }
+
 
 
         public void btnLogout_Click(object sender, EventArgs e)
