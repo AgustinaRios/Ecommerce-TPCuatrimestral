@@ -13,19 +13,19 @@ namespace TiendaVinilos
 
         public Album albumSeleccionado { get; set; }
 
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-              if (Request.QueryString["iddetalle"] != null)
+                if (Request.QueryString["iddetalle"] != null)
                 {
-                Int32 id =Int32.Parse(Request.QueryString["iddetalle"]);          
-                AlbumNegocio negocio = new AlbumNegocio();
-                albumSeleccionado = negocio.ObtenerAlbum(id);
+                    Int32 id = Int32.Parse(Request.QueryString["iddetalle"]);
+                    AlbumNegocio negocio = new AlbumNegocio();
+                    albumSeleccionado = negocio.ObtenerAlbum(id);
                     Session.Add("Id", id);
-                    Session.Add("producto", albumSeleccionado);   
-                    
+                    Session.Add("producto", albumSeleccionado);
+
                 }
                 else
                 {
@@ -57,6 +57,6 @@ namespace TiendaVinilos
 
         }
 
-        
+
     }
 }

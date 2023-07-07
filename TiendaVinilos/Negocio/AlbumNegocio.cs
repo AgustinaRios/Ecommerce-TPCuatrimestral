@@ -25,19 +25,21 @@ namespace Negocio
                 {
                     Album aux = new Album();
                     aux.Id = (int)datos.Lector["Id"];
-                    aux.Titulo= (string)datos.Lector["Titulo"];
-                   
+                    aux.Titulo = (string)datos.Lector["Titulo"];
+
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
-                    aux.Artista.Nombre = (string)datos.Lector["Artista"];
+                        aux.Artista.Nombre = (string)datos.Lector["Artista"];
                     aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
-                    aux.ImgTapa = (string)datos.Lector["ImgTapa"];
-                    aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
+                        aux.ImgTapa = (string)datos.Lector["ImgTapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
+                        aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
                     aux.Genero = new Genero();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Genero"))))
                         aux.Genero.Descripcion = (string)datos.Lector["Genero"];
                     aux.Categoria = new Categoria();
-                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Categoria"))) )
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Categoria"))))
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
 
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Precio"))))
@@ -64,7 +66,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        
+
         public List<Album> listarxGenero(int idgenero)
         {
             List<Album> lista = new List<Album>();
@@ -457,7 +459,7 @@ namespace Negocio
             }
         }
 
-         public void BajaLogica(int Id)
+        public void BajaLogica(int Id)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -507,6 +509,6 @@ namespace Negocio
 
 
 
-    
+
 }
 

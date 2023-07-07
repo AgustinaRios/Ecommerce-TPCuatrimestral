@@ -1,4 +1,4 @@
-﻿ :root {
+﻿:root {
     --primario: #9c27b0;
     --primarioOscuro: #89119d;
     --secundario: #FFCE00;
@@ -64,10 +64,8 @@ body {
     background: #243ed3;
     padding: 30px;
     margin: auto;
-    margin-top:10px;
+    margin-top: 10px;
     border-radius: 10px;
-    
-   
     box-shadow: 7px 13px 37px #000;
     align-items: center;
 }
@@ -155,4 +153,40 @@ tr:nth-child(even) {
 tr:hover td {
     background-color: #369681;
     color: white;
+}
+/* Estilos personalizados */
+.album-details {
+    margin-top: 20px;
+}
+
+    .album-details h2 {
+        font-size: 24px;
+        color: #333;
+    }
+
+.rating {
+    margin-bottom: 10px;
+}
+
+    .rating .fa-star {
+        color: #f1c40f;
+    }
+
+    .rating .fa-star-half-full {
+        color: #f1c40f;
+    }
+
+.artist,
+.release-date,
+.genre,
+.category,
+.price {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-weight: bold;
+    color: #f1c40f;
 }
