@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormAltaArtista.aspx.cs" Inherits="TiendaVinilos.FormAltaArtista" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="CuerpoRegistro">
-            <div class="FormularioRegistro">
+        <div class="ContenedorPrincipal">
+        <div class="container-Formularios">
+  
                 <asp:Label ID="LblNombre" runat="server" Text="Nuevo Artista"></asp:Label>
                 <div>
                     <asp:TextBox ID="TxtNombre" runat="server" type="text" placeholder="Ingrese un Artista" class="controls"></asp:TextBox>

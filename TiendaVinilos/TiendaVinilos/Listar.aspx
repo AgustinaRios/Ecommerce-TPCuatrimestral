@@ -3,15 +3,15 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-
-    <div class="CuerpoRegistro">
+   <div class="ContenedorPrincipal">
+<div class="container-listas">
+  
     <table>
         <thead>
             <tr>
                 <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Vinilo" CssClass="btn btn-primary" type="submit" OnClick="BtnAlta_Click" />      
             </tr>
-            <tr>
+             <tr style="color: #000000 ;background-color:#243ed3">
                 <th scope="col">Titulo</th>
                 <th scope="col">Artista</th>
                 <th scope="col">Fecha Lanzamiento</th> 
@@ -70,6 +70,8 @@
 
         </div>
 
+   </div>
+      
 </asp:Content>
 
 

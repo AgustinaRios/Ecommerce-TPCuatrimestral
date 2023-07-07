@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="CuerpoRegistro">
-        <div class="FormularioRegistro">
+    <div class="ContenedorPrincipal">
+        <div class="container-Formularios">
             <h4>Mi Perfil</h4>
             <div class="form-inline">
                 <label for="TxtNombre">Nombre</label>

@@ -2,11 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="CuerpoRegistro">
-
-
-        <div class="CuerpoRegistro">
-            <div class="FormularioRegistro">
+   <div class="ContenedorPrincipal">
+        <div class="container-Formularios">
                 <h4>Formulario Registro</h4>
 
                 <asp:TextBox ID="TxtNombre" class="controls" type="text" placeholder="Ingrese su Nombre" aria-label="Ingrese Nombre" runat="server"></asp:TextBox>
@@ -29,7 +26,6 @@
             </div>
         </div>
 
-    </div>
 
 
 </asp:Content>

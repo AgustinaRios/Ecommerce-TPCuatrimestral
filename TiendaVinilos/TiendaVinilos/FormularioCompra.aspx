@@ -5,8 +5,8 @@
 
 
 
-        <div class="CuerpoRegistro">
-            <div class="FormularioRegistro ">
+        <div class="ContenedorPrincipal">
+        <div class="container-Formularios">
                 <asp:Label ID="Lbltitlulo" runat="server" Font-Size="Smaller"></asp:Label>
                 <div>
 

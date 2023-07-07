@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup ="true" CodeBehind="ListarUsuarios.aspx.cs" Inherits="TiendaVinilos.ListarUsuarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="CuerpoRegistro">
+     <div class="ContenedorPrincipal">
+<div class="container-listas">
+  
     <table>
         <thead >
             <tr>
                <asp:Button ID="BtnAlta" runat="server" Text="Nuevo Usuario" CssClass="btn btn-primary" type="submit" OnClick="BtnAlta_Click" />   
             </tr>
-            <tr>
+             <tr style="color: #000000 ;background-color:#243ed3">
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Email</th>
@@ -47,4 +49,5 @@
     </table>
     <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
             </div>
+         </div>
 </asp:Content>

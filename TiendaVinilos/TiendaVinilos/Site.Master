@@ -212,10 +212,7 @@
                             <li class="nav-item">
                                 <asp:Button ID="btnLogout" Text="Cerrar Session" runat="server" OnClick="btnLogout_Click" CssClass="btn btn-light" Font-Size="XX-Small" BackColor="#243ed3" BorderColor="#243ed3" />
                             </li>
-                        </ul>
-                    </div>
-
-                    <li class="nav-item">
+                            <li class="nav-item">
                         <a class="nav-link" href="MisCompras.aspx">
                             <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 448 512">
                                 <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -224,7 +221,9 @@
                         <p style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-style: inherit; font-size: xx-small; font-weight: lighter; color: #000000">Mis Compras</p>
 
                     </li>
-
+                        </ul>
+                    </div>
+                   
                     <div class="d-flex">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">

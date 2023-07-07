@@ -9,8 +9,28 @@ textarea {
     max-width: 280px;
 }
 
-
-
+.ContenedorPrincipal {
+    padding:0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://i.pinimg.com/originals/f1/54/75/f15475b7bb11a662426a55cf4ea9f0c8.jpg);
+}
+.container-listas {
+    padding: 50px;
+    height: 600px;
+    overflow-y: scroll;
+}
+.container-Formularios {
+    background-color: #243ed3;
+    padding: 50px;
+    height: 500px;
+    width: 700px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 7px 13px 37px #000;
+   
+}
 .ImgItemListar {
     height: 2rem;
     border: double;

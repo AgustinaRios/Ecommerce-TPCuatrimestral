@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master"  AutoEventWireup="true" CodeBehind="FormAltaGenero.aspx.cs" Inherits="TiendaVinilos.FormAltaGenero" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="CuerpoRegistro">
-            <div class="FormularioRegistro">
+    <div class="ContenedorPrincipal">
+        <div class="container-Formularios">
                 <asp:Label ID="LblNombre" runat="server" Text="Nuevo Genero"></asp:Label>
                 <div>
                     <asp:TextBox ID="TxtNombre" runat="server" type="text" placeholder="Ingrese un genero" class="controls"></asp:TextBox>

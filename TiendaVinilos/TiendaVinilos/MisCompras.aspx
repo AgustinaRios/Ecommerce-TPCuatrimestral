@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup ="true" CodeBehind="MisCompras.aspx.cs" Inherits="TiendaVinilos.MisCompras" %>
 
-
     <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="CuerpoRegistro">
+     <div class="ContenedorPrincipal">
+<div class="container-listas">
+  
         <asp:GridView ID="GridViewPedidos" runat="server" AutoGenerateColumns="False" CssClass="table" EmptyDataText="No hay pedidos disponibles">
             <Columns>
                 <asp:BoundField DataField="FormaEntrega" HeaderText="Forma de Entrega" />
@@ -16,6 +17,7 @@
             </Columns>
         </asp:GridView>
     </div>
+         </div>
 </asp:Content>
 
 

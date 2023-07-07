@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DomicilioEntrega.aspx.cs" Inherits="TiendaVinilos.Domicilio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="CuerpoRegistro">
-            <div class="FormularioRegistro">
+     <div class="ContenedorPrincipal">
+        <div class="container-Formularios">
                <div class="form-inline">
                 <label for="TxtDireccion">Direccion</label>
                 <asp:TextBox ID="TxtDireccion" runat="server" class="controls"></asp:TextBox>

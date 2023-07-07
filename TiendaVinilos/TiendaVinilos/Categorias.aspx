@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Categorias.aspx.cs" Inherits="TiendaVinilos.Categorias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    
-    <div class="CuerpoRegistro">
+     <div class="ContenedorPrincipal">
+<div class="container-listas">
+  
     <table>
         <thead>
              <tr>
                    <asp:Button Text=" Nueva Categoria" CssClass="btn btn-primary" ID="btnAgregarNuevo" OnClick="btnAgregarNuevo_Click" runat="server" />   
              </tr>
-            <tr>
+             <tr style="color: #000000 ;background-color:#243ed3">
                 <th scope="col">Id</th>
                 <th scope="col">Descripción</th>
                 <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M192 64C86 64 0 150 0 256S86 448 192 448H384c106 0 192-86 192-192s-86-192-192-192H192zm192 96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></svg></th>                              
@@ -40,5 +42,6 @@
     </table>
     <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
             </div>
+         </div>
 </asp:Content>
 
