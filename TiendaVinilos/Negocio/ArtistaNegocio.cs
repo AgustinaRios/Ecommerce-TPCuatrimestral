@@ -40,15 +40,16 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
         public List<Artista> listar(string buscar)
         {
             List<Artista> lista = new List<Artista>();
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA where Nombre like '%"+buscar+"%'");
+                datos.setearConsulta("Select art.Id,art.Nombre,art.Activo from ARTISTA art inner join ALBUMES a on a.IdArtista=art.Id where a.Activo=1 and art.Activo=1  and Nombre like '%" + buscar + "%'");
                 datos.ejecutarLectura();
+                
 
                 while (datos.Lector.Read())
                 {

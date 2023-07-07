@@ -11,14 +11,23 @@ namespace Negocio
 {
     public class AlbumNegocio
     {
-        public List<Album> listar()
+        public List<Album> listar(bool Todos = false)
         {
             List<Album> lista = new List<Album>();
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa,A.Activo, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria order by Titulo asc");
+                if (Todos)
+                {
+                    datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa,A.Activo, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria order by Titulo asc");
+
+                }
+                else
+                {
+                    datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa,A.Activo, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria order by Titulo asc");
+
+                }
+
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -67,15 +76,16 @@ namespace Negocio
             }
         }
 
+
         public List<Album> listarxGenero(int idgenero)
         {
             List<Album> lista = new List<Album>();
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa,A.Activo, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria and A.IdGenero=" + idgenero);
+                datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa,A.Activo, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria and A.Activo=1 and A.IdGenero=" + idgenero);
                 datos.ejecutarLectura();
+
 
                 while (datos.Lector.Read())
                 {
@@ -344,11 +354,9 @@ namespace Negocio
         {
             List<Album> lista = new List<Album>();
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-
-                datos.setearConsulta("select distinct A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria,A.Activo from ALBUMES A inner join GENEROS G on G.id=A.IdGenero INNER JOIN ARTISTA Art ON ART.Id=A.IdArtista INNER JOIN CATEGORIA C ON C.Id=A.IdCategoria WHERE A.Activo=1 and Titulo LIKE '%" + buscar + "%' or Art.Nombre like '%" + buscar + "%'ORDER BY A.Id");
+                datos.setearConsulta("select distinct A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria,A.Activo from ALBUMES A inner join GENEROS G on G.id=A.IdGenero INNER JOIN ARTISTA Art ON ART.Id=A.IdArtista INNER JOIN CATEGORIA C ON C.Id=A.IdCategoria WHERE Titulo LIKE '%" + buscar + "%' or Art.Nombre like '%" + buscar + "%' and  A.Activo=1 ORDER BY A.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

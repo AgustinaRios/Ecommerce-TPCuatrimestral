@@ -175,7 +175,15 @@ namespace TiendaVinilos
             AlbumNegocio negocio = new AlbumNegocio();
             string buscar = txtFiltro.Text;
 
-            listaFiltrada = negocio.listaFiltrada(buscar);
+            
+            if (buscar != "")
+            {
+                listaFiltrada = negocio.listaFiltrada(buscar);
+            }
+            else
+            {
+                listaFiltrada = negocio.listar();
+            }
 
             // Guardar la lista actualizada en la sesión
             Session["listaFiltrada"] = listaFiltrada;
