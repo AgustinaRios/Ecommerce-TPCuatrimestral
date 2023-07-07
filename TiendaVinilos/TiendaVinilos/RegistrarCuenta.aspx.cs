@@ -26,7 +26,7 @@ namespace TiendaVinilos
             TxtNombre.BorderColor = Color.White;
 
             bool vacios = false;
-            
+
             if (TxtEmail.Text == "")
             {
                 TxtEmail.BorderColor = Color.Red;
@@ -39,6 +39,17 @@ namespace TiendaVinilos
             }
 
             return vacios;
+        }
+        private bool LongitudContraseña()
+        {
+            bool cumpleRequisitos = false;
+            string campo = TxtPass.Text;
+
+            if (campo.Length >= 6)
+            {
+                cumpleRequisitos = true;
+            }
+            return cumpleRequisitos;
         }
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
@@ -64,17 +75,27 @@ namespace TiendaVinilos
                 }
                 if (ValidarVacios() == false)
                 {
-                    usuario.ID = usuarioNegocio.insertarNuevo(usuario);
-                    Session.Add("Usuario", usuario);
-                    emailService.EnviarCorreo(usuario.Email, "Bienvenidx a Tienda de Vinilos", "Gracias por registrarte, esperamos que disfrutes tu experiencia!");
+                    if (LongitudContraseña() == false)
+                    {
+                        // El campo no cumple con el mínimo de caracteres requeridos
+                        LblMensaje.Text = "El campo debe tener al menos 6 caracteres";
+                        LblMensaje.Visible = true;
+                    }
+                    else
+                    {
+                        usuario.ID = usuarioNegocio.insertarNuevo(usuario);
+                        Session.Add("Usuario", usuario);
+                        emailService.EnviarCorreo(usuario.Email, "Bienvenidx a Tienda de Vinilos", "Gracias por registrarte, esperamos que disfrutes tu experiencia!");
 
-                    Response.Redirect("MiPerfil.aspx",false); 
-                   ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('  usuario creado exitosamente ,Hola " + usuario.Nombre + "');window.location ='Inicio.aspx';", true);
+                        Response.Redirect("MiPerfil.aspx", false);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('  usuario creado exitosamente ,Hola " + usuario.Nombre + "');window.location ='Inicio.aspx';", true);
+                    
+                    }
 
                 }
                 else
                 {
-                
+
                     LblMensaje.Text = "Complete todos los campos necesarios, por favor.";
                     LblMensaje.Visible = true;
                     return;
