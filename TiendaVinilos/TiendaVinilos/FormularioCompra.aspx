@@ -39,7 +39,17 @@
                     <%} %>
                       <asp:Button ID="BtnAceptar" Text="Comprar" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />
                 <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
-                 
+                    <div>
+                        <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
+                    </div>
+                  <asp:RangeValidator ID="rvclass" runat="server" ControlToValidate="TxtNroTarjeta"
+                        ErrorMessage="Solo números" MaximumValue="10000000000000000"
+                        MinimumValue="1" Type="Double">
+                    </asp:RangeValidator>
+                    <asp:RangeValidator ID="rvlclass2" runat="server" ControlToValidate="TxtCodSeguridad"
+                        ErrorMessage="Solo números" MaximumValue="5000"
+                        MinimumValue="1" Type="Double">
+                    </asp:RangeValidator>
 
                 </div>
             </div>
@@ -48,9 +58,6 @@
                 <contentemplate>
                     <br />
 
-                    <div>
-                        <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
-                    </div>
         </div>
 
 

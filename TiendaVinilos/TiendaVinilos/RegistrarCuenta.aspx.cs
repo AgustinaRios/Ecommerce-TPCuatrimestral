@@ -68,13 +68,16 @@ namespace TiendaVinilos
                     Session.Add("Usuario", usuario);
                     emailService.EnviarCorreo(usuario.Email, "Bienvenidx a Tienda de Vinilos", "Gracias por registrarte, esperamos que disfrutes tu experiencia!");
 
-                    //Response.Redirect("Inicio.aspx",false); 
-                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('  usuario creado exitosamente ,Hola " + usuario.Nombre + "');window.location ='Inicio.aspx';", true);
+                    Response.Redirect("MiPerfil.aspx",false); 
+                   ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('  usuario creado exitosamente ,Hola " + usuario.Nombre + "');window.location ='Inicio.aspx';", true);
 
                 }
                 else
                 {
-                    Response.Write("<script>alert('complete todos los campos');</script>");
+                
+                    LblMensaje.Text = "Complete todos los campos necesarios, por favor.";
+                    LblMensaje.Visible = true;
+                    return;
                 }
 
             }

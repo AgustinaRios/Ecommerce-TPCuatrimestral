@@ -11,22 +11,33 @@ namespace TiendaVinilos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             Pedido domicilio = new Pedido();
-            domicilio.Direccion = TxtDireccion.Text;
-            domicilio.Localidad = TxtLocalidad.Text;
-            domicilio.Provincia = TxtProvincia.Text;
-            Session.Add("DomicilioEntrega", domicilio);
-            Response.Redirect("FormularioCompra.aspx", false);
+            if (TxtDireccion.Text == "" || TxtLocalidad.Text == "" || TxtProvincia.Text == "")
+            {
+                LblMensaje.Text = "Complete todos los campos";
+                LblMensaje.Visible = true;
+                return;
+
+            }
+            else
+            {
+
+                domicilio.Direccion = TxtDireccion.Text;
+                domicilio.Localidad = TxtLocalidad.Text;
+                domicilio.Provincia = TxtProvincia.Text;
+                Session.Add("DomicilioEntrega", domicilio);
+                Response.Redirect("FormularioCompra.aspx", false);
+            }
         }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("FormularioCompra.aspx",false);
+            Response.Redirect("FormularioCompra.aspx", false);
         }
     }
 }

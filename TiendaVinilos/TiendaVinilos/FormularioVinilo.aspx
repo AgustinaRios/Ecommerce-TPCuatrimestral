@@ -17,8 +17,11 @@
                     <asp:TextBox ID="TxtImgContraTapa" class="controls" type="text" placeholder="url de la imagen de la Contratapa" runat="server"></asp:TextBox>
                 </div>
                 <asp:TextBox ID="TxtPrecio" class="controls" type="text" placeholder="Ingrese el Precio" runat="server"></asp:TextBox>
+                <div>
+
                 <asp:Label ID="LblFecha" runat="server" Text="Lanzamiento" Font-Size="Small"></asp:Label>
                 <asp:TextBox ID="TxtFechaLanza" class="form-control" type="date" runat="server"></asp:TextBox>
+                </div>
                 <div class="form-inline">
                     <asp:DropDownList runat="server" ID="ddlGenero" CssClass="form-control">
                     </asp:DropDownList>

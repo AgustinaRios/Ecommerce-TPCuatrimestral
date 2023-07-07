@@ -16,7 +16,9 @@
             </div>
             <asp:Button ID="BtnAceptar" Text="Cambiar el domicilio " OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" />
             <asp:Button ID="BtnCancelar" Text="CANCELAR" OnClick="BtnCancelar_Click" runat="server" CssClass="btn btn-danger" />
-
+                  <div>
+                        <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
+                    </div>
             </div>
         </div>
 </asp:Content>

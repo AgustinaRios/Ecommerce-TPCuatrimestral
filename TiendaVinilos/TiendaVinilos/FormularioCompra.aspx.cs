@@ -2,6 +2,7 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace TiendaVinilos
 {
@@ -21,7 +22,7 @@ namespace TiendaVinilos
             {
                 if (!IsPostBack)
                 {
-                   
+
                     listaFormaEntrega = negocioFormEntrega.listar();
                     listaFormaEntrega.Insert(0, new FormaEntrega { Id = -1, Descripcion = "Forma de Entrega" });
                     ddlFormaEntrega.DataSource = listaFormaEntrega;
@@ -56,17 +57,26 @@ namespace TiendaVinilos
                     }
                     else
                     {
-                        LblDomicilio.Text = usuario.Direccion + ", " + usuario.Localidad + ", " + usuario.Provincia;
-                        BtnModificar.Visible = true;
+                        if (usuario.Direccion == "" || usuario.Localidad == "" || usuario.Provincia == "")
+                        {
+                            LblDomicilio.Text = "Debe ingresar un Domicilio de Entrega";
+                            BtnModificar.Visible = true;
+                        }
+                        else
+                        {
 
+                            LblDomicilio.Text = usuario.Direccion + ", " + usuario.Localidad + ", " + usuario.Provincia;
+                            BtnModificar.Visible = true;
+                        }
+
+
+                        Pedido domicilio = new Pedido();
+                        domicilio.Direccion = usuario.Direccion;
+                        domicilio.Localidad = usuario.Localidad;
+                        domicilio.Provincia = usuario.Provincia;
+
+                        Session.Add("Domicilio", domicilio);
                     }
-
-                    Pedido domicilio = new Pedido();
-                    domicilio.Direccion = usuario.Direccion;
-                    domicilio.Localidad = usuario.Localidad;
-                    domicilio.Provincia = usuario.Provincia;
-
-                    Session.Add("Domicilio", domicilio);
 
                 }
                 else
@@ -88,11 +98,39 @@ namespace TiendaVinilos
                 }
 
 
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+        bool ValidarVaciosTarjeta()
+        {
+            TxtCodSeguridad.BorderColor = Color.White;
+            TxtFechaVto.BorderColor = Color.White;
+            TxtNroTarjeta.BorderColor = Color.White;
+
+            bool vacios = false;
+
+            if (TxtCodSeguridad.Text == "")
+            {
+                TxtCodSeguridad.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtFechaVto.Text == "")
+            {
+
+                TxtFechaVto.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtNroTarjeta.Text == "")
+            {
+                TxtFechaVto.BorderColor = Color.Red;
+                vacios = true;
+            }
+
+            return vacios;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -115,19 +153,50 @@ namespace TiendaVinilos
             Pedido domicilioentrega = (Pedido)Session["DomicilioEntrega"];//sera nulo si no decidio ir al formulario Domicilioentrega y cambiar los datos
             if (domicilioentrega != null)
             {
+
                 pedido.Direccion = domicilioentrega.Direccion;
                 pedido.Localidad = domicilioentrega.Localidad;
                 pedido.Provincia = domicilioentrega.Provincia;
             }
             else
             {
+
                 Pedido domicilio = (Pedido)Session["Domicilio"];
+                if (domicilio.Direccion == "" || domicilio.Localidad == "" || domicilio.Provincia == "")
+                {
+                    LblMensaje.Text = "Complete todos los campos";
+                    LblMensaje.Visible = true;
+                    return;
+
+                }
                 pedido.Direccion = domicilio.Direccion;
                 pedido.Localidad = domicilio.Localidad;
                 pedido.Provincia = domicilio.Provincia;
             }
 
             pedido.IdFormaPago = ddlFormaPago.SelectedIndex;
+            if (pedido.IdFormaPago == 3)
+            {
+                if (ValidarVaciosTarjeta() == true)
+                {
+                    LblMensaje.Text = "Complete todos los campos";
+                    LblMensaje.Visible = true;
+                    return;
+                }
+
+                DateTime fechavto = DateTime.Parse(TxtFechaVto.Text);
+                //// Se valida que la fecha no sea anterior a la del dia actual
+                DateTime hoy = DateTime.Now;
+                if (fechavto <= hoy)
+                {
+                    LblMensaje.Text = "Tarjeta de crédito vencida";
+                    LblMensaje.Visible = true;
+                    return;
+                }
+            }
+
+
+
             pedido.Total = carrito.totalCarrito(carrito);
 
             pedido.IdEstado = 1;

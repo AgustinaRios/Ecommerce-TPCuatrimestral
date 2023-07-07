@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -138,7 +139,7 @@ namespace TiendaVinilos
 
 
 
-
+                       
                     }
 
 
@@ -156,9 +157,7 @@ namespace TiendaVinilos
         bool ValidarVacios()
         {
             TxtTitulo.BorderColor = Color.White;
-            TxtImgTapa.BorderColor = Color.White;
-            TxtImgContraTapa.BorderColor = Color.White;
-            TxtFechaLanza.BorderColor = Color.White;
+            TxtPrecio.BorderColor= Color.White;
 
             bool vacios = false;
             if (TxtTitulo.Text == "")
@@ -166,19 +165,9 @@ namespace TiendaVinilos
                 TxtTitulo.BorderColor = Color.Red;
                 vacios = true;
             }
-            if (TxtImgTapa.Text == "")
+            if (ddlArtista.SelectedIndex == -1)
             {
-                TxtImgTapa.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (TxtImgContraTapa.Text == "")
-            {
-                TxtImgContraTapa.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (TxtFechaLanza.Text == "")
-            {
-                TxtFechaLanza.BorderColor = Color.Red;
+                ddlArtista.BorderColor = Color.Red;
                 vacios = true;
             }
             if (TxtPrecio.Text == "")
@@ -215,8 +204,7 @@ namespace TiendaVinilos
                 }
                 nuevo.ImgTapa = TxtImgTapa.Text;
                 nuevo.ImgContratapa = TxtImgContraTapa.Text;
-                nuevo.Precio = Decimal.Parse(TxtPrecio.Text);
-                nuevo.Genero = new Genero();
+               nuevo.Genero = new Genero();
                 nuevo.Genero.Id = int.Parse(ddlGenero.SelectedValue);
                 nuevo.Categoria = new Categoria();
                 nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
@@ -246,14 +234,19 @@ namespace TiendaVinilos
                 {
                     if (ValidarVacios() == false)
                     {
+                        nuevo.Precio = Decimal.Parse(TxtPrecio.Text);
+
                         albumNegocio.agregar(nuevo);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
                         // Response.Redirect("Listar.aspx");
                     }
                     else
                     {
-                        Response.Write("<script>alert('complete todos los campos');</script>");
+                        LblMensaje.Text = "Debe ingresar los campos obligatorios";
+                        LblMensaje.Visible = true;
+                        return;
                     }
+
 
                 }
             }
