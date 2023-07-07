@@ -94,6 +94,7 @@ namespace TiendaVinilos
 
         protected void btnAgregarNuevo_Click(object sender, EventArgs e)
         {
+            Session["PaginaAnterior"] = Request.Url.ToString();
             Response.Redirect("FormAltaArtista.aspx");
         }
 

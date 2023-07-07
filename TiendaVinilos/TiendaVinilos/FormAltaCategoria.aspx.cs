@@ -30,7 +30,11 @@ namespace TiendaVinilos
                 LblMensaje.Text = "Categoría agregada exitosamente";
                 LblMensaje.Visible = true;
 
-                Response.Redirect("Categorias.aspx", false);
+                string paginaAnterior = Session["PaginaAnterior"] as string;
+                if (!string.IsNullOrEmpty(paginaAnterior))
+                {
+                    Response.Redirect(paginaAnterior, false);
+                }
 
             }
             catch (Exception ex)
@@ -44,7 +48,11 @@ namespace TiendaVinilos
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Categorias.aspx", false);
+            string paginaAnterior = Session["PaginaAnterior"] as string;
+            if (!string.IsNullOrEmpty(paginaAnterior))
+            {
+                Response.Redirect(paginaAnterior, false);
+            }
         }
     }
 }

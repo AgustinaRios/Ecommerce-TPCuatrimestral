@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -139,7 +140,7 @@ namespace TiendaVinilos
 
 
 
-                       
+
                     }
 
 
@@ -153,11 +154,27 @@ namespace TiendaVinilos
             }
 
         }
+        protected void btnAgregarArtista_Click(object sender, EventArgs e)
+        {
+            Session["PaginaAnterior"] = Request.Url.ToString();
+            Response.Redirect("FormAltaArtista.aspx", false);
+        }
+        protected void btnAgregarGenero_Click(object sender, EventArgs e)
+        {
+            Session["PaginaAnterior"] = Request.Url.ToString();
+            Response.Redirect("FormAltaGenero.aspx", false);
+        }
+        protected void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            Session["PaginaAnterior"] = Request.Url.ToString();
+            Response.Redirect("FormAltaCategoria.aspx", false);
+        }
+
 
         bool ValidarVacios()
         {
             TxtTitulo.BorderColor = Color.White;
-            TxtPrecio.BorderColor= Color.White;
+            TxtPrecio.BorderColor = Color.White;
 
             bool vacios = false;
             if (TxtTitulo.Text == "")
@@ -189,10 +206,10 @@ namespace TiendaVinilos
                 Album nuevo = new Album();
                 nuevo.Titulo = TxtTitulo.Text;
 
-               
+
                 AlbumNegocio albumNegocio = new AlbumNegocio();
 
-                
+
                 nuevo.FechaLanzamiento = DateTime.Parse(TxtFechaLanza.Text);
                 //// Se valida que la fecha no sea posterior a la del dia actual
                 DateTime hoy = DateTime.Now;
@@ -204,7 +221,7 @@ namespace TiendaVinilos
                 }
                 nuevo.ImgTapa = TxtImgTapa.Text;
                 nuevo.ImgContratapa = TxtImgContraTapa.Text;
-               nuevo.Genero = new Genero();
+                nuevo.Genero = new Genero();
                 nuevo.Genero.Id = int.Parse(ddlGenero.SelectedValue);
                 nuevo.Categoria = new Categoria();
                 nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);

@@ -26,7 +26,11 @@ namespace TiendaVinilos
                 LblMensaje.Text = "Genero agregado exitosamente";
                 LblMensaje.Visible = true;
 
-                Response.Redirect("Generos.aspx", false);
+                string paginaAnterior = Session["PaginaAnterior"] as string;
+                if (!string.IsNullOrEmpty(paginaAnterior))
+                {
+                    Response.Redirect(paginaAnterior, false);
+                }
 
             }
             catch (Exception ex)
@@ -40,7 +44,11 @@ namespace TiendaVinilos
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Generos.aspx", false);
+            string paginaAnterior = Session["PaginaAnterior"] as string;
+            if (!string.IsNullOrEmpty(paginaAnterior))
+            {
+                Response.Redirect(paginaAnterior, false);
+            }
         }
     }
 }

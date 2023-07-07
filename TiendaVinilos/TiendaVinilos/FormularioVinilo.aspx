@@ -10,8 +10,15 @@
             <div>
 
                 <asp:TextBox ID="TxtTitulo" runat="server" type="text" placeholder="Ingrese un Titulo" class="controls"></asp:TextBox>
-                <asp:DropDownList runat="server" ID="ddlArtista" class="form-control" AutoPostBack="true" />
+                <div class="form-inline">
 
+                    <asp:DropDownList runat="server" ID="ddlArtista" class="form-control" AutoPostBack="true" />
+                    <asp:Button ID="btnAgregarArtista" runat="server" OnClick="btnAgregarArtista_Click" Text="+" CssClass="btn btn-primary"/>
+                       
+                     
+                    <asp:Label Text="Agregar un Artista Nuevo" runat="server" Font-Size="Small"></asp:Label>
+              
+                </div>
                 <div class="form-inline">
                     <asp:TextBox ID="TxtImgTapa" class="controls" type="text" placeholder="url de la imagen de la tapa" runat="server"></asp:TextBox>
                     <asp:TextBox ID="TxtImgContraTapa" class="controls" type="text" placeholder="url de la imagen de la Contratapa" runat="server"></asp:TextBox>
@@ -19,15 +26,22 @@
                 <asp:TextBox ID="TxtPrecio" class="controls" type="text" placeholder="Ingrese el Precio" runat="server"></asp:TextBox>
                 <div>
 
-                <asp:Label ID="LblFecha" runat="server" Text="Lanzamiento" Font-Size="Small"></asp:Label>
-                <asp:TextBox ID="TxtFechaLanza" class="form-control" type="date" runat="server"></asp:TextBox>
+                    <asp:Label ID="LblFecha" runat="server" Text="Lanzamiento" Font-Size="Small"></asp:Label>
+                    <asp:TextBox ID="TxtFechaLanza" class="form-control" type="date" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-inline">
                     <asp:DropDownList runat="server" ID="ddlGenero" CssClass="form-control">
                     </asp:DropDownList>
-
+                     <asp:Button ID="btnAgregarGero" runat="server" OnClick="btnAgregarGenero_Click" Text="+" CssClass="btn btn-primary"/>
+                    <asp:Label Text="Agregar un Genero Nuevo" runat="server" Font-Size="Small"></asp:Label>
+              
+                    </div>
+                <div class="form-inline">
                     <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control">
                     </asp:DropDownList>
+                         <asp:Button ID="btnAgregarCategoria" runat="server" OnClick="btnAgregarCategoria_Click" Text="+" CssClass="btn btn-primary"/>
+                    <asp:Label Text="Agregar una Categoria Nueva" runat="server" Font-Size="Small"></asp:Label>
+              
                 </div>
             </div>
 

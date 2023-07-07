@@ -79,7 +79,9 @@ namespace TiendaVinilos
 
         protected void btnAgregarNuevo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("FormAltaCategoria.aspx");
+
+            Session["PaginaAnterior"] = Request.Url.ToString();
+            Response.Redirect("FormAltaCategoria.aspx", false);
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)

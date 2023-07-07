@@ -11,9 +11,10 @@ namespace TiendaVinilos
 {
     public partial class FormAltaArtista : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
@@ -27,7 +28,11 @@ namespace TiendaVinilos
                 LblMensaje.Text = "Artista agregado exitosamente";
                 LblMensaje.Visible = true;
 
-                Response.Redirect("Artistas.aspx", false);
+                string paginaAnterior = Session["PaginaAnterior"] as string;
+                if (!string.IsNullOrEmpty(paginaAnterior))
+                {
+                    Response.Redirect(paginaAnterior, false);
+                }
 
             }
             catch (Exception ex)
@@ -41,7 +46,12 @@ namespace TiendaVinilos
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Artistas.aspx", false);
+            
+            string paginaAnterior = Session["PaginaAnterior"] as string;
+            if (!string.IsNullOrEmpty(paginaAnterior))
+            {
+                Response.Redirect(paginaAnterior, false);
+            }
         }
     }
 }

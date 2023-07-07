@@ -42,6 +42,15 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.DropDownList ddlArtista;
 
         /// <summary>
+        /// Control btnAgregarArtista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarArtista;
+
+        /// <summary>
         /// Control TxtImgTapa.
         /// </summary>
         /// <remarks>
@@ -96,6 +105,15 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.DropDownList ddlGenero;
 
         /// <summary>
+        /// Control btnAgregarGero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarGero;
+
+        /// <summary>
         /// Control ddlCategoria.
         /// </summary>
         /// <remarks>
@@ -103,6 +121,15 @@ namespace TiendaVinilos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
+
+        /// <summary>
+        /// Control btnAgregarCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarCategoria;
 
         /// <summary>
         /// Control BtnAceptar.
