@@ -7,63 +7,42 @@ using System.Web.UI.WebControls;
 
 namespace TiendaVinilos
 {
-    public class PedidoConUsuario
-    {
-        public Pedido Pedido { get; set; }
-        public string NombreUsuario { get; set; }
-        public string ApellidoUsuario { get; set; }
-    }
-
+   
     public partial class ComprasUsuarios : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                PedidoNegocio pedidoNegocio = new PedidoNegocio();
-                List<Pedido> listaPedidos = pedidoNegocio.ListarTodos();
-                List<PedidoConUsuario> listaPedidosConUsuario = ObtenerPedidosConUsuario(listaPedidos);
-                GridViewPedidos.DataSource = listaPedidosConUsuario;
-                GridViewPedidos.DataBind();
-            }
-        }
+                string buscar = Request.QueryString["buscar"];
 
-        private List<PedidoConUsuario> ObtenerPedidosConUsuario(List<Pedido> pedidos)
-        {
-            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-            List<PedidoConUsuario> pedidosConUsuario = new List<PedidoConUsuario>();
-
-            foreach (Pedido pedido in pedidos)
-            {
-                PedidoConUsuario pedidoConUsuario = new PedidoConUsuario();
-                pedidoConUsuario.Pedido = pedido;
-
-                Usuario usuario = usuarioNegocio.ObtenerUsuarioPorId(pedido.IdUsuario);
-                if (usuario != null)
+                if (!string.IsNullOrEmpty(buscar))
                 {
-                    pedidoConUsuario.NombreUsuario = usuario.Nombre;
-                    pedidoConUsuario.ApellidoUsuario = usuario.Apellido;
+                    PedidoNegocio pedidoNegocio = new PedidoNegocio();
+                    List<PedidoConUsuario> listaPedidosConUsuario = pedidoNegocio.Listar(buscar);
+                    GridViewPedidos.DataSource = listaPedidosConUsuario;
+                    GridViewPedidos.DataBind();
                 }
-
-                pedidosConUsuario.Add(pedidoConUsuario);
+                else if (Session["listaCompras"] != null)
+                {
+                    List<PedidoConUsuario> listaCompras = (List<PedidoConUsuario>)Session["listaCompras"];
+                    GridViewPedidos.DataSource = listaCompras;
+                    GridViewPedidos.DataBind();
+                }
+                else
+                {
+                    PedidoNegocio pedidoNegocio = new PedidoNegocio();
+                    List<PedidoConUsuario> listaPedidosConUsuario = pedidoNegocio.ListarTodos();
+                    GridViewPedidos.DataSource = listaPedidosConUsuario;
+                    GridViewPedidos.DataBind();
+                }
             }
 
-            return pedidosConUsuario;
         }
 
-        protected void GridViewPedidos_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                PedidoConUsuario pedidoConUsuario = (PedidoConUsuario)e.Row.DataItem;
+       
 
-                Label lblNombre = (Label)e.Row.FindControl("lblNombre");
-                lblNombre.Text = pedidoConUsuario.NombreUsuario;
-
-                Label lblApellido = (Label)e.Row.FindControl("lblApellido");
-                lblApellido.Text = pedidoConUsuario.ApellidoUsuario;
-            }
-        }
+       
 
     }
 }
