@@ -1,19 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master"  AutoEventWireup="true" CodeBehind="FormAltaGenero.aspx.cs" Inherits="TiendaVinilos.FormAltaGenero" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="ContenedorPrincipal">
-        <div class="container-Formularios">
-                <asp:Label ID="LblNombre" runat="server" Text="Nuevo Genero"></asp:Label>
-                <div>
+   <div class="ContenedorPrincipal">
+        <div class="container-Formularios" style="width: 414px; height: 225px; margin-bottom: 66px">
+                <div class="row">
+                <asp:Label ID="LblNombre" runat="server" Text="Nuevo Genero" ForeColor="White" Font-Size="Medium" ></asp:Label>
+                </div>
+                <div class="row">
                     <asp:TextBox ID="TxtNombre" runat="server" type="text" placeholder="Ingrese un genero" class="controls"></asp:TextBox>
                 </div>
-                <updatepanel>
-                    <contentemplate>
-                        <br />
-                       <asp:Button ID="BtnAceptar" Text="Aceptar" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />
-                        <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
-                        <div>
-                            <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
-                        </div>
+                <div class="row">
+                <div class="col">
+                    <asp:Button ID="BtnAceptar" Text="Aceptar" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />
+                 </div>
+                 <div class="col">
+                    <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
+                   </div>                                   
+                     <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>              
+              </div>
             </div>
-        </div>
+</div>
 </asp:Content>

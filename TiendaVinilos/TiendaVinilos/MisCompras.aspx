@@ -15,6 +15,7 @@
                 <asp:BoundField DataField="Estado" HeaderText="Estado del Pedido" />
                 <asp:BoundField DataField="FechaCreacion" HeaderText="Fecha de Creación" DataFormatString="{0:d}" />
             </Columns>
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         </asp:GridView>
     </div>
          </div>

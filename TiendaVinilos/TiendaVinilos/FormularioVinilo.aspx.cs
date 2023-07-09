@@ -67,6 +67,8 @@ namespace TiendaVinilos
 
                     ddlArtista.SelectedIndex = -1;
 
+                    TxtFechaLanza.Text =DateTime.Now.ToShortDateString();
+
                     Lbltitlulo.Text = "Alta de Albums"; //Cambia Dinamicamente dependiendo de donde entre
 
                     ///Toma el Id del album se se viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
@@ -175,6 +177,11 @@ namespace TiendaVinilos
         {
             TxtTitulo.BorderColor = Color.White;
             TxtPrecio.BorderColor = Color.White;
+            TxtImgTapa.BorderColor = Color.White;
+            TxtImgContraTapa.BorderColor = Color.White;
+            ddlArtista.BorderColor = Color.White;
+            ddlCategoria.BorderColor = Color.White;
+            ddlGenero.BorderColor = Color.White;
 
             bool vacios = false;
             if (TxtTitulo.Text == "")
@@ -187,10 +194,32 @@ namespace TiendaVinilos
                 ddlArtista.BorderColor = Color.Red;
                 vacios = true;
             }
+            if (ddlCategoria.SelectedIndex == -1)
+            {
+                ddlCategoria.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (ddlGenero.SelectedIndex == -1)
+            {
+                ddlGenero.BorderColor = Color.Red;
+                vacios = true;
+            }
             if (TxtPrecio.Text == "")
             {
 
                 TxtPrecio.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtImgTapa.Text == "")
+            {
+
+                TxtImgTapa.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtImgContraTapa.Text == "")
+            {
+
+                TxtImgContraTapa.BorderColor = Color.Red;
                 vacios = true;
             }
 

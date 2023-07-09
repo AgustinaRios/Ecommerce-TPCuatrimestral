@@ -33,22 +33,13 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.TextBox TxtTitulo;
 
         /// <summary>
-        /// Control ddlArtista.
+        /// Control TxtPrecio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlArtista;
-
-        /// <summary>
-        /// Control btnAgregarArtista.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarArtista;
+        protected global::System.Web.UI.WebControls.TextBox TxtPrecio;
 
         /// <summary>
         /// Control TxtImgTapa.
@@ -69,13 +60,13 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.TextBox TxtImgContraTapa;
 
         /// <summary>
-        /// Control TxtPrecio.
+        /// Control TxtFechaLanza.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtPrecio;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaLanza;
 
         /// <summary>
         /// Control LblFecha.
@@ -87,13 +78,22 @@ namespace TiendaVinilos
         protected global::System.Web.UI.WebControls.Label LblFecha;
 
         /// <summary>
-        /// Control TxtFechaLanza.
+        /// Control ddlArtista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtFechaLanza;
+        protected global::System.Web.UI.WebControls.DropDownList ddlArtista;
+
+        /// <summary>
+        /// Control btnAgregarArtista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarArtista;
 
         /// <summary>
         /// Control ddlGenero.

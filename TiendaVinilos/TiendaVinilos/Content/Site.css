@@ -31,6 +31,17 @@ textarea {
     box-shadow: 7px 13px 37px #000;
    
 }
+
+.container-Formularios {
+    background-color: #243ed3;
+    padding: 50px;
+    height: 483px;
+    width: 564px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 7px 13px 37px #000;
+}
+
 .ImgItemListar {
     height: 2rem;
     border: double;
@@ -79,8 +90,16 @@ textarea {
     width:inherit;
 }
 
-.ContenedorInicio {
-    background-color: #a8aab7;
+.controls {
+    width: 90%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

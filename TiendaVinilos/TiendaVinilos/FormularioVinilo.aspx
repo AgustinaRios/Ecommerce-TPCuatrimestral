@@ -4,54 +4,78 @@
 
 
     <div class="ContenedorPrincipal">
-        <div class="container-Formularios">
-            <asp:Label ID="Lbltitlulo" runat="server" Font-Size="Smaller"></asp:Label>
-            
+              <div class="container-Formularios">
+                    <div class="row">
+                   <asp:Label ID="Lbltitlulo" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label>
+                    </div>
+                    <div class="col">
+                    <div class="row">
+                    <div class="col">
+                    <asp:TextBox ID="TxtTitulo" runat="server" type="text" placeholder="Ingrese un Titulo" class="controls"></asp:TextBox>
+                    </div>
+                    <div class="col">
+                     <asp:TextBox ID="TxtPrecio" class="controls" type="text" placeholder="Ingrese el Precio" runat="server"></asp:TextBox>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col">                   
+                    <asp:TextBox ID="TxtImgTapa" class="controls" type="text" placeholder="url de la imagen de la tapa" runat="server"></asp:TextBox>               
+                    </div>
+                    <div class="col">  
+                    <asp:TextBox ID="TxtImgContraTapa" class="controls" type="text" placeholder="url de la imagen de la Contratapa" runat="server"></asp:TextBox>      
+                    </div>
+                    </div>
+                    <div class="row"> 
+                    <div class="col">  
+                     <asp:TextBox ID="TxtFechaLanza" class="controls" type="date" runat="server"></asp:TextBox> 
+                     </div>
+                    <div class="col">
+                    <asp:Label ID="LblFecha" runat="server" Text="Fecha de Lanzamiento" ForeColor="White"></asp:Label>
+                    </div>
+                    </div>
 
-                <asp:TextBox ID="TxtTitulo" runat="server" type="text" placeholder="Ingrese un Titulo" class="controls"></asp:TextBox>
-                
-
-                    <asp:DropDownList runat="server" ID="ddlArtista" class="form-control" AutoPostBack="true" />
-                    <asp:Button ID="btnAgregarArtista" runat="server" OnClick="btnAgregarArtista_Click" Text="+" CssClass="btn btn-primary"/>
-                       
-                     
-                    <asp:Label Text="Agregar un Artista Nuevo" runat="server" Font-Size="Small"></asp:Label>
-              
-                
-               
-                    <asp:TextBox ID="TxtImgTapa" class="controls" type="text" placeholder="url de la imagen de la tapa" runat="server"></asp:TextBox>
-                    <asp:TextBox ID="TxtImgContraTapa" class="controls" type="text" placeholder="url de la imagen de la Contratapa" runat="server"></asp:TextBox>
-             
-                <asp:TextBox ID="TxtPrecio" class="controls" type="text" placeholder="Ingrese el Precio" runat="server"></asp:TextBox>
-               
-                    <asp:Label ID="LblFecha" runat="server" Text="Lanzamiento" Font-Size="Small"></asp:Label>
-                    <asp:TextBox ID="TxtFechaLanza" class="form-control" type="date" runat="server"></asp:TextBox>
-             
-                
-                    <asp:DropDownList runat="server" ID="ddlGenero" CssClass="form-control">
-                    </asp:DropDownList>
+                    <div class="row">
+                    <div class="col">
+                    <asp:DropDownList runat="server" ID="ddlArtista" class="controls" AutoPostBack="true" />
+                    </div>
+                    <div class="col">
+                    <asp:Button ID="btnAgregarArtista" runat="server" OnClick="btnAgregarArtista_Click" Text="+" CssClass="btn btn-primary"/>  
+                    <asp:Label Text="Agregar un Artista Nuevo" runat="server" ForeColor="White" Font-Size="Small"></asp:Label>
+                    </div>
+                    </div> 
+                    <div class="row">
+                    <div class="col">
+                    <asp:DropDownList runat="server" ID="ddlGenero" CssClass="controls" AutoPostBack="true" />
+                    </div>
+                    <div class="col">
                      <asp:Button ID="btnAgregarGero" runat="server" OnClick="btnAgregarGenero_Click" Text="+" CssClass="btn btn-primary"/>
-                    <asp:Label Text="Agregar un Genero Nuevo" runat="server" Font-Size="Small"></asp:Label>
-              
-                 
-               
-                    <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control">
-                    </asp:DropDownList>
-                         <asp:Button ID="btnAgregarCategoria" runat="server" OnClick="btnAgregarCategoria_Click" Text="+" CssClass="btn btn-primary"/>
-                    <asp:Label Text="Agregar una Categoria Nueva" runat="server" Font-Size="Small"></asp:Label>
-   
+                     <asp:Label Text="Agregar un Genero Nuevo" runat="server" ForeColor="White" Font-Size="Small"></asp:Label>
+                    </div>
+                     </div>
+                    <div class="row">
+                    <div class="col">
+                    <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="controls"/>
+                    </div>
+                    <div class="col">
+                    <asp:Button ID="btnAgregarCategoria" runat="server" OnClick="btnAgregarCategoria_Click" Text="+" CssClass="btn btn-primary"/>
+                    <asp:Label Text="Agregar una Categoria Nueva" runat="server" ForeColor="White" Font-Size="Small"></asp:Label>
+                    </div>
+                    <div class="row">
+                    <div class="col">
                     <asp:Button ID="BtnAceptar" Text="Aceptar" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />
+                   </div>
+                   <div class="col">
                     <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
-           
-                        <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
-               
+                   </div>
+                   </div>
+                    <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
                     <asp:RangeValidator ID="rvclass" runat="server" ControlToValidate="TxtPrecio"
-                        ErrorMessage="Solo numero positivos" MaximumValue="10000"
+                        ErrorMessage="Solo se aceptan numero positivos.." MaximumValue="10000"
                         MinimumValue="1" Type="Double">
                     </asp:RangeValidator>
       </div>
-        </div>
-
-
+      </div>
+    </div>
+</div>
 
 </asp:Content>
