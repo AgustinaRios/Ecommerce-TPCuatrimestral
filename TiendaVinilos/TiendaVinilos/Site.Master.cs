@@ -210,11 +210,9 @@ namespace TiendaVinilos
             }
             else if (Page is ComprasUsuarios) // "ComprasUsuarios.aspx"
             {
-                List<Pedido> listaPedidos = new List<Pedido>();
-                PedidoNegocio pedidoNegocio = new PedidoNegocio();
-                listaPedidos = pedidoNegocio.Listar(buscar);
-                Session["listaCompras"] = listaPedidos;
-                Response.Redirect("ComprasUsuarios.aspx", false);
+                string filtroBusqueda = txtFiltro.Text.Trim();
+                Session["listaCompras"] = null; // Limpia la sesión anterior si la hubiera
+                Response.Redirect("ComprasUsuarios.aspx?buscar=" + filtroBusqueda, false);
             }
             else
             {
