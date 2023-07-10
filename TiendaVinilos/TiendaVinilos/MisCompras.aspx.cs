@@ -20,7 +20,7 @@ namespace TiendaVinilos
 
             PedidoNegocio negocio = new PedidoNegocio();
            List<Pedido> listaCompras = new List<Pedido>();
-            listaCompras = negocio.Listar(id);
+            listaCompras = negocio.BuscarPorIdUsuario(id);
             GridViewPedidos.DataSource = listaCompras;
             GridViewPedidos.DataBind();
         }

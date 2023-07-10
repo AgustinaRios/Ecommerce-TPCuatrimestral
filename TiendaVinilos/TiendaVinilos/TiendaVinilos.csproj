@@ -149,6 +149,7 @@
     <Content Include="FormAltaArtista.aspx" />
     <Content Include="FormAltaCategoria.aspx" />
     <Content Include="FormAltaGenero.aspx" />
+    <Content Include="FormModificarEstadoCompra.aspx" />
     <Content Include="FormularioVinilo.aspx" />
     <Content Include="FormularioCompra.aspx" />
     <Content Include="Generos.aspx" />
@@ -324,6 +325,13 @@
     </Compile>
     <Compile Include="FormAltaGenero.aspx.designer.cs">
       <DependentUpon>FormAltaGenero.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormModificarEstadoCompra.aspx.cs">
+      <DependentUpon>FormModificarEstadoCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormModificarEstadoCompra.aspx.designer.cs">
+      <DependentUpon>FormModificarEstadoCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioVinilo.aspx.cs">
       <DependentUpon>FormularioVinilo.aspx</DependentUpon>

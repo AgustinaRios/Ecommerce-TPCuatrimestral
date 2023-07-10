@@ -186,9 +186,6 @@ as
 Insert into PRODUCTOS_POR_PEDIDO(IdPedido,IdAlbum,Cantidad)
 output inserted.Id values (@IdPedido,@IdAlbum,@Cantidad)
 go
-
-
-
 INSERT INTO FORMA_ENTREGA values ('Delivery'),('Retiro')
 go
 insert into FORMA_PAGO values ('Efectivo'),('Tarjeta de Credito'),('Mercado Pago')
@@ -227,3 +224,5 @@ go
  insert into USUARIOS 
 values ('adm','adm','adm@adm.com','adm','2023/06/15','Santo Tomé 4749','Monte Castro','Buenos Aires',1,1)
 
+select * from PEDIDOS
+Update PEDIDOS set IdEstadoPedido=2 where Id=1

@@ -101,6 +101,7 @@ namespace TiendaVinilos
 
                         //////////////////////////////////////////////
                         ///
+
                         List<Categoria> filtrada = new List<Categoria>();
                         Categoria catSeleccionada = new Categoria();
 

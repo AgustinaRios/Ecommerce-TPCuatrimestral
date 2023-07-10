@@ -345,7 +345,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT Id, Nombre, Apellido FROM USUARIOS WHERE Id = @Id");
+                datos.setearConsulta("SELECT Id, Nombre, Apellido,Email FROM USUARIOS WHERE Id = @Id");
                 datos.setearParametro("@Id", idUsuario);
                 datos.ejecutarLectura();
 
@@ -355,6 +355,7 @@ namespace Negocio
                     usuario.ID = Convert.ToInt32(datos.Lector["Id"]);
                     usuario.Nombre = Convert.ToString(datos.Lector["Nombre"]);
                     usuario.Apellido = Convert.ToString(datos.Lector["Apellido"]);
+                    usuario.Email = Convert.ToString(datos.Lector["Email"]);
                 }
 
                 return usuario;

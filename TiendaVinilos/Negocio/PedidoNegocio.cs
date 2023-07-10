@@ -29,7 +29,7 @@ namespace Negocio
                 datos.setearParametro("@IdFormaPago", pedido.IdFormaPago);
                 datos.setearParametro("@Total", pedido.Total);
                 datos.setearParametro("@IdEstadoPedido", pedido.IdEstado);
-             
+
 
 
 
@@ -51,7 +51,7 @@ namespace Negocio
 
         }
 
-        public List<Pedido> Listar(int id)
+        public List<Pedido> BuscarPorIdUsuario(int id)
         {
             List<Pedido> lista = new List<Pedido>();
             AccesoDatos datos = new AccesoDatos();
@@ -59,8 +59,8 @@ namespace Negocio
             try
             {
 
-                datos.setearParametro("@ID", id);
-                datos.setearConsulta("select  fe.id,fe.descripcion as formaentrega, p.Direccion, p.Localidad, p.Provincia,fp.id, fp.Descripcion as formapago, p.Total, ep.Id, ep.Descripcion as estadopedido, p.FechaCreacion from PEDIDOS p , FORMA_ENTREGA  fe, FORMA_PAGO  fp, ESTADO_PEDIDO  ep where p.IdFormaEntrega = fe.Id  and p.IdFormaPago = fp.Id   and p.IdEstadoPedido = ep.Id  and p.IdUsuario=@ID");
+                datos.setearConsulta("select  fe.id,fe.descripcion as formaentrega, p.Direccion, p.Localidad, p.Provincia,fp.id, fp.Descripcion as formapago, p.Total, ep.Id, ep.Descripcion as estadopedido, p.FechaCreacion from PEDIDOS p , FORMA_ENTREGA  fe, FORMA_PAGO  fp, ESTADO_PEDIDO  ep where p.IdFormaEntrega = fe.Id  and p.IdFormaPago = fp.Id   and p.IdEstadoPedido = ep.Id  and p.IdUsuario=" + id);
+
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -68,20 +68,20 @@ namespace Negocio
 
 
                     Pedido aux = new Pedido();
-               
+                    aux.Id = id;
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("formaentrega"))))
                         aux.FormaEntrega = (string)datos.Lector["formaentrega"];
-                        aux.Direccion = (string)datos.Lector["Direccion"];
-                        aux.Localidad = (string)datos.Lector["Localidad"];
-                        aux.Provincia = (string)datos.Lector["Provincia"];
-                   
+                    aux.Direccion = (string)datos.Lector["Direccion"];
+                    aux.Localidad = (string)datos.Lector["Localidad"];
+                    aux.Provincia = (string)datos.Lector["Provincia"];
+
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("formapago"))))
                         aux.FormaPago = (string)datos.Lector["formapago"];
-                        aux.Total = (decimal)datos.Lector["Total"];
-                   
+                    aux.Total = (decimal)datos.Lector["Total"];
+
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("estadopedido"))))
                         aux.Estado = (string)datos.Lector["estadopedido"];
-                        aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+                    aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
 
 
 
@@ -100,6 +100,71 @@ namespace Negocio
             }
         }
 
+        public Pedido BuscarPorId(int id)
+        {
+            Pedido aux = new Pedido();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+
+                datos.setearConsulta("select  p.IdUsuario,fe.id,fe.descripcion as formaentrega, p.Direccion, p.Localidad, p.Provincia,fp.id, fp.Descripcion as formapago, p.Total, ep.Id, ep.Descripcion as estadopedido, p.FechaCreacion from PEDIDOS p , FORMA_ENTREGA  fe, FORMA_PAGO  fp, ESTADO_PEDIDO  ep where p.IdFormaEntrega = fe.Id  and p.IdFormaPago = fp.Id   and p.IdEstadoPedido = ep.Id  and p.Id=" + id);
+               
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    aux.Id = id;
+                    aux.IdUsuario = (Int32)datos.lector["IdUsuario"];
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("formaentrega"))))
+                        aux.FormaEntrega = (string)datos.Lector["formaentrega"];
+                    aux.Direccion = (string)datos.Lector["Direccion"];
+                    aux.Localidad = (string)datos.Lector["Localidad"];
+                    aux.Provincia = (string)datos.Lector["Provincia"];
+
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("formapago"))))
+                        aux.FormaPago = (string)datos.Lector["formapago"];
+                    aux.Total = (decimal)datos.Lector["Total"];
+
+                    if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("estadopedido"))))
+                        aux.Estado = (string)datos.Lector["estadopedido"];
+                    aux.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+
+                }
+
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void modificar(Pedido pedido)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_modificarPedido");
+                datos.setearParametro("@Id", pedido.Id);
+                datos.setearParametro("@IdEstadoPedido", pedido.IdEstado);
+
+                datos.ejectutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
 
 
@@ -112,7 +177,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT u.Nombre, u.Apellido, fe.id, fe.descripcion as formaentrega, p.Direccion, p.Localidad, p.Provincia, fp.id, fp.Descripcion as formapago, p.Total, ep.Id, ep.Descripcion as estadopedido, p.FechaCreacion " +
+                datos.setearConsulta("SELECT p.Id,u.Nombre, u.Apellido, fe.id, fe.descripcion as formaentrega, p.Direccion, p.Localidad, p.Provincia, fp.id, fp.Descripcion as formapago, p.Total, ep.Id, ep.Descripcion as estadopedido, p.FechaCreacion " +
                                      "FROM PEDIDOS p " +
                                      "JOIN USUARIOS u ON p.IdUsuario = u.ID " +
                                      "JOIN FORMA_ENTREGA fe ON p.IdFormaEntrega = fe.Id " +
@@ -125,6 +190,7 @@ namespace Negocio
                 {
                     PedidoConUsuario pedidoConUsuario = new PedidoConUsuario();
                     pedidoConUsuario.Pedido = new Pedido();
+                    pedidoConUsuario.Pedido.Id = (int)datos.Lector["Id"];
                     pedidoConUsuario.Pedido.FormaEntrega = (string)datos.Lector["formaentrega"];
                     pedidoConUsuario.Pedido.Direccion = (string)datos.Lector["Direccion"];
                     pedidoConUsuario.Pedido.Localidad = (string)datos.Lector["Localidad"];
@@ -153,12 +219,60 @@ namespace Negocio
         }
 
 
+        public PedidoConUsuario Buscar(int Id)
+        {
+            PedidoConUsuario pedidoConUsuario = new PedidoConUsuario();
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT u.Nombre, u.Apellido, fe.id, fe.descripcion as formaentrega, p.Direccion, p.Localidad, p.Provincia, fp.id, fp.Descripcion as formapago, p.Total, ep.Id, ep.Descripcion as estadopedido, p.FechaCreacion " +
+                                     "FROM PEDIDOS p " +
+                                     "JOIN USUARIOS u ON p.IdUsuario = u.ID " +
+                                     "JOIN FORMA_ENTREGA fe ON p.IdFormaEntrega = fe.Id " +
+                                     "JOIN FORMA_PAGO fp ON p.IdFormaPago = fp.Id " +
+                                     "JOIN ESTADO_PEDIDO ep ON p.IdEstadoPedido = ep.Id " +
+                                     "WHERE p.Id=" + Id);
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    pedidoConUsuario.Pedido = new Pedido();
+                    pedidoConUsuario.Pedido.FormaEntrega = (string)datos.Lector["formaentrega"];
+                    pedidoConUsuario.Pedido.Direccion = (string)datos.Lector["Direccion"];
+                    pedidoConUsuario.Pedido.Localidad = (string)datos.Lector["Localidad"];
+                    pedidoConUsuario.Pedido.Provincia = (string)datos.Lector["Provincia"];
+                    pedidoConUsuario.Pedido.FormaPago = (string)datos.Lector["formapago"];
+                    pedidoConUsuario.Pedido.Total = (decimal)datos.Lector["Total"];
+                    pedidoConUsuario.Pedido.Estado = (string)datos.Lector["estadopedido"];
+                    pedidoConUsuario.Pedido.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+                    pedidoConUsuario.NombreUsuario = (string)datos.Lector["Nombre"];
+                    pedidoConUsuario.ApellidoUsuario = (string)datos.Lector["Apellido"];
+
+                }
+
+
+
+                return pedidoConUsuario;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
 
 
 
 
-        public List<PedidoConUsuario> Listar(string buscar)
+
+        public List<PedidoConUsuario> BuscarPorUsuario(string buscar)
         {
             List<PedidoConUsuario> lista = new List<PedidoConUsuario>();
             AccesoDatos datos = new AccesoDatos();
@@ -177,7 +291,7 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    PedidoConUsuario pedidoConUsuario = new PedidoConUsuario();
+                    PedidoConUsuario pedidoConUsuario= new PedidoConUsuario();
                     pedidoConUsuario.Pedido = new Pedido();
                     pedidoConUsuario.Pedido.FormaEntrega = (string)datos.Lector["formaentrega"];
                     pedidoConUsuario.Pedido.Direccion = (string)datos.Lector["Direccion"];
