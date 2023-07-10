@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -96,7 +97,9 @@ namespace Negocio
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
                     aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
-                    aux.ImgTapa = (string)datos.Lector["ImgTapa"];
+                   if(!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
+                        aux.ImgTapa = (string)datos.Lector["ImgTapa"];
+                   if(!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
                     aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
                     aux.Genero = new Genero();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Genero"))))
