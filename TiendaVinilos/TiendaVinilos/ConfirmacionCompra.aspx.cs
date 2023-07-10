@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Negocio;
 namespace TiendaVinilos
 {
     public partial class ConfirmacionCompra : System.Web.UI.Page
@@ -61,6 +61,17 @@ namespace TiendaVinilos
                     GridViewProductos.DataBind();
 
                     LblTotal.Text = carrito.totalCarrito(carrito).ToString();
+
+                    // Establecer el carrito en cero
+                    ProductosCarrito carritoEnCero = (ProductosCarrito)Session["carrito"];
+                    carrito.lista.Clear();
+                    Session["carrito"] = carritoEnCero;
+
+                    Session["carrito"] = new ProductosCarrito();
+                    carrito = (ProductosCarrito)Session["carrito"];
+
+                    // Reiniciar el contador de elementos
+                    Session["ItemCount"] = 0;
                 }
 
 
