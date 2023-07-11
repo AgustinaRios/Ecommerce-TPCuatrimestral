@@ -14,6 +14,7 @@ namespace TiendaVinilos
         public List<Categoria> listaCategoria { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session.Add("FiltroBusqueda", 3);
             CategoriaNegocio negocio = new CategoriaNegocio();
             try
             {

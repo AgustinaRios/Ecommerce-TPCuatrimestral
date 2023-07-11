@@ -98,7 +98,7 @@ CREATE TABLE USUARIOS (
     Nombre varchar(50) NULL,
     Apellido varchar(50) NULL,
     Email varchar(50) NULL unique,
-    Pass varchar(50) NULL,
+    Pass varchar(8) NULL,
     FechaCreacion date NULL,
     Direccion varchar (100) null,
     Localidad varchar (100) null,

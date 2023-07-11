@@ -16,6 +16,7 @@ namespace TiendaVinilos
         public List<Artista> listaArtista { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session.Add("FiltroBusqueda", 1);
 
             ArtistaNegocio negocio = new ArtistaNegocio();
             try

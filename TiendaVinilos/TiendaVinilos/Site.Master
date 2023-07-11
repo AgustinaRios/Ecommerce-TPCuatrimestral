@@ -114,7 +114,21 @@
 
                                 </div>
                             </a>
-                            <p style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-style: inherit; font-size: xx-small; font-weight: lighter; color: #000000">Filtrar x artistas o Albums</p>
+                            <p style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-style: inherit; font-size: xx-small; font-weight: lighter; color: #000000">
+                               <%Int32 filtro = Convert.ToInt32(Session["FiltroBusqueda"]); %>
+                                <%if (filtro == 2)
+                                    { %>
+                                Filtrar x artistas o Albums
+                                <%}
+                                    else if(filtro==1)
+                                {%>
+                                 Filtrar x Nombre o Apellido
+                                <%}
+                                 else
+                                 {%>
+                                 Filtrar x Descripcion
+                                <%}%>
+                            </p>
 
                         </li>
 

@@ -14,6 +14,7 @@ namespace TiendaVinilos
         public List<Usuario> listaUsuarios { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session.Add("FiltroBusqueda", 1);
             UsuarioNegocio negocio = new UsuarioNegocio();
             try
             {

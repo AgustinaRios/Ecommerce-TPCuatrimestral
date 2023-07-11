@@ -21,7 +21,7 @@ namespace TiendaVinilos
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+            Session.Add("FiltroBusqueda", 2);
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {

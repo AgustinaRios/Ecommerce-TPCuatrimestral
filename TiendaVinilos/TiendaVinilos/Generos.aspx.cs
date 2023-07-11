@@ -13,6 +13,7 @@ namespace TiendaVinilos
         public List<Genero> listaGenero { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session.Add("FiltroBusqueda",3);
             GeneroNegocio negocio = new GeneroNegocio();
             try
             {
