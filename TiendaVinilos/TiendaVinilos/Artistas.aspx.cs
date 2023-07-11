@@ -16,7 +16,7 @@ namespace TiendaVinilos
         public List<Artista> listaArtista { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Add("FiltroBusqueda", 1);
+            Session.Add("FiltroBusqueda", 4);
 
             ArtistaNegocio negocio = new ArtistaNegocio();
             try
@@ -30,9 +30,10 @@ namespace TiendaVinilos
                 }
                 else
                 {
+                    
                     listaArtista = new List<Artista>();
-
-                    listaArtista = negocio.listar();
+                    bool activos = false;
+                    listaArtista = negocio.listar(activos);
 
                     repRepetidor.DataSource = listaArtista;
                     repRepetidor.DataBind();

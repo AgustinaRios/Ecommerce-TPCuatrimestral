@@ -21,9 +21,10 @@ namespace TiendaVinilos
 
                 if (!IsPostBack)
                 {
-                    listaCategoria = negocio.listar();
+                    bool activos = false;
+                    listaCategoria = negocio.listar(activos);
 
-                    repRepetidor.DataSource = negocio.listar();
+                    repRepetidor.DataSource = listaCategoria;
                     repRepetidor.DataBind();
 
                 }

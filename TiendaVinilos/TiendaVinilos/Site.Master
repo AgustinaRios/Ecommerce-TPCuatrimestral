@@ -124,6 +124,10 @@
                                 {%>
                                  Filtrar x Nombre o Apellido
                                 <%}
+                                      else if(filtro==4)
+                                {%>
+                                 Filtrar x Nombre 
+                                <%}
                                  else
                                  {%>
                                  Filtrar x Descripcion

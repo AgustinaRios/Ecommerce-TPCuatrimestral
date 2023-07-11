@@ -42,6 +42,8 @@ namespace TiendaVinilos
 
                 if (!IsPostBack)
                 {
+                   
+                    
                     List<Genero> listaGenero = generonegocio.listar();
                     List<Categoria> listaCategoria = negocioCategoria.listar();
 

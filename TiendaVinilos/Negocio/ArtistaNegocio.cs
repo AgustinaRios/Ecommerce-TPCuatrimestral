@@ -10,14 +10,23 @@ namespace Negocio
     public class ArtistaNegocio
     {
 
-        public List<Artista> listar()
+        public List<Artista> listar(bool Activo = true)
         {
             List<Artista> lista = new List<Artista>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA ORDER BY Nombre ASC");
+
+                if (Activo)
+                {
+                    datos.setearConsulta("Select Id, Nombre, Activo from ARTISTA where Activo=1");
+
+                }
+                else
+                {
+                    datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA");
+                    }
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

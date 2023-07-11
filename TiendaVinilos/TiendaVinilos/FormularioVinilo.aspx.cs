@@ -69,28 +69,26 @@ namespace TiendaVinilos
 
                     TxtFechaLanza.Text =DateTime.Now.ToShortDateString();
 
-                    Lbltitlulo.Text = "Alta de Albums"; //Cambia Dinamicamente dependiendo de donde entre
+                   
 
-                    ///Toma el Id del album se se viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
+                    ///Toma el Id del album que  viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
                     string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
-
+                        Lbltitlulo.Text = "Alta de Albums";
                     if (Id != "")
 
                     {
+
                         Album seleccionado = new Album();
                         seleccionado.Id = int.Parse(Id);
                         int idbuscado = seleccionado.Id;
                         seleccionado = negocio.ObtenerAlbum(idbuscado);
-                        //se carga los datos del Album que se selecciono modificar
-                        if (!seleccionado.Activo)
-                        {
-                            Lbltitlulo.Text = "Alta de Albums";
-                        }
-                        else
-                        {
+                        //se carga los datos del Album que se selecciono  al modificar
+                       
+                           
+                       
                             Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
 
-                        }
+                       
 
                         TxtTitulo.Text = seleccionado.Titulo.ToString();
                         TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
@@ -112,7 +110,7 @@ namespace TiendaVinilos
 
 
                         ddlCategoria.SelectedValue = catSeleccionada.Id.ToString();
-                        ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
+                        
                         ddlCategoria.SelectedIndex = catSeleccionada.Id;
                         /////////////////////////////////////////////////
 
@@ -126,7 +124,7 @@ namespace TiendaVinilos
 
 
                         ddlGenero.SelectedValue = genSeleccionado.Id.ToString();
-                        ddlGenero.SelectedValue = seleccionado.Genero.Id.ToString();
+                      
                         ddlGenero.SelectedIndex = genSeleccionado.Id;
                         /////////////////////////////////////////////////////
 
@@ -138,7 +136,7 @@ namespace TiendaVinilos
                         artSeleccionado.Nombre = seleccionado.Artista.ToString();
 
                         ddlArtista.SelectedValue = artSeleccionado.Id.ToString();
-                        ddlArtista.SelectedValue = seleccionado.Artista.Id.ToString();
+                       
                         ddlArtista.SelectedIndex = artSeleccionado.Id;
 
 

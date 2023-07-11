@@ -42,7 +42,7 @@ namespace TiendaVinilos
                         bool activos=false;
                         listaAlbum = negocio.listar(activos);
 
-                        repRepetidor.DataSource = negocio.listar(activos);
+                        repRepetidor.DataSource = listaAlbum;
                         repRepetidor.DataBind();
                     }
                 }

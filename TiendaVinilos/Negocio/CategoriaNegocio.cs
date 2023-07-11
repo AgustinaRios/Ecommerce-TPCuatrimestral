@@ -10,14 +10,22 @@ namespace Negocio
     public class CategoriaNegocio
     {
 
-        public List<Categoria> listar()
+        public List<Categoria> listar(bool Activo = true)
         {
             List<Categoria> lista = new List<Categoria>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("Select Id,Descripcion,activo from CATEGORIA");
+                if (Activo)
+                {
+                    datos.setearConsulta("Select Id,Descripcion,activo from CATEGORIA where activo=1  ");
+
+                }
+                else
+                {
+                    datos.setearConsulta("Select Id,Descripcion,activo from CATEGORIA");
+                }
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
