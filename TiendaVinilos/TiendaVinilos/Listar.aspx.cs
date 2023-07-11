@@ -39,10 +39,10 @@ namespace TiendaVinilos
                     {
                         listaAlbum = new List<Album>();
 
-                        bool todos=true;
-                        listaAlbum = negocio.listar(todos);
+                        bool activos=false;
+                        listaAlbum = negocio.listar(activos);
 
-                        repRepetidor.DataSource = negocio.listar(todos);
+                        repRepetidor.DataSource = negocio.listar(activos);
                         repRepetidor.DataBind();
                     }
                 }

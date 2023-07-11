@@ -12,15 +12,15 @@ namespace Negocio
 {
     public class AlbumNegocio
     {
-        public List<Album> listar(bool Todos = false)
+        public List<Album> listar(bool Activo = true)
         {
             List<Album> lista = new List<Album>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                if (Todos)
+                if (Activo)
                 {
-                    datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa,A.Activo, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria order by Titulo asc");
+                    datos.setearConsulta("select A.Id, A.Titulo, Art.Id, Art.Nombre as Artista, A.FechaLanzamiento, A.ImgTapa, A.ImgContratapa,A.Activo, G.Id, G.Descripcion as Genero, C.Id,A.Precio, C.Descripcion as Categoria from ALBUMES A, GENEROS G, ARTISTA Art, CATEGORIA C where  G.Id=A.IdGenero and  Art.Id=A.IdArtista and C.Id=a.IdCategoria and a.Activo=1 order by Titulo asc");
 
                 }
                 else

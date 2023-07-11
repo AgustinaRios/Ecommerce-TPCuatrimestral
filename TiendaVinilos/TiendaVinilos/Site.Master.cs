@@ -22,21 +22,21 @@ namespace TiendaVinilos
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Page is Artistas || Page is Categorias || Page is FormAltaArtista || Page is FormAltaGenero
-            //  || Page is FormularioVinilo || Page is FormAltaCategoria || Page is Listar || Page is ListarUsuarios)
-            //{
-            //    if (!Seguridad.esAdmin(Session["usuario"]))
-            //    {
-            //        Session.Add("error", "No tiene permisos para ingresar a esta pantalla");
-            //        Response.Redirect("error.aspx");
+            if (Page is Artistas || Page is Categorias || Page is FormAltaArtista || Page is FormAltaGenero
+              || Page is FormularioVinilo || Page is FormAltaCategoria || Page is Listar || Page is ListarUsuarios)
+            {
+                if (!Seguridad.esAdmin(Session["usuario"]))
+                {
+                    Session.Add("error", "No tiene permisos para ingresar a esta pantalla");
+                    Response.Redirect("error.aspx");
 
-            //    }
-            //}
-            //if (Page is MiPerfil)
-            //{
-            //    if (!Seguridad.sesionActiva(Session["usuario"]))
-            //        Response.Redirect("Login.aspx", false);
-            //}
+                }
+            }
+            if (Page is MiPerfil)
+            {
+                if (!Seguridad.sesionActiva(Session["usuario"]))
+                    Response.Redirect("Login.aspx", false);
+            }
             try
             {
 
