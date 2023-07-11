@@ -247,4 +247,3 @@ VALUES
 go
  insert into USUARIOS 
 values ('adm','adm','adm@adm.com','adm','2023/06/15','Santo Tomé 4749','Monte Castro','Buenos Aires',1,1)
-

@@ -31,8 +31,8 @@ namespace TiendaVinilos
                 else
                 {
                     listaArtista = new List<Artista>();
-
-                    listaArtista = negocio.listar();
+                    bool porOrdenAlfabetico = true;
+                    listaArtista = negocio.listar(porOrdenAlfabetico);
 
                     repRepetidor.DataSource = listaArtista;
                     repRepetidor.DataBind();

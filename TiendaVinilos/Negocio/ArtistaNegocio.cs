@@ -10,14 +10,17 @@ namespace Negocio
     public class ArtistaNegocio
     {
 
-        public List<Artista> listar()
+        public List<Artista> listar(bool porOrdenAlfabetico = false)
         {
             List<Artista> lista = new List<Artista>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA ORDER BY Nombre ASC");
+                if (porOrdenAlfabetico)
+                    datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA ORDER BY Nombre ASC");
+                else
+                    datos.setearConsulta("Select Id,Nombre,Activo from ARTISTA");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -49,7 +52,7 @@ namespace Negocio
             {
                 datos.setearConsulta("Select art.Id,art.Nombre,art.Activo from ARTISTA art inner join ALBUMES a on a.IdArtista=art.Id where a.Activo=1 and art.Activo=1  and Nombre like '%" + buscar + "%'");
                 datos.ejecutarLectura();
-                
+
 
                 while (datos.Lector.Read())
                 {
@@ -108,9 +111,9 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Select Id,Nombre from ARTISTA where Id="+Id);
+                datos.setearConsulta("Select Id,Nombre from ARTISTA where Id=" + Id);
 
-               
+
 
                 datos.ejecutarLectura(); // Agregar esta línea para abrir la conexión y ejecutar la consulta
 
@@ -161,15 +164,15 @@ namespace Negocio
         }
         public void modificar(Artista artista)
         {
-            AccesoDatos datos=new AccesoDatos();
+            AccesoDatos datos = new AccesoDatos();
             try
             {
-                    datos.setearProcedimiento("sp_modificarArtista");
-                    datos.setearParametro("@Id", artista.Id);
-                    datos.setearParametro("@Nombre", artista.Nombre);
+                datos.setearProcedimiento("sp_modificarArtista");
+                datos.setearParametro("@Id", artista.Id);
+                datos.setearParametro("@Nombre", artista.Nombre);
 
-                    datos.ejectutarAccion();
-                
+                datos.ejectutarAccion();
+
 
             }
 
