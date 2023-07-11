@@ -88,10 +88,11 @@ create procedure sp_modificarAlbum
 @ImgContratapa varchar(250),
 @Precio money,
 @IdGenero int,
-@IdCategoria int
+@IdCategoria int,
+@Activo bit
 as 
 update ALBUMES  set Titulo=@Titulo,IdArtista=@IdArtista,FechaLanzamiento=@FechaLanzamiento,ImgTapa=@ImgTapa,ImgContratapa=@ImgContratapa,
-Precio=@Precio,IdGenero=@IdGenero,IdCategoria=@IdCategoria where Id=@id
+Precio=@Precio,IdGenero=@IdGenero,IdCategoria=@IdCategoria,Activo=@Activo where Id=@id
 go
 CREATE TABLE USUARIOS (
     Id int identity(1,1) NOT NULL,
@@ -233,16 +234,14 @@ VALUES
 ('Clics Modernos', 3, '1983-02-12', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Clics-modernos-charly-garcia-front.jpg/640px-Clics-modernos-charly-garcia-front.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShlWTSI2TUDayo6QQIEV7ZS4RK5zvEmp05Gg&usqp=CAU', 5500, 1, 3),
 ('El Amor despues del amor (2LP)', 5, '2019-06-01', 'https://http2.mlstatic.com/D_NQ_NP_834079-MLA54966560635_042023-W.jpg', 'https://http2.mlstatic.com/D_NQ_NP_889938-MLA48948891521_012022-O.webp', 19392, 1,2),
 ('Soda Stereo', 4, '2015-11-01', 'https://http2.mlstatic.com/D_NQ_NP_863459-MLA48596431326_122021-O.webp', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnwsW-LClg87hvvxrOCAetLa3nJ1jllniy9g&usqp=CAU', 14900, 1,2),
-('Cantora 1 (2LP)', 6, '2017-11-01', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmcspn-2qadfwn8s561CUEflepWiWCwNproo0tDS1OLqzqSMkrZwwMDuFgFiVIxTtZFM&usqp=CAU', 'https://http2.mlstatic.com/D_NQ_NP_898106-MLA49844455670_052022-O.webp',21800,7,3)
-INSERT INTO ALBUMES (Titulo, IdArtista, FechaLanzamiento, ImgTapa, Precio, IdGenero, IdCategoria)
-VALUES
-('Back in Black', 18, '1980-07-25', 'https://cdn1.eldia.com/072021/1627255515074.jpg', 8500.00, 1, 2),
-('Thriller', 11, '1982-11-30', 'https://www.mmx.com.ar/media/k2/items/cache/e615c787b2f85cf06510c8d1eb939a8d_L.jpg', 9200.00, 6, 2),
-('The Dark Side of the Moon', 12, '1973-03-01', 'https://www.elciudadanoweb.com/wp-content/uploads/2023/01/230119-pinkfloyd-darkside50-feat.jpg', 7800.00, 3, 2),
-('Like a Virgin', 19, '1984-11-12', 'https://upload.wikimedia.org/wikipedia/en/1/17/LikeAVirgin1984.png', 6900.00, 2, 2),
-('Led Zeppelin IV', 20, '1971-11-08', 'https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg', 7700.00, 1, 2),
-('The Wall', 12, '1979-11-30', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/The_Wall_Cover.svg/800px-The_Wall_Cover.svg.png', 8500.00, 3, 2),
-('Greatest Hits', 1, '1998-11-03', 'https://www.udiscovermusic.com/wp-content/uploads/2017/11/Queen-Greatest-Hits.jpg', 6800.00, 1, 3);
+('Cantora 1 (2LP)', 6, '2017-11-01', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmcspn-2qadfwn8s561CUEflepWiWCwNproo0tDS1OLqzqSMkrZwwMDuFgFiVIxTtZFM&usqp=CAU', 'https://http2.mlstatic.com/D_NQ_NP_898106-MLA49844455670_052022-O.webp',21800,7,3),
+('Back in Black', 18, '1980-07-25', 'https://cdn1.eldia.com/072021/1627255515074.jpg','', 8500.00, 1, 2),
+('Thriller', 11, '1982-11-30', 'https://www.mmx.com.ar/media/k2/items/cache/e615c787b2f85cf06510c8d1eb939a8d_L.jpg','', 9200.00, 6, 2),
+('The Dark Side of the Moon', 12, '1973-03-01', 'https://www.elciudadanoweb.com/wp-content/uploads/2023/01/230119-pinkfloyd-darkside50-feat.jpg','', 7800.00, 3, 2),
+('Like a Virgin', 19, '1984-11-12', 'https://upload.wikimedia.org/wikipedia/en/1/17/LikeAVirgin1984.png','', 6900.00, 2, 2),
+('Led Zeppelin IV', 20, '1971-11-08', 'https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg','', 7700.00, 1, 2),
+('The Wall', 12, '1979-11-30', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/The_Wall_Cover.svg/800px-The_Wall_Cover.svg.png','', 8500.00, 3, 2),
+('Greatest Hits', 1, '1998-11-03', 'https://www.udiscovermusic.com/wp-content/uploads/2017/11/Queen-Greatest-Hits.jpg','', 6800.00, 1, 3);
 
 
 go
