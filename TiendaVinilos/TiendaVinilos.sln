@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{F24B81AC-A9A5-4950-A3AA-5D4FBCFF8B2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A228B8A3-E9C3-4BAF-8775-D825CBCCF546}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{C949E45E-AB8B-44D5-B0ED-31DA2CB1A98E}"
 	ProjectSection(SolutionItems) = preProject
 		EcommerceDB.sql = EcommerceDB.sql
 	EndProjectSection

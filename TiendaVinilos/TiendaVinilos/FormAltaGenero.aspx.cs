@@ -12,6 +12,39 @@ namespace TiendaVinilos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Genero genero = new Genero();
+            GeneroNegocio negocio = new GeneroNegocio();
+            try
+            {
+                LblNombre.Text = "Alta Genero";
+
+                if (!IsPostBack)
+                {
+                    string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+
+                    if (Id != "")
+
+                    {
+                        int IdGenero = int.Parse(Id);
+                        genero = negocio.ObtenerPorId(IdGenero);
+
+                        TxtNombre.Text = genero.Descripcion.ToString();
+                        LblNombre.Text = "Modificar Genero";
+
+                    }
+
+
+                }
+
+            }
+
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
 
         }
 
@@ -20,18 +53,38 @@ namespace TiendaVinilos
             try
             {
                 Genero nuevo = new Genero();
-                nuevo.Descripcion = TxtNombre.Text;
+                Genero modificar = new Genero();
                 GeneroNegocio negocio = new GeneroNegocio();
-                negocio.agregar(nuevo);
-                LblMensaje.Text = "Genero agregado exitosamente";
-                LblMensaje.Visible = true;
 
-                string paginaAnterior = Session["PaginaAnterior"] as string;
-                if (!string.IsNullOrEmpty(paginaAnterior))
+                string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+
+                if (Id != "")
+
                 {
-                    Response.Redirect(paginaAnterior, false);
-                }
+                    int IdGenero = int.Parse(Id);
+                    modificar = negocio.ObtenerPorId(IdGenero);
+                    modificar.Descripcion = TxtNombre.Text;
+                    negocio.modificar(modificar);
+                    LblMensaje.Text = "Genero modificado exitosamente";
+                    LblMensaje.Visible = true;
+                    Response.Redirect("Generos.aspx", false);
 
+                }
+                else
+                {
+                    nuevo.Descripcion = TxtNombre.Text;
+
+                    negocio.agregar(nuevo);
+                    LblMensaje.Text = "Genero agregado exitosamente";
+                    LblMensaje.Visible = true;
+
+                    string paginaAnterior = Session["PaginaAnterior"] as string;
+                    if (!string.IsNullOrEmpty(paginaAnterior))
+                    {
+                        Response.Redirect(paginaAnterior, false);
+                    }
+
+                }
             }
             catch (Exception ex)
             {
@@ -46,9 +99,9 @@ namespace TiendaVinilos
         {
             string paginaAnterior = Session["PaginaAnterior"] as string;
             if (!string.IsNullOrEmpty(paginaAnterior))
-            {
                 Response.Redirect(paginaAnterior, false);
-            }
+            else
+                Response.Redirect("Generos.aspx", false);
         }
     }
 }

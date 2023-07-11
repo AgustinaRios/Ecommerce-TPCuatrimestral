@@ -39,6 +39,36 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public Genero ObtenerPorId(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Select Id,Descripcion from GENEROS where Id=" + Id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    Genero genero = new Genero();
+                    genero.Id = Id;
+                    genero.Descripcion = datos.Lector.GetString(1);
+
+                    return genero;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
         public int agregar(Genero nuevo)
         {
@@ -111,6 +141,31 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+
+        }
+        public void modificar(Genero genero)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_modificarGenero");
+                datos.setearParametro("@Id", genero.Id);
+                datos.setearParametro("@Descripcion", genero.Descripcion);
+
+                datos.ejectutarAccion();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar el genero.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
 
         }
     }

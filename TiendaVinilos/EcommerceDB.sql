@@ -204,6 +204,12 @@ create procedure sp_modificarCategoria(
 as
 update CATEGORIA set Descripcion=@Descripcion where Id=@Id
 go
+create procedure sp_modificarGenero(
+@Id int,
+@Descripcion varchar (50))
+as
+update GENEROS set Descripcion=@Descripcion where Id=@Id
+go
 
 INSERT INTO FORMA_ENTREGA values ('Delivery'),('Retiro')
 go
