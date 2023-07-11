@@ -198,6 +198,13 @@ create procedure sp_modificarArtista(
 as
 update ARTISTA set Nombre=@Nombre where Id=@Id
 go
+create procedure sp_modificarCategoria(
+@Id int,
+@Descripcion varchar (50))
+as
+update CATEGORIA set Descripcion=@Descripcion where Id=@Id
+go
+
 INSERT INTO FORMA_ENTREGA values ('Delivery'),('Retiro')
 go
 insert into FORMA_PAGO values ('Efectivo'),('Tarjeta de Credito'),('Mercado Pago')

@@ -86,6 +86,8 @@ namespace TiendaVinilos
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
+            string Id = ((Button)sender).CommandArgument;
+            Response.Redirect("FormAltaCategoria.aspx?Id=" + Id, false);
 
         }
     }

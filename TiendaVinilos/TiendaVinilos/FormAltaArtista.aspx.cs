@@ -16,8 +16,12 @@ namespace TiendaVinilos
         {
             try
             {
+
                 Artista artista = new Artista();
                 ArtistaNegocio negocio = new ArtistaNegocio();
+
+                LblNombre.Text = "Alta Artista";
+
                 if (!IsPostBack)
                 {
                     string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
@@ -29,7 +33,7 @@ namespace TiendaVinilos
                         artista = negocio.ObtenerArtistaPorId(IdArtista);
 
                         TxtNombre.Text = artista.Nombre.ToString();
-
+                        LblNombre.Text = "Modificar Arista";
 
                     }
 
@@ -51,8 +55,8 @@ namespace TiendaVinilos
         {
             try
             {
-                ArtistaNegocio negocio=new ArtistaNegocio();
-                Artista artista=new Artista();
+                ArtistaNegocio negocio = new ArtistaNegocio();
+                Artista artista = new Artista();
                 string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
 
                 if (Id != "")
@@ -70,18 +74,18 @@ namespace TiendaVinilos
                 else
                 {
 
-                Artista nuevo = new Artista();
-                nuevo.Nombre = TxtNombre.Text;
-               
-                negocio.agregar(nuevo);
-                LblMensaje.Text = "Artista agregado exitosamente";
-                LblMensaje.Visible = true;
+                    Artista nuevo = new Artista();
+                    nuevo.Nombre = TxtNombre.Text;
 
-                string paginaAnterior = Session["PaginaAnterior"] as string;
-                if (!string.IsNullOrEmpty(paginaAnterior))
-                {
-                    Response.Redirect(paginaAnterior, false);
-                }
+                    negocio.agregar(nuevo);
+                    LblMensaje.Text = "Artista agregado exitosamente";
+                    LblMensaje.Visible = true;
+
+                    string paginaAnterior = Session["PaginaAnterior"] as string;
+                    if (!string.IsNullOrEmpty(paginaAnterior))
+                    {
+                        Response.Redirect(paginaAnterior, false);
+                    }
 
                 }
             }
@@ -96,12 +100,11 @@ namespace TiendaVinilos
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
             string paginaAnterior = Session["PaginaAnterior"] as string;
             if (!string.IsNullOrEmpty(paginaAnterior))
-            {
                 Response.Redirect(paginaAnterior, false);
-            }
+            else
+                Response.Redirect("Artistas.aspx", false);
         }
     }
 }

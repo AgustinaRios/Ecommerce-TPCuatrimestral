@@ -91,6 +91,36 @@ namespace Negocio
             }
 
         }
+        public Categoria ObtenerPorId(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Select Id,Descripcion from CATEGORIA where Id=" + Id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    Categoria categoria = new Categoria();
+                    categoria.Id = Id;
+                    categoria.Descripcion = datos.Lector.GetString(1);
+
+                    return categoria;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
         public void AltaLogica(int Id)
         {
@@ -112,6 +142,31 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+
+        }
+        public void modificar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_modificarCategoria");
+                datos.setearParametro("@Id", categoria.Id);
+                datos.setearParametro("@Descripcion", categoria.Descripcion);
+
+                datos.ejectutarAccion();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar la categoria.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
 
         }
 

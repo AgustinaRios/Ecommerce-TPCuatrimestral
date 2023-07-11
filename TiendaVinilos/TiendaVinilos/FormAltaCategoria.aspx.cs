@@ -14,8 +14,40 @@ namespace TiendaVinilos
         protected void Page_Load(object sender, EventArgs e)
         {
 
- 
-            
+            Categoria categoria = new Categoria();
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            try
+            {
+                LblNombre.Text = "Alta Categoria";
+
+                if (!IsPostBack)
+                {
+                    string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+
+                    if (Id != "")
+
+                    {
+                        int IdCategoria = int.Parse(Id);
+                        categoria = negocio.ObtenerPorId(IdCategoria);
+
+                        TxtDescripcion.Text = categoria.Descripcion.ToString();
+                        LblNombre.Text = "Modificar Categoria";
+
+                    }
+
+
+                }
+
+            }
+
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+
 
         }
 
@@ -24,18 +56,37 @@ namespace TiendaVinilos
             try
             {
                 Categoria nuevo = new Categoria();
-                nuevo.Descripcion = TxtDescripcion.Text;
+                Categoria modificar = new Categoria();
                 CategoriaNegocio negocio = new CategoriaNegocio();
-                negocio.agregar(nuevo);
-                LblMensaje.Text = "Categoría agregada exitosamente";
-                LblMensaje.Visible = true;
 
-                string paginaAnterior = Session["PaginaAnterior"] as string;
-                if (!string.IsNullOrEmpty(paginaAnterior))
+                string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+
+                if (Id != "")
+
                 {
-                    Response.Redirect(paginaAnterior, false);
-                }
+                    int IdCategoria = int.Parse(Id);
+                    modificar = negocio.ObtenerPorId(IdCategoria);
+                    modificar.Descripcion = TxtDescripcion.Text;
+                    negocio.modificar(modificar);
+                    LblMensaje.Text = "Categoria modificada exitosamente";
+                    LblMensaje.Visible = true;
+                    Response.Redirect("Categorias.aspx", false);
 
+                }
+                else
+                {
+                    nuevo.Descripcion = TxtDescripcion.Text;
+                    negocio.agregar(nuevo);
+                    LblMensaje.Text = "Categoría agregada exitosamente";
+                    LblMensaje.Visible = true;
+
+                    string paginaAnterior = Session["PaginaAnterior"] as string;
+                    if (!string.IsNullOrEmpty(paginaAnterior))
+                    {
+                        Response.Redirect(paginaAnterior, false);
+                    }
+
+                }
             }
             catch (Exception ex)
             {
@@ -50,9 +101,9 @@ namespace TiendaVinilos
         {
             string paginaAnterior = Session["PaginaAnterior"] as string;
             if (!string.IsNullOrEmpty(paginaAnterior))
-            {
                 Response.Redirect(paginaAnterior, false);
-            }
+            else
+                Response.Redirect("Categorias.aspx", false);
         }
     }
 }

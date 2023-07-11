@@ -32,11 +32,11 @@ namespace TiendaVinilos
 
             //    }
             //}
-            if (Page is MiPerfil)
-            {
-                if (!Seguridad.sesionActiva(Session["usuario"]))
-                    Response.Redirect("Login.aspx", false);
-            }
+            //if (Page is MiPerfil)
+            //{
+            //    if (!Seguridad.sesionActiva(Session["usuario"]))
+            //        Response.Redirect("Login.aspx", false);
+            //}
             try
             {
 

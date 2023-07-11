@@ -4,7 +4,7 @@
         <div class="ContenedorPrincipal">
             <div class="container-Formularios" style="width: 414px; height: 225px; margin-top: 66px">
                <div class="row">
-                <asp:Label ID="LblNombre" runat="server" Text="Nueva Categoria" ForeColor="White" Font-Size="Medium" ></asp:Label>
+                <asp:Label ID="LblNombre" runat="server" ForeColor="White" Font-Size="Medium" ></asp:Label>
                 </div>
                  <div class="row">
                     <asp:TextBox ID="TxtDescripcion" runat="server" type="text" placeholder="Ingrese una categoria" class="controls"></asp:TextBox>
