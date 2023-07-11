@@ -24,7 +24,6 @@ namespace TiendaVinilos
         List<Artista> listaArtista = new List<Artista>();
 
         AlbumNegocio negocio = new AlbumNegocio();
-        public bool confirmaEliminacion { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,42 +31,11 @@ namespace TiendaVinilos
             {
                 if (!IsPostBack)
                 {
-                    //se pone el checkbox en false para que solo aparecen cuando se elige eliminar
-                    confirmaEliminacion = false;
 
-                    //Genero
-                    listaGenero = genero.listar();
-                    listaGenero.Insert(0, new Genero { Id = -1, Descripcion = "Elegir Genero" });
-                    ddlGenero.DataSource = listaGenero;
-                    ddlGenero.DataTextField = "Descripcion";
-                    ddlGenero.DataValueField = "Id";
-                    ddlGenero.DataBind();
 
-                    ddlGenero.SelectedIndex = -1;
+                    CargarDdl();
 
-                    //Categoria
-                    listaCategoria = categoria.listar();
-                    listaCategoria.Insert(0, new Categoria { Id = -1, Descripcion = "Elegir Categoria" });
-                    ddlCategoria.DataSource = listaCategoria;
-                    ddlCategoria.DataTextField = "Descripcion";
-                    ddlCategoria.DataValueField = "Id";
-                    ddlCategoria.DataBind();
-
-                    ddlCategoria.SelectedIndex = -1;
-
-                    //Artista
-
-                    listaArtista = artista.listar();
-
-                    listaArtista.Insert(0, new Artista { Id = -1, Nombre = "Elegir Artista" });
-                    ddlArtista.DataSource = listaArtista;
-                    ddlArtista.DataTextField = "Nombre";
-                    ddlArtista.DataValueField = "Id";
-                    ddlArtista.DataBind();
-
-                    ddlArtista.SelectedIndex = -1;
-
-                    TxtFechaLanza.Text =DateTime.Now.ToShortDateString();
+                    TxtFechaLanza.Text = DateTime.Now.ToShortDateString();
 
                    
 
@@ -77,6 +45,7 @@ namespace TiendaVinilos
                     if (Id != "")
 
                     {
+
 
                         Album seleccionado = new Album();
                         seleccionado.Id = int.Parse(Id);
@@ -141,6 +110,9 @@ namespace TiendaVinilos
 
 
 
+                        CargarAlbum(Id);
+
+
 
                     }
 
@@ -170,8 +142,6 @@ namespace TiendaVinilos
             Session["PaginaAnterior"] = Request.Url.ToString();
             Response.Redirect("FormAltaCategoria.aspx", false);
         }
-
-
         bool ValidarVacios()
         {
             TxtTitulo.BorderColor = Color.White;
@@ -247,52 +217,46 @@ namespace TiendaVinilos
                     LblMensaje.Visible = true;
                     return;
                 }
-                nuevo.ImgTapa = TxtImgTapa.Text;
-                nuevo.ImgContratapa = TxtImgContraTapa.Text;
-                nuevo.Genero = new Genero();
-                nuevo.Genero.Id = int.Parse(ddlGenero.SelectedValue);
-                nuevo.Categoria = new Categoria();
-                nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
-                nuevo.Artista = new Artista();
-                nuevo.Artista.Id = int.Parse(ddlArtista.SelectedValue);
-                nuevo.Activo = true;
 
 
-                //////
-                ///     PARA MODIFICAR UN ALBUM
-                ///     
-                if (Request.QueryString["Id"] != null)
+
+                if (ValidarVacios() == false)
                 {
-                    nuevo.Id = int.Parse(Request.QueryString["Id"]);
-                    if (ValidarVacios() == false)
+                    nuevo.ImgTapa = TxtImgTapa.Text;
+                    nuevo.ImgContratapa = TxtImgContraTapa.Text;
+                    nuevo.Genero = new Genero();
+                    nuevo.Genero.Id = int.Parse(ddlGenero.SelectedValue);
+                    nuevo.Categoria = new Categoria();
+                    nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+                    nuevo.Artista = new Artista();
+                    nuevo.Artista.Id = int.Parse(ddlArtista.SelectedValue);
+                    nuevo.Activo = true;
+                    if (Request.QueryString["Id"] != null)
                     {
+
+                        //////
+                        ///     PARA MODIFICAR UN ALBUM
+                        ///  
                         albumNegocio.modificarConSP(nuevo);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " modificado exitosamente');window.location ='Listar.aspx';", true);
                         // Response.Redirect("Listar.aspx");
                     }
                     else
                     {
-                        Response.Write("<script>alert('complete todos los campos');</script>");
-                    }
-                }
-                else
-                {
-                    if (ValidarVacios() == false)
-                    {
                         nuevo.Precio = Decimal.Parse(TxtPrecio.Text);
 
                         albumNegocio.agregar(nuevo);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
                         // Response.Redirect("Listar.aspx");
-                    }
-                    else
-                    {
-                        LblMensaje.Text = "Debe ingresar los campos obligatorios";
-                        LblMensaje.Visible = true;
-                        return;
+
                     }
 
-
+                }
+                else
+                {
+                    LblMensaje.Text = "Debe ingresar los campos obligatorios";
+                    LblMensaje.Visible = true;
+                    return;
                 }
             }
             catch (Exception ex)
@@ -304,8 +268,107 @@ namespace TiendaVinilos
         {
             Response.Redirect("Listar.aspx", false);
         }
+        protected void CargarDdl()
+        {
+            //Genero
+            listaGenero = genero.listar();
+            listaGenero.Insert(0, new Genero { Id = -1, Descripcion = "Elegir Genero" });
+            ddlGenero.DataSource = listaGenero;
+            ddlGenero.DataTextField = "Descripcion";
+            ddlGenero.DataValueField = "Id";
+            ddlGenero.DataBind();
+
+            ddlGenero.SelectedIndex = -1;
+
+            //Categoria
+            listaCategoria = categoria.listar();
+            listaCategoria.Insert(0, new Categoria { Id = -1, Descripcion = "Elegir Categoria" });
+            ddlCategoria.DataSource = listaCategoria;
+            ddlCategoria.DataTextField = "Descripcion";
+            ddlCategoria.DataValueField = "Id";
+            ddlCategoria.DataBind();
+
+            ddlCategoria.SelectedIndex = -1;
+
+            //Artista
+
+            listaArtista = artista.listar();
+
+            listaArtista.Insert(0, new Artista { Id = -1, Nombre = "Elegir Artista" });
+            ddlArtista.DataSource = listaArtista;
+            ddlArtista.DataTextField = "Nombre";
+            ddlArtista.DataValueField = "Id";
+            ddlArtista.DataBind();
+
+            ddlArtista.SelectedIndex = -1;
+        }
+        protected void CargarAlbum(string Id)
+        {
+            Album seleccionado = new Album();
+            seleccionado.Id = int.Parse(Id);
+            int idbuscado = seleccionado.Id;
+            seleccionado = negocio.ObtenerAlbum(idbuscado);
+            //se carga los datos del Album que se selecciono modificar
+            if (!seleccionado.Activo)
+            {
+                Lbltitlulo.Text = "Alta de Albums";
+            }
+            else
+            {
+                Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
+
+            }
+
+            TxtTitulo.Text = seleccionado.Titulo.ToString();
+            TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
+            TxtPrecio.Text = seleccionado.Precio.ToString();
+            TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
+            TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();
 
 
+            //////////////////////////////////////////////
+            ///
+            List<Categoria> filtrada = new List<Categoria>();
+            Categoria catSeleccionada = new Categoria();
+
+            ///se busca la categoria del Album seleccionado
+            filtrada = listaCategoria.FindAll(x => x.Descripcion == seleccionado.Categoria.ToString());
+            catSeleccionada.Id = filtrada[0].Id;
+            catSeleccionada.Descripcion = seleccionado.Categoria.ToString();
+
+
+            ddlCategoria.SelectedValue = catSeleccionada.Id.ToString();
+            ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
+            ddlCategoria.SelectedIndex = catSeleccionada.Id;
+            /////////////////////////////////////////////////
+
+            List<Genero> genFiltrado = new List<Genero>();
+            Genero genSeleccionado = new Genero();
+
+
+            genFiltrado = listaGenero.FindAll(x => x.Descripcion == seleccionado.Genero.ToString());
+            genSeleccionado.Id = genFiltrado[0].Id;
+            genSeleccionado.Descripcion = seleccionado.Genero.ToString();
+
+
+            ddlGenero.SelectedValue = genSeleccionado.Id.ToString();
+            ddlGenero.SelectedValue = seleccionado.Genero.Id.ToString();
+            ddlGenero.SelectedIndex = genSeleccionado.Id;
+            /////////////////////////////////////////////////////
+
+            List<Artista> artFiltrado = new List<Artista>();
+            Artista artSeleccionado = new Artista();
+
+            artFiltrado = listaArtista.FindAll(x => x.Nombre == seleccionado.Artista.ToString());
+            artSeleccionado.Id = artFiltrado[0].Id;
+            artSeleccionado.Nombre = seleccionado.Artista.ToString();
+
+            ddlArtista.SelectedValue = artSeleccionado.Id.ToString();
+            ddlArtista.SelectedValue = seleccionado.Artista.Id.ToString();
+            ddlArtista.SelectedIndex = artSeleccionado.Id;
+
+
+        }
 
     }
 }
