@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormAltaArtista.aspx.cs" Inherits="TiendaVinilos.FormAltaArtista" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <div class="ContenedorPrincipal">
-        <div class="container-Formularios" style="width: 414px; height: 225px; margin-bottom: 66px">
+        <div class="container-Formularios" style="width: 414px; height: 225px; margin-top: 66px">
                     <div class="row">
                     <asp:Label ID="LblNombre" runat="server" ForeColor="White" Font-Size="Medium" Text="Nuevo Artista"></asp:Label> 
                     </div>

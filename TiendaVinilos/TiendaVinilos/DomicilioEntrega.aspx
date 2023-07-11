@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DomicilioEntrega.aspx.cs" Inherits="TiendaVinilos.Domicilio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="ContenedorPrincipal" >
-        <div class="container-Formularios" >
+    <div class="ContenedorPrincipal" >
+        <div class="container-Formularios"style="width: 600px; height: 400px; margin-top: 20px">
                <h4 style="color: #FFFFFF">Domicilio</h4>
                 <div class="row"> 
                 <div class="col">
@@ -25,6 +25,14 @@
                 </div> 
                 <div class="col">
                 <asp:TextBox ID="TxtProvincia" runat="server" class="controls"></asp:TextBox>
+                </div>
+                </div>
+                 <div class="row"> 
+                <div class="col">
+                <label for="TxtPais">Pais</label>
+                </div> 
+                <div class="col">
+                <asp:TextBox ID="TxtPais" runat="server" class="controls"></asp:TextBox>
                 </div>
                 </div>
                 <div class="row"> 

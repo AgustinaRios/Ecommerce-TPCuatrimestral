@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormAltaCategoria.aspx.cs" Inherits="TiendaVinilos.FormAltaCategoria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-        <div class="CuerpoRegistro">
-            <div class="container-Formularios" style="width: 414px; height: 225px; margin-bottom: 66px">
+        <div class="ContenedorPrincipal">
+            <div class="container-Formularios" style="width: 414px; height: 225px; margin-top: 66px">
                <div class="row">
                 <asp:Label ID="LblNombre" runat="server" Text="Nueva Categoria" ForeColor="White" Font-Size="Medium" ></asp:Label>
                 </div>

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master"  AutoEventWireup="true" CodeBehind="FormAltaGenero.aspx.cs" Inherits="TiendaVinilos.FormAltaGenero" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   <div class="ContenedorPrincipal">
-        <div class="container-Formularios" style="width: 414px; height: 225px; margin-bottom: 66px">
+  <div class="ContenedorPrincipal">
+        <div class="container-Formularios" style="width: 414px; height: 225px; margin-top: 66px">
                 <div class="row">
                 <asp:Label ID="LblNombre" runat="server" Text="Nuevo Genero" ForeColor="White" Font-Size="Medium" ></asp:Label>
                 </div>

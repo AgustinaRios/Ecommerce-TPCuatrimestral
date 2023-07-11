@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="ContenedorPrincipal">
-        <div class="container-Formularios" style="width: 564px; height: 483px">
+        <div class="container-Formularios" style="width: 600px; height: 500px; margin-top: 20px">
            <h4 style="color: #FFFFFF">Mi Perfil</h4>
                 <div class="row"> 
                 <div class="col">

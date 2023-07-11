@@ -1,47 +1,72 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="FormularioCompra.aspx.cs" Inherits="TiendaVinilos.FormularioCompra" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <updatepanel>
-
-
-
         <div class="ContenedorPrincipal">
-        <div class="container-Formularios">
-                <asp:Label ID="Lbltitlulo" runat="server" Font-Size="Smaller"></asp:Label>
-                <div>
-
-                    <asp:DropDownList runat="server" ID="ddlFormaEntrega" class="form-control" AutoPostBack="true" />
+        <div class="container-Formularios"style="width: 600px; height: 500px; margin-top: 20px">
+                  
+                      <div class="row">
+                    <asp:DropDownList runat="server" ID="ddlFormaEntrega" class="controls" AutoPostBack="true" />
+                          </div>
+              <div class="row">
+                    <div class="col">
                     <asp:Label ID="LblDomicilio" runat="server"  ></asp:Label>
+                        </div>
+                    <div class="col">
                     <asp:Button ID="BtnModificar" Cssclass="btn btn-secondary" visible="false" runat="server" Text="Cambiar" Onclick="BtnModificar_Click"  />
-                    
-
-                    <asp:DropDownList runat="server" ID="ddlFormaPago" class="form-control" AutoPostBack="true" />
+                        </div>
+                  </div>
+              <div class="row">
+                    <asp:DropDownList runat="server" ID="ddlFormaPago" class="controls" AutoPostBack="true" />
+                 
                     <% 
                         if (ddlFormaPago.SelectedIndex == 2)
                         {%>
+              </div>
+              <div class="row">
                     <a href="https://www.mercadopago.com.ar/"target="_blank">Logo Mercado</a>
+                 
                     <%}
                         if (ddlFormaPago.SelectedIndex == 3)
                         { %>
-
-                    <div class="form-inline">
+                       </div>
+                        <div class="row">
+                       <div class="col">
                         <label for="TxtNroTarjeta">Numero Tarjeta</label>
-                        <asp:TextBox ID="TxtNroTarjeta" runat="server" class="controls"></asp:TextBox>
-                    </div>
-                    <div class="form-inline">
+                        </div>
+                              <div class="col">
+                        <asp:TextBox ID="TxtNroTarjeta" runat="server" class="controls small"></asp:TextBox>    
+                            </div>
+                           </div>
+                    <div class="row">
+                          <div class="col">
                         <label for="TxtCodSeguridad">Codigo Seguridad</label>
+                              </div>
+                          <div class="col">
                         <asp:TextBox ID="TxtCodSeguridad" runat="server" class="controls small"></asp:TextBox>
-                    </div>
+                        </div>
+                        </div>
+                     <div class="row">
+                           <div class="col">
                     <asp:Label ID="lblFechaVto" runat="server" Text="Fecha Vencimiento" Font-Size="Small"></asp:Label>
-
+                               </div>
+                           <div class="col">
                     <asp:TextBox ID="TxtFechaVto" class="form-control" type="date" runat="server"></asp:TextBox>
+                      </div>
+                         
 
                     <%} %>
+              </div>
+              <div class="row">
+                    <div class="col">
                       <asp:Button ID="BtnAceptar" Text="Comprar" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />
-                <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
-                    <div>
-                        <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
-                    </div>
+                        </div>
+                    <div class="col">
+                <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />      
+                  </div>
+                  </div>
+              <div class="row">
+                      <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label> 
+                  </div>
                   <asp:RangeValidator ID="rvclass" runat="server" ControlToValidate="TxtNroTarjeta"
                         ErrorMessage="Solo números" MaximumValue="10000000000000000"
                         MinimumValue="1" Type="Double">
@@ -50,18 +75,7 @@
                         ErrorMessage="Solo números" MaximumValue="5000"
                         MinimumValue="1" Type="Double">
                     </asp:RangeValidator>
-
-                </div>
             </div>
-
-            <updatepanel>
-                <contentemplate>
-                    <br />
-
-        </div>
-
-
-
-
-    </updatepanel>
+            </div>
+    
 </asp:Content>

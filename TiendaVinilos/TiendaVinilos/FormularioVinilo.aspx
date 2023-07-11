@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
-    <div class="ContenedorPrincipal">
-              <div class="container-Formularios">
+   <div class="ContenedorPrincipal">
+              <div class="container-Formularios"style="width: 600px; height: 500px; margin-top: 20px">
                     <div class="row">
                    <asp:Label ID="Lbltitlulo" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label>
                     </div>

@@ -1,14 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Artistas.aspx.cs" Inherits="TiendaVinilos.Artistas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    
-    <div class="ContenedorPrincipal">
+  <div class="ContenedorPrincipal">
 <div class="container-listas">
-  
+<div class="d-flex justify-content-end"style="margin-bottom: 20px">
+ <asp:Button Text=" Nuevo Artista" CssClass="btn btn-primary" ID="btnAgregarNuevo" OnClick="btnAgregarNuevo_Click" runat="server" />    
+      </div>
     <table>
         <thead>
-             <tr>
-                <asp:Button Text=" Nuevo Artista" CssClass="btn btn-primary" ID="btnAgregarNuevo" OnClick="btnAgregarNuevo_Click" runat="server" />
-             </tr>
             <tr style="color: #000000 ;background-color:#243ed3">
                 <th scope="col">Id</th>
                 <th scope="col">Nombre</th>

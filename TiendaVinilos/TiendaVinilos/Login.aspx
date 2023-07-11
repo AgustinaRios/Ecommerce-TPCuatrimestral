@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TiendaVinilos.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     
-      <div class="ContenedorPrincipal">
-        <div class="container-Formularios">
+     <div class="ContenedorPrincipal">
+        <div class="container-Formularios"style="width: 600px; height: 400px; margin-top: 66px">
                 <div class="row">
                 <h4 style="color: #FFFFFF">INGRESE SU CUENTA</h4>
                 </div>
