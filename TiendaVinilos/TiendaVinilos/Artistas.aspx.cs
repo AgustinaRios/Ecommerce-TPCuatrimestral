@@ -100,6 +100,8 @@ namespace TiendaVinilos
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
+            string Id = ((Button)sender).CommandArgument;
+            Response.Redirect("FormAltaArtista.aspx?Id=" + Id, false);
 
         }
     }

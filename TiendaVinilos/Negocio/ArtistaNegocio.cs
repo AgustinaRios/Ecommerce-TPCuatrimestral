@@ -103,21 +103,21 @@ namespace Negocio
         }
 
 
-        public Artista ObtenerArtistaPorNombre(string nombre)
+        public Artista ObtenerArtistaPorId(int Id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "SELECT Id, Nombre FROM Artista WHERE Nombre = @Nombre";
-                datos.setearConsulta(consulta);
-                datos.setearParametro("@Nombre", nombre);
+                datos.setearConsulta("Select Id,Nombre from ARTISTA where Id="+Id);
+
+               
 
                 datos.ejecutarLectura(); // Agregar esta línea para abrir la conexión y ejecutar la consulta
 
                 if (datos.Lector.Read())
                 {
                     Artista artista = new Artista();
-                    artista.Id = datos.Lector.GetInt32(0);
+                    artista.Id = Id;
                     artista.Nombre = datos.Lector.GetString(1);
 
                     return artista;
@@ -159,7 +159,30 @@ namespace Negocio
             }
 
         }
+        public void modificar(Artista artista)
+        {
+            AccesoDatos datos=new AccesoDatos();
+            try
+            {
+                    datos.setearProcedimiento("sp_modificarArtista");
+                    datos.setearParametro("@Id", artista.Id);
+                    datos.setearParametro("@Nombre", artista.Nombre);
 
+                    datos.ejectutarAccion();
+                
+
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Error al dar de baja al artista.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
         public void AltaLogica(int Id)
         {
             AccesoDatos datos = new AccesoDatos();
