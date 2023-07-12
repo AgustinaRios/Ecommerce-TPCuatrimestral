@@ -66,7 +66,7 @@
                   </div>
                   </div>
               <div class="row">
-                      <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label> 
+                      <asp:Label ID="LblMensaje" ForeColor="red" runat="server" Visible="false"></asp:Label> 
                   </div>
                   <asp:RangeValidator ID="rvclass" runat="server" ControlToValidate="TxtNroTarjeta"
                         ErrorMessage="Solo números" MaximumValue="10000000000000000"

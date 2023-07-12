@@ -68,7 +68,7 @@
             </ItemTemplate>
         </asp:Repeater>
     </table>
-    <asp:Label ID="lblMensaje" runat="server" CssClass="message" Visible="false"></asp:Label>
+    <asp:Label ID="lblMensaje" ForeColor="red" runat="server" CssClass="message" Visible="false"></asp:Label>
 
         </div>
 

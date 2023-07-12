@@ -15,7 +15,7 @@
                 </div>
                 <div class="row">
                 <div id="passwordHelpBlock"  class="form-text">
-                Tu password deber tener maximo  8 caracteres.
+                Tu password deber tener entre 3 y 8 caracteres.
                </div>
                 </div>
                <div class="row">

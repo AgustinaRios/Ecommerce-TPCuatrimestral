@@ -27,7 +27,7 @@
                     </div>
                     <div class="row"> 
                     <div class="col">  
-                     <asp:TextBox ID="TxtFechaLanza" class="controls" type="date" runat="server"></asp:TextBox> 
+                     <asp:TextBox ID="TxtFechaLanza" class ="controls" type="date" runat="server" ></asp:TextBox> 
                      </div>
                     <div class="col">
                     <asp:Label ID="LblFecha" runat="server" Text="Fecha de Lanzamiento" ForeColor="White"></asp:Label>
@@ -68,10 +68,10 @@
                     <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
                    </div>
                    </div>
-                    <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
+                    <asp:Label ID="LblMensaje" ForeColor="red" runat="server" Visible="false"></asp:Label>
                     <asp:RangeValidator ID="rvclass" runat="server" ControlToValidate="TxtPrecio"
-                        ErrorMessage="A surgido un error de carga , por favor corrobore los datos" MaximumValue="10000"
-                        MinimumValue="1" Type="Double">
+                        ErrorMessage ="A surgido un error de carga , por favor corrobore los datos" MaximumValue="1000000"
+                        MinimumValue="1" Type="Double" ForeColor="red">
                     </asp:RangeValidator>
       </div>
       </div>

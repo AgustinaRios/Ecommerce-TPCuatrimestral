@@ -34,7 +34,7 @@
                 <asp:TextBox ID="TxtEmail" class="controls" type="email" placeholder="Ingrese su Email" aria-label="Ingrese Nombre" runat="server"></asp:TextBox>
               </div>
                <div class="col">
-                   <asp:TextBox ID="TxtPass" class="controls" MaxLength="8"  type="password" placeholder=" Maximo 8 caracteres." aria-label="Ingrese Nombre" runat="server"></asp:TextBox>
+                   <asp:TextBox ID="TxtPass" class="controls" MaxLength="8"  type="password" placeholder=" Entre 3 y 8 caracteres." aria-label="Ingrese Nombre" runat="server"></asp:TextBox>
                 </div>
                     </div>
                 
@@ -48,7 +48,7 @@
                <div class="col">
                <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
                </div>
-                <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
+                <asp:Label ID="LblMensaje" ForeColor="red" runat="server" Visible="false"></asp:Label>
                
                 </div>
             </div>

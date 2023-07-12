@@ -20,13 +20,26 @@ namespace TiendaVinilos
 
         bool ValidarVacios()
         {
-            TxtEmail.BorderColor = Color.White;
-            TxtPass.BorderColor = Color.White;
+           
             TxtApellido.BorderColor = Color.White;
             TxtNombre.BorderColor = Color.White;
+            TxtEmail.BorderColor = Color.White;
+            TxtPass.BorderColor = Color.White;
+            TxtDireccion.BorderColor = Color.White;
+            TxtLocalidad.BorderColor = Color.White;
+            TxtProvincia.BorderColor = Color.White;
 
             bool vacios = false;
-
+            if (TxtApellido.Text == "")
+            {
+                TxtApellido.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtNombre.Text == "")
+            {
+                TxtNombre.BorderColor = Color.Red;
+                vacios = true;
+            }
             if (TxtEmail.Text == "")
             {
                 TxtEmail.BorderColor = Color.Red;
@@ -37,6 +50,21 @@ namespace TiendaVinilos
                 TxtPass.BorderColor = Color.Red;
                 vacios = true;
             }
+            if (TxtDireccion.Text == "")
+            {
+                TxtDireccion.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtLocalidad.Text == "")
+            {
+                TxtLocalidad.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtProvincia.Text == "")
+            {
+                TxtProvincia.BorderColor = Color.Red;
+                vacios = true;
+            }
 
             return vacios;
         }
@@ -45,7 +73,7 @@ namespace TiendaVinilos
             bool cumpleRequisitos = false;
             string campo = TxtPass.Text;
 
-            if (campo.Length >= 6)
+            if (campo.Length >= 3)
             {
                 cumpleRequisitos = true;
             }
@@ -78,7 +106,7 @@ namespace TiendaVinilos
                     if (LongitudContraseña() == false)
                     {
                         // El campo no cumple con el mínimo de caracteres requeridos
-                        LblMensaje.Text = "El campo debe tener al menos 6 caracteres";
+                        LblMensaje.Text = "El campo debe tener al menos 3 caracteres";
                         LblMensaje.Visible = true;
                     }
                     else

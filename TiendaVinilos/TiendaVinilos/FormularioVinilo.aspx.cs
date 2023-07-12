@@ -14,6 +14,7 @@ namespace TiendaVinilos
 {
     public partial class FormularioVinilo : System.Web.UI.Page
     {
+       
         GeneroNegocio genero = new GeneroNegocio();
         List<Genero> listaGenero = new List<Genero>();
 
@@ -35,81 +36,18 @@ namespace TiendaVinilos
 
                     CargarDdl();
 
-                    TxtFechaLanza.Text = DateTime.Now.ToShortDateString();
+                    
 
                    
 
                     ///Toma el Id del album que  viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
-                    string Id = Request.QueryString["IdVinilo"] != null ? Request.QueryString["IdVinilo"].ToString() : "";
+                    string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
                         Lbltitlulo.Text = "Alta de Albums";
                     if (Id != "")
 
                     {
-
-
-                        Album seleccionado = new Album();
-                        seleccionado.Id = int.Parse(Id);
-                        int idbuscado = seleccionado.Id;
-                        seleccionado = negocio.ObtenerAlbum(idbuscado);
-                        //se carga los datos del Album que se selecciono  al modificar
-                       
-                           
-                       
-                            Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
-
-                        
-
-                        TxtTitulo.Text = seleccionado.Titulo.ToString();
-                        TxtFechaLanza.Text = seleccionado.FechaLanzamiento;
-                        TxtPrecio.Text = Convert.ToString(seleccionado.Precio);
-                        TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
-                        TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();
-
-
-                        //////////////////////////////////////////////
-                        ///
-
-                        List<Categoria> filtrada = new List<Categoria>();
-                        Categoria catSeleccionada = new Categoria();
-
-                        ///se busca la categoria del Album seleccionado
-                        filtrada = listaCategoria.FindAll(x => x.Descripcion == seleccionado.Categoria.ToString());
-                        catSeleccionada.Id = filtrada[0].Id;
-                        catSeleccionada.Descripcion = seleccionado.Categoria.ToString();
-
-
-                        ddlCategoria.SelectedValue = catSeleccionada.Id.ToString();
-                        
-                        ddlCategoria.SelectedIndex = catSeleccionada.Id;
-                        /////////////////////////////////////////////////
-
-                        List<Genero> genFiltrado = new List<Genero>();
-                        Genero genSeleccionado = new Genero();
-
-
-                        genFiltrado = listaGenero.FindAll(x => x.Descripcion == seleccionado.Genero.ToString());
-                        genSeleccionado.Id = genFiltrado[0].Id;
-                        genSeleccionado.Descripcion = seleccionado.Genero.ToString();
-
-
-                        ddlGenero.SelectedValue = genSeleccionado.Id.ToString();
-                      
-                        ddlGenero.SelectedIndex = genSeleccionado.Id;
-                        /////////////////////////////////////////////////////
-
-                        List<Artista> artFiltrado = new List<Artista>();
-                        Artista artSeleccionado = new Artista();
-
-                        artFiltrado = listaArtista.FindAll(x => x.Nombre == seleccionado.Artista.ToString());
-                        artSeleccionado.Id = artFiltrado[0].Id;
-                        artSeleccionado.Nombre = seleccionado.Artista.ToString();
-
-                        ddlArtista.SelectedValue = artSeleccionado.Id.ToString();
-                       
-                        ddlArtista.SelectedIndex = artSeleccionado.Id;
-
+                       Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
                         CargarAlbum(Id);
-
                     }
 
 
@@ -220,6 +158,7 @@ namespace TiendaVinilos
             TxtPrecio.BorderColor = Color.White;
             TxtImgTapa.BorderColor = Color.White;
             TxtImgContraTapa.BorderColor = Color.White;
+            TxtFechaLanza.BorderColor = Color.White;
             ddlArtista.BorderColor = Color.White;
             ddlCategoria.BorderColor = Color.White;
             ddlGenero.BorderColor = Color.White;
@@ -261,6 +200,12 @@ namespace TiendaVinilos
             {
 
                 TxtImgContraTapa.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtFechaLanza.Text == "" )
+            {
+
+                TxtFechaLanza.BorderColor = Color.Red;
                 vacios = true;
             }
 
@@ -310,7 +255,9 @@ namespace TiendaVinilos
             
 
             TxtTitulo.Text = seleccionado.Titulo.ToString();
-            TxtFechaLanza.Text = seleccionado.FechaLanzamiento;
+            DateTime fecha = Convert.ToDateTime(seleccionado.FechaLanzamiento);
+            TxtFechaLanza.Text = fecha.ToString("yyyy-MM-dd");
+
             TxtPrecio.Text = seleccionado.Precio.ToString();
             TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
             TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();

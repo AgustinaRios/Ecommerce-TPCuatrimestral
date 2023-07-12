@@ -15,7 +15,7 @@
                  <div class="col">
                     <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" AutoPostBack="true" OnClick="btnCancelar_Click" runat="server" />
                    </div>                                   
-                     <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>              
+                     <asp:Label ID="LblMensaje" ForeColor="red" runat="server" Visible="false"></asp:Label>              
               </div>
             </div>
 </div>

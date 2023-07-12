@@ -35,7 +35,7 @@
                 <div class="col">
             <asp:Button ID="BtnCancelar" Text="CANCELAR" OnClick="BtnCancelar_Click" runat="server" CssClass="btn btn-danger" />
                  </div>
-                 <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
+                 <asp:Label ID="LblMensaje" ForeColor="red" runat="server" Visible="false"></asp:Label>
                 </div>    
             </div>
        </div>
