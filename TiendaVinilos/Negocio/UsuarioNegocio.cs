@@ -12,8 +12,8 @@ namespace Negocio
     {
         public int insertarNuevo(Usuario nuevo)
         {
-           AccesoDatos datos = new AccesoDatos();  
-            
+            AccesoDatos datos = new AccesoDatos();
+
             try
             {
                 datos.setearProcedimiento("InsertarNuevo");
@@ -26,9 +26,9 @@ namespace Negocio
                 datos.setearParametro("@Prov", nuevo.Provincia);
                 return datos.ejectutarAccionScalar();
 
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
 
@@ -38,11 +38,11 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-            
-            
+
+
         }
 
-        
+
 
         public Usuario Login(Usuario usuario)
         {
@@ -55,7 +55,7 @@ namespace Negocio
 
                 datos.setearParametro("@email", usuario.Email);
                 datos.setearParametro("@pass", usuario.Pass);
-                    datos.ejecutarLectura();
+                datos.ejecutarLectura();
                 if (datos.Lector.Read())
                 {
 
@@ -89,7 +89,7 @@ namespace Negocio
                     Console.WriteLine("Inicio de sesión exitoso. ID: " + aux.ID + ", Admin: " + aux.Admin);
 
                 }
-                    return aux;
+                return aux;
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace Negocio
             }
         }
 
-        public void modificar(Usuario usuario )
+        public void modificar(Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -115,7 +115,7 @@ namespace Negocio
                 datos.setearParametro("@dire", usuario.Direccion);
                 datos.setearParametro("@localidad", usuario.Localidad);
                 datos.setearParametro("@prov", usuario.Provincia);
-               
+
 
                 datos.ejectutarAccion();
             }
@@ -290,7 +290,7 @@ namespace Negocio
             {
                 datos.setearConsulta("select ID, Nombre, Apellido, Email, Pass,FechaCreacion,Direccion,Localidad,Provincia,Administrador,Activo from USUARIOS  where Administrador=1");
 
-              
+
                 datos.ejecutarLectura();
                 if (datos.Lector.Read())
                 {

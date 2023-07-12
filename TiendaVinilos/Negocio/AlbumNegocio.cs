@@ -40,7 +40,8 @@ namespace Negocio
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
-                    aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
+                    DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
+                    aux.FechaLanzamiento = fecha.ToShortDateString();
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
@@ -97,7 +98,8 @@ namespace Negocio
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
-                    aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
+                    DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
+                    aux.FechaLanzamiento = fecha.ToShortDateString();                   
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
@@ -155,7 +157,8 @@ namespace Negocio
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
-                    aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
+                    DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
+                    aux.FechaLanzamiento = fecha.ToShortDateString();
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
@@ -211,7 +214,8 @@ namespace Negocio
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
-                    aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
+                    DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
+                    aux.FechaLanzamiento = fecha.ToShortDateString();
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
@@ -269,7 +273,8 @@ namespace Negocio
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
-                    aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
+                    DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
+                    aux.FechaLanzamiento = fecha.ToShortDateString();
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
@@ -383,7 +388,8 @@ namespace Negocio
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
-                    aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
+                    DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
+                    aux.FechaLanzamiento = fecha.ToShortDateString();
                     aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
                     aux.Genero = new Genero();
@@ -445,7 +451,10 @@ namespace Negocio
 
 
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("FechaLanzamiento"))))
-                        aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
+                        
+                        aux.FechaLanzamiento = Convert.ToString(datos.Lector["FechaLanzamiento"]);
+                    DateTime fecha = DateTime.Parse(aux.FechaLanzamiento);
+                    aux.FechaLanzamiento = fecha.ToShortDateString();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))

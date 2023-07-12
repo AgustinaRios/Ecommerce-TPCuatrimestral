@@ -226,22 +226,25 @@ go
 insert into ARTISTA(Nombre)values ('QUEEN'), ('DAVID BOWIE'), ('CHARLY GARCIA'),('SODA STEREO'),
 ('FITO PAEZ'),('MERCEDES SOSA'),('LOS ABUELOS DE LA NADA'),('THE BEATLES'),('U2'),('NIRVANA'),('MICHAEL JACKSON'),
 ('PINK FLOYD'),('THE ROLLING STONES'),('ELTON JOHN'),('METALLICA'),('PRINCE'),('BOB MARLEY'),('AC DC'),('MADONNA'),
-('LED ZEPPELIN')
+('LED ZEPPELIN'),('ASTOR PIAZZOLLA'),('GUSTAVO CERATI'),('VANGELIS')
 go
 INSERT INTO ALBUMES (Titulo, IdArtista, FechaLanzamiento, ImgTapa, ImgContratapa, Precio, IdGenero, IdCategoria)
 VALUES 
+('Libertango',21,'1968-02-03','https://i.scdn.co/image/ab67616d0000b2739df3507f06b25736592361e1','https://2.bp.blogspot.com/-8LRoUUPO3E4/U_th0hmZbCI/AAAAAAAAB9M/nFpDURFhQug/s1600/flibertangoa2e45afd2a76fd8e8e1260.jpg',35000.00,4,1),
+('Bocanada',22,'1999-05-05','https://assets.dev-filo.dift.io/img/2019/06/28/ce_sq.jpg','https://i1.sndcdn.com/artworks-Pnf1jAbcgDTyTUDW-rNbtug-t500x500.jpg',28000.00,1,2),
+('China',23,'1975-07-26','https://rockstorevinilos.cl/wp-content/uploads/2022/01/R-11596408-1519924909-1749.jpeg.jpg','https://m.media-amazon.com/images/I/61Rbr5R+VaL._UF1000,1000_QL80_.jpg',30000.00,3,3),
 ('Sound And Vision', 2, '1971-03-11', 'https://images.squarespace-cdn.com/content/v1/5a70fa14e45a7c7dd2fadad0/1519497173710-PXUY3JHRWPHINW9RTVUD/1969_manofwords.jpg?format=750w', 'https://1.bp.blogspot.com/-Lo1FX9Z0PS8/XzMDeRabQjI/AAAAAAAADz8/Uists2RHv3km2kJwLV9h4kWpLdhgdurnwCLcBGAsYHQ/s1600/low.jpg', 7500.00, 1, 3),
 ('Clics Modernos', 3, '1983-02-12', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Clics-modernos-charly-garcia-front.jpg/640px-Clics-modernos-charly-garcia-front.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShlWTSI2TUDayo6QQIEV7ZS4RK5zvEmp05Gg&usqp=CAU', 5500, 1, 3),
 ('El Amor despues del amor (2LP)', 5, '2019-06-01', 'https://http2.mlstatic.com/D_NQ_NP_834079-MLA54966560635_042023-W.jpg', 'https://http2.mlstatic.com/D_NQ_NP_889938-MLA48948891521_012022-O.webp', 19392, 1,2),
 ('Soda Stereo', 4, '2015-11-01', 'https://http2.mlstatic.com/D_NQ_NP_863459-MLA48596431326_122021-O.webp', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnwsW-LClg87hvvxrOCAetLa3nJ1jllniy9g&usqp=CAU', 14900, 1,2),
 ('Cantora 1 (2LP)', 6, '2017-11-01', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmcspn-2qadfwn8s561CUEflepWiWCwNproo0tDS1OLqzqSMkrZwwMDuFgFiVIxTtZFM&usqp=CAU', 'https://http2.mlstatic.com/D_NQ_NP_898106-MLA49844455670_052022-O.webp',21800,7,3),
-('Back in Black', 18, '1980-07-25', 'https://cdn1.eldia.com/072021/1627255515074.jpg','', 8500.00, 1, 2),
-('Thriller', 11, '1982-11-30', 'https://www.mmx.com.ar/media/k2/items/cache/e615c787b2f85cf06510c8d1eb939a8d_L.jpg','', 9200.00, 6, 2),
-('The Dark Side of the Moon', 12, '1973-03-01', 'https://www.elciudadanoweb.com/wp-content/uploads/2023/01/230119-pinkfloyd-darkside50-feat.jpg','', 7800.00, 3, 2),
-('Like a Virgin', 19, '1984-11-12', 'https://upload.wikimedia.org/wikipedia/en/1/17/LikeAVirgin1984.png','', 6900.00, 2, 2),
-('Led Zeppelin IV', 20, '1971-11-08', 'https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg','', 7700.00, 1, 2),
-('The Wall', 12, '1979-11-30', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/The_Wall_Cover.svg/800px-The_Wall_Cover.svg.png','', 8500.00, 3, 2),
-('Greatest Hits', 1, '1998-11-03', 'https://www.udiscovermusic.com/wp-content/uploads/2017/11/Queen-Greatest-Hits.jpg','', 6800.00, 1, 3);
+('Back in Black', 18, '1980-07-25', 'https://cdn1.eldia.com/072021/1627255515074.jpg','https://th.bing.com/th/id/OIP.ftiL5M_hVe2hKMwed2mMGwHaFj?pid=ImgDet&w=480&h=360&rs=1', 8500.00, 1, 2),
+('Thriller', 11, '1982-11-30', 'https://i.pinimg.com/originals/a5/c8/ad/a5c8ade83a0d0aa6c50216b8bd04a10c.jpg','https://www.rockshop.ro/images/product/974-michael-jackson-thriller,-specialedition-cd-spatejpg.jpg', 9200.00, 6, 2),
+('The Dark Side of the Moon', 12, '1973-03-01', 'https://i.pinimg.com/originals/bc/8f/63/bc8f63a640d62e0372e583471cf1300c.jpg','https://livedoor.blogimg.jp/johnny_the_fox/imgs/c/3/c3419013.jpg', 7800.00, 3, 2),
+('Like a Virgin', 19, '1984-11-12', 'https://upload.wikimedia.org/wikipedia/en/1/17/LikeAVirgin1984.png','https://4.bp.blogspot.com/-hxI0MrVSP8o/UfTlEQE9sSI/AAAAAAAAdw8/gUYVpi3nNJM/s1600/Like+a+Virgin+-+Extended+by+Twenty5&More+b.jpg', 6900.00, 2, 2),
+('Led Zeppelin IV', 20, '1971-11-08', 'https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg','https://th.bing.com/th/id/R.a654cdaaaa9cf451223361aa49c2c4e8?rik=b0HFjvo1XB9PRw&pid=ImgRaw&r=0', 7700.00, 1, 2),
+('The Wall', 12, '1979-11-30', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/The_Wall_Cover.svg/800px-The_Wall_Cover.svg.png','https://th.bing.com/th/id/R.f76e439c1cfb58fd3eca7f2fc14eca9e?rik=T0XpT3s6tuJeng&pid=ImgRaw&r=0', 8500.00, 3, 2),
+('Greatest Hits', 1, '1998-11-03', 'https://www.udiscovermusic.com/wp-content/uploads/2017/11/Queen-Greatest-Hits.jpg','https://th.bing.com/th/id/R.b6afdbfe2c0110574f907b049e10e3e4?rik=aGfKxAgm0iDEyg&pid=ImgRaw&r=0', 6800.00, 1, 3);
 
 
 go
@@ -249,4 +252,5 @@ go
 values ('adm','adm','adm@adm.com','adm','2023/06/15','Santo Tomé 4749','Monte Castro','Buenos Aires',1,1)
 
 
-
+select * from ALBUMES
+ 

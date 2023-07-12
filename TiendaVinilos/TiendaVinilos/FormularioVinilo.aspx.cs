@@ -57,10 +57,10 @@ namespace TiendaVinilos
                        
                             Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
 
-                       
+                        
 
                         TxtTitulo.Text = seleccionado.Titulo.ToString();
-                        TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
+                        TxtFechaLanza.Text = seleccionado.FechaLanzamiento;
                         TxtPrecio.Text = Convert.ToString(seleccionado.Precio);
                         TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
                         TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();
@@ -153,10 +153,11 @@ namespace TiendaVinilos
                 AlbumNegocio albumNegocio = new AlbumNegocio();
 
 
-                nuevo.FechaLanzamiento = DateTime.Parse(TxtFechaLanza.Text);
+                nuevo.FechaLanzamiento =TxtFechaLanza.Text;
                 //// Se valida que la fecha no sea posterior a la del dia actual
                 DateTime hoy = DateTime.Now;
-                if (nuevo.FechaLanzamiento >= hoy)
+                DateTime Lanzamiento = DateTime.Parse(nuevo.FechaLanzamiento);
+                if (Lanzamiento >= hoy)
                 {
                     LblMensaje.Text = "No se puede cargar un album que no salio a la venta aun";
                     LblMensaje.Visible = true;
@@ -309,7 +310,7 @@ namespace TiendaVinilos
             
 
             TxtTitulo.Text = seleccionado.Titulo.ToString();
-            TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
+            TxtFechaLanza.Text = seleccionado.FechaLanzamiento;
             TxtPrecio.Text = seleccionado.Precio.ToString();
             TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
             TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();

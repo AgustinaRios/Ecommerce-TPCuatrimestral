@@ -40,32 +40,32 @@
         }
     </style>
 
-    <div class="CuerpoRegistro">
-        <div class="container">
+    <div class="ContenedorPrincipal">
+              <div class="container-Formularios"style="width: 850px; height: 450px; margin-top: 20px">
             <div class="card">
                 <% Dominio.Album album = albumSeleccionado; %>
                 <div class="row">
                     <div class="col-md-6 text-center">
                         <div id="albumCarousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
+                            <div class="carousel-inner" >
                                 <div class="carousel-item active">
-                                    <img class="img-fluid rounded" src="<%= album.ImgTapa %>" alt="Tapa del álbum">
+                                    <img class="img-fluid rounded" style="width: 350px; height: 350px;" src="<%= album.ImgTapa %>" alt="Tapa del álbum">
                                 </div>
                                 <% if (album.ImgContratapa != null)
 
                                     { %>
                                 <div class="carousel-item">
-                                    <img class="img-fluid rounded" src="<%= album.ImgContratapa %>" alt="Contratapa del álbum">
+                                    <img class="img-fluid rounded" style="width: 350px; height: 350px;" src="<%= album.ImgContratapa %>" alt="Contratapa del álbum">
                                 </div>
                                 <%} %>
                             </div>
                             <a class="carousel-control-prev" href="#albumCarousel" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Anterior</span>
+                                <span class="sr-only" style="color: #0000FF"></span>
                             </a>
                             <a class="carousel-control-next" href="#albumCarousel" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Siguiente</span>
+                                <span class="sr-only" style="color: #0000FF"></span>
                             </a>
                         </div>
                         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -77,11 +77,11 @@
                         </script>
                     </div>
                     <div class="col-md-6 info">
-                        <div class="row title">
+                        <div class="row">
                             <div class="col">
-                                <h2><%= album.Titulo %></h2>
+                                <h2 style="font-size-adjust:inherit"><%= album.Titulo %></h2>
                             </div>
-                            <div class="col text-right">
+                            <div class="col">
                                 <a href="Detalle.aspx?id=<%: album.Id %>">
                                      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
                                         <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
