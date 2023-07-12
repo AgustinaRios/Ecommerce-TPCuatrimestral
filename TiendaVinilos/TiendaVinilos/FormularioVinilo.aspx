@@ -19,10 +19,10 @@
                     </div>
                     <div class="row">
                     <div class="col">                   
-                    <asp:TextBox ID="TxtImgTapa" class="controls" type="text" placeholder="url de la imagen de la tapa" runat="server"></asp:TextBox>               
+                    <asp:TextBox ID="TxtImgTapa" class="controls" type="text" placeholder="url  de la tapa" runat="server"></asp:TextBox>               
                     </div>
                     <div class="col">  
-                    <asp:TextBox ID="TxtImgContraTapa" class="controls" type="text" placeholder="url de la imagen de la Contratapa" runat="server"></asp:TextBox>      
+                    <asp:TextBox ID="TxtImgContraTapa" class="controls" type="text" placeholder="url de la  Contratapa" runat="server"></asp:TextBox>      
                     </div>
                     </div>
                     <div class="row"> 

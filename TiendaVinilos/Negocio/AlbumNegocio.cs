@@ -93,14 +93,15 @@ namespace Negocio
                     Album aux = new Album();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Titulo = (string)datos.Lector["Titulo"];
+
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
                     aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
-                   if(!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
-                   if(!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
-                    aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
+                        aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
                     aux.Genero = new Genero();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Genero"))))
                         aux.Genero.Descripcion = (string)datos.Lector["Genero"];
@@ -114,6 +115,7 @@ namespace Negocio
                         DosDecimal = (decimal)datos.Lector["Precio"];
                         aux.Precio = Decimal.Parse(DosDecimal.ToString("0.00"));
                     }
+
 
                     aux.Activo = (bool)datos.Lector["Activo"];
 
@@ -149,12 +151,15 @@ namespace Negocio
                     Album aux = new Album();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Titulo = (string)datos.Lector["Titulo"];
+
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
                     aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
-                    aux.ImgTapa = (string)datos.Lector["ImgTapa"];
-                    aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
+                        aux.ImgTapa = (string)datos.Lector["ImgTapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
+                        aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
                     aux.Genero = new Genero();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Genero"))))
                         aux.Genero.Descripcion = (string)datos.Lector["Genero"];
@@ -168,6 +173,7 @@ namespace Negocio
                         DosDecimal = (decimal)datos.Lector["Precio"];
                         aux.Precio = Decimal.Parse(DosDecimal.ToString("0.00"));
                     }
+
 
                     aux.Activo = (bool)datos.Lector["Activo"];
 
@@ -201,12 +207,15 @@ namespace Negocio
                     Album aux = new Album();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Titulo = (string)datos.Lector["Titulo"];
+
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
                     aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
-                    aux.ImgTapa = (string)datos.Lector["ImgTapa"];
-                    aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
+                        aux.ImgTapa = (string)datos.Lector["ImgTapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
+                        aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
                     aux.Genero = new Genero();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Genero"))))
                         aux.Genero.Descripcion = (string)datos.Lector["Genero"];
@@ -220,6 +229,7 @@ namespace Negocio
                         DosDecimal = (decimal)datos.Lector["Precio"];
                         aux.Precio = Decimal.Parse(DosDecimal.ToString("0.00"));
                     }
+
 
                     aux.Activo = (bool)datos.Lector["Activo"];
 
@@ -255,12 +265,15 @@ namespace Negocio
                     Album aux = new Album();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Titulo = (string)datos.Lector["Titulo"];
+
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
                     aux.FechaLanzamiento = (DateTime)datos.Lector["FechaLanzamiento"];
-                    aux.ImgTapa = (string)datos.Lector["ImgTapa"];
-                    aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
+                        aux.ImgTapa = (string)datos.Lector["ImgTapa"];
+                    if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
+                        aux.ImgContratapa = (string)datos.Lector["ImgContratapa"];
                     aux.Genero = new Genero();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Genero"))))
                         aux.Genero.Descripcion = (string)datos.Lector["Genero"];

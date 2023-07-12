@@ -7,9 +7,10 @@
                 <asp:Label ID="LblEstado" runat="server" ForeColor="White" Font-Size="Medium" Text="Actulizar Estado de Venta"></asp:Label>
             </div>
             <div class="row">
-                <asp:DropDownList ID="ddlEstadoPedido" runat="server" CssClass="btn btn-outline-secondary">
+                <asp:DropDownList ID="ddlEstadoPedido" runat="server" CssClass="btn btn-secondary">
                 </asp:DropDownList>
             </div>
+            <br />
             <div class="row">
                 <div class="col">
                     <asp:Button ID="BtnAceptar" Text="Aceptar" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />

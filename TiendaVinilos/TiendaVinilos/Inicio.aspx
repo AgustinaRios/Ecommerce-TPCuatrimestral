@@ -37,6 +37,7 @@
                         <div class="bodyvinilo">
                             <p class="card-text">"<%:album.Titulo %>"</p>
                             <p class="card-text"><%:album.Artista %></p>
+                            <p class="card-precio">$<%:album.Precio %></p>
                             <div class="col">
                                 <a href="Detalle.aspx?iddetalle=<%:album.Id %>" class="btn btn-success">Detalle</a>
                                 <a href="Inicio.aspx?id=<%:album.Id %>">

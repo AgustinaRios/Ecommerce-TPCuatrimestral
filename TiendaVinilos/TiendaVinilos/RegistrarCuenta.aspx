@@ -26,7 +26,7 @@
                 <asp:TextBox ID="TxtProvincia" class="controls" type="text" placeholder="Ingrese su Provincia" aria-label="Ingrese Provincia" runat="server"></asp:TextBox>
                 </div>
                <div class="col">
-                <asp:TextBox ID="TxtPais" class="controls" type="text" placeholder="Ingrese su Pais" aria-label="Ingrese Pais" ReadOnly="true" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtPais" Visible="false" class="controls" type="text" placeholder="Ingrese su Pais" aria-label="Ingrese Pais" ReadOnly="true" runat="server"></asp:TextBox>
                </div>
                  </div>
                <div class="row"> 

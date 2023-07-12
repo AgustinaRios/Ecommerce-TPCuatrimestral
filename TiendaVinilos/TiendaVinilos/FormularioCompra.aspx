@@ -50,12 +50,13 @@
                     <asp:Label ID="lblFechaVto" runat="server" Text="Fecha Vencimiento" Font-Size="Small"></asp:Label>
                                </div>
                            <div class="col">
-                    <asp:TextBox ID="TxtFechaVto" class="form-control" type="date" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TxtFechaVto" class="control" type="date" runat="server"></asp:TextBox>
                       </div>
                          
 
                     <%} %>
               </div>
+            <br />
               <div class="row">
                     <div class="col">
                       <asp:Button ID="BtnAceptar" Text="Comprar" OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" ToolTip="Click para loguerte" />

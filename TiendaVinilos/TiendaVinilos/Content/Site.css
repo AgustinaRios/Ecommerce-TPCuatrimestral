@@ -51,21 +51,21 @@ textarea {
 }
 
 .bodyvinilo {
-    height: 150px;
+    height: 200px;
     width: 200px;
 }
 .rowvinilos {
     justify-content: space-around;
 }
 
-.card-title{
+.card-precio{
     text-align: center;
-    color: mediumseagreen;
+    color: red;
 }
 
 .card-text {
     text-align: center;
-    color: red;
+    color: black;
     font-size-adjust:inherit;
     justify-items:stretch;
     height:25px;

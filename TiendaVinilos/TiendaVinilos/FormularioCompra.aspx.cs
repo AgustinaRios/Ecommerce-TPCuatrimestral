@@ -126,7 +126,7 @@ namespace TiendaVinilos
             }
             if (TxtNroTarjeta.Text == "")
             {
-                TxtFechaVto.BorderColor = Color.Red;
+                TxtNroTarjeta.BorderColor = Color.Red;
                 vacios = true;
             }
 
