@@ -34,7 +34,7 @@
                 <asp:TextBox ID="TxtEmail" class="controls" type="email" placeholder="Ingrese su Email" aria-label="Ingrese Nombre" runat="server"></asp:TextBox>
               </div>
                <div class="col">
-                   <asp:TextBox ID="TxtPass" class="controls" MaxLength="8"  type="password" placeholder="Tu password debe tener maximo 8 caracteres." aria-label="Ingrese Nombre" runat="server"></asp:TextBox>
+                   <asp:TextBox ID="TxtPass" class="controls" MaxLength="8"  type="password" placeholder=" Maximo 8 caracteres." aria-label="Ingrese Nombre" runat="server"></asp:TextBox>
                 </div>
                     </div>
                 

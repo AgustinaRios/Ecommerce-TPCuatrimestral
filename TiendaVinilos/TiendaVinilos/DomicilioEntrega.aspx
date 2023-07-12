@@ -27,14 +27,7 @@
                 <asp:TextBox ID="TxtProvincia" runat="server" class="controls"></asp:TextBox>
                 </div>
                 </div>
-                 <div class="row"> 
-                <div class="col">
-                <label for="TxtPais">Pais</label>
-                </div> 
-                <div class="col">
-                <asp:TextBox ID="TxtPais" runat="server" class="controls"></asp:TextBox>
-                </div>
-                </div>
+               
                 <div class="row"> 
                 <div class="col">
             <asp:Button ID="BtnAceptar" Text="Cambiar el domicilio " OnClick="BtnAceptar_Click" runat="server" CssClass="btn btn-primary" />

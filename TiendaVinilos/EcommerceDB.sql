@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[ALBUMES](
 GO
 CREATE TABLE CATEGORIA(
 	
-	Id int not null primary key identity (0, 1),
+	Id int not null primary key identity (1, 1),
 	Descripcion varchar (50) not null ,
 	[Activo] [bit] default 1)
 	GO
@@ -221,7 +221,7 @@ go
  insert into GENEROS (Descripcion)values ('Rock'), ('Pop'), ('Clásico'), ('Tango'), ('Funk'),('Jazz'),('Folklore'),
  ('Reggae'),('Hip Hop'),('Electrónica'),('R&B'),('Country'),('Salsa')
  go
- insert into CATEGORIA(Descripcion)values (''),('Los mas buscados'), ('Los mas vendidos'), ('Los mas recomendados')
+ insert into CATEGORIA(Descripcion)values ('S/C'),('Los mas buscados'), ('Los mas vendidos'), ('Los mas recomendados')
 go
 insert into ARTISTA(Nombre)values ('QUEEN'), ('DAVID BOWIE'), ('CHARLY GARCIA'),('SODA STEREO'),
 ('FITO PAEZ'),('MERCEDES SOSA'),('LOS ABUELOS DE LA NADA'),('THE BEATLES'),('U2'),('NIRVANA'),('MICHAEL JACKSON'),
@@ -247,3 +247,6 @@ VALUES
 go
  insert into USUARIOS 
 values ('adm','adm','adm@adm.com','adm','2023/06/15','Santo Tomé 4749','Monte Castro','Buenos Aires',1,1)
+
+
+

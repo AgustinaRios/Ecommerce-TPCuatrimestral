@@ -70,7 +70,7 @@
                    </div>
                     <asp:Label ID="LblMensaje" runat="server" Visible="false"></asp:Label>
                     <asp:RangeValidator ID="rvclass" runat="server" ControlToValidate="TxtPrecio"
-                        ErrorMessage="Solo se aceptan numero positivos.." MaximumValue="10000"
+                        ErrorMessage="A surgido un error de carga , por favor corrobore los datos" MaximumValue="10000"
                         MinimumValue="1" Type="Double">
                     </asp:RangeValidator>
       </div>

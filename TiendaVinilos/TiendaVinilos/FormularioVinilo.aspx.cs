@@ -40,7 +40,7 @@ namespace TiendaVinilos
                    
 
                     ///Toma el Id del album que  viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
-                    string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+                    string Id = Request.QueryString["IdVinilo"] != null ? Request.QueryString["IdVinilo"].ToString() : "";
                         Lbltitlulo.Text = "Alta de Albums";
                     if (Id != "")
 
@@ -61,7 +61,7 @@ namespace TiendaVinilos
 
                         TxtTitulo.Text = seleccionado.Titulo.ToString();
                         TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
-                        TxtPrecio.Text = seleccionado.Precio.ToString();
+                        TxtPrecio.Text = Convert.ToString(seleccionado.Precio);
                         TxtImgTapa.Text = seleccionado.ImgTapa.ToString();
                         TxtImgContraTapa.Text = seleccionado.ImgContratapa.ToString();
 
@@ -108,11 +108,7 @@ namespace TiendaVinilos
                        
                         ddlArtista.SelectedIndex = artSeleccionado.Id;
 
-
-
                         CargarAlbum(Id);
-
-
 
                     }
 
@@ -142,58 +138,7 @@ namespace TiendaVinilos
             Session["PaginaAnterior"] = Request.Url.ToString();
             Response.Redirect("FormAltaCategoria.aspx", false);
         }
-        bool ValidarVacios()
-        {
-            TxtTitulo.BorderColor = Color.White;
-            TxtPrecio.BorderColor = Color.White;
-            TxtImgTapa.BorderColor = Color.White;
-            TxtImgContraTapa.BorderColor = Color.White;
-            ddlArtista.BorderColor = Color.White;
-            ddlCategoria.BorderColor = Color.White;
-            ddlGenero.BorderColor = Color.White;
-
-            bool vacios = false;
-            if (TxtTitulo.Text == "")
-            {
-                TxtTitulo.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (ddlArtista.SelectedIndex == -1)
-            {
-                ddlArtista.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (ddlCategoria.SelectedIndex == -1)
-            {
-                ddlCategoria.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (ddlGenero.SelectedIndex == -1)
-            {
-                ddlGenero.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (TxtPrecio.Text == "")
-            {
-
-                TxtPrecio.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (TxtImgTapa.Text == "")
-            {
-
-                TxtImgTapa.BorderColor = Color.Red;
-                vacios = true;
-            }
-            if (TxtImgContraTapa.Text == "")
-            {
-
-                TxtImgContraTapa.BorderColor = Color.Red;
-                vacios = true;
-            }
-
-            return vacios;
-        }
+       
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -268,6 +213,58 @@ namespace TiendaVinilos
         {
             Response.Redirect("Listar.aspx", false);
         }
+        bool ValidarVacios()
+        {
+            TxtTitulo.BorderColor = Color.White;
+            TxtPrecio.BorderColor = Color.White;
+            TxtImgTapa.BorderColor = Color.White;
+            TxtImgContraTapa.BorderColor = Color.White;
+            ddlArtista.BorderColor = Color.White;
+            ddlCategoria.BorderColor = Color.White;
+            ddlGenero.BorderColor = Color.White;
+
+            bool vacios = false;
+            if (TxtTitulo.Text == "")
+            {
+                TxtTitulo.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (ddlArtista.SelectedIndex == -1)
+            {
+                ddlArtista.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (ddlCategoria.SelectedIndex == -1)
+            {
+                ddlCategoria.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (ddlGenero.SelectedIndex == -1)
+            {
+                ddlGenero.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtPrecio.Text == "")
+            {
+
+                TxtPrecio.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtImgTapa.Text == "")
+            {
+
+                TxtImgTapa.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (TxtImgContraTapa.Text == "")
+            {
+
+                TxtImgContraTapa.BorderColor = Color.Red;
+                vacios = true;
+            }
+
+            return vacios;
+        }
         protected void CargarDdl()
         {
             //Genero
@@ -309,15 +306,7 @@ namespace TiendaVinilos
             int idbuscado = seleccionado.Id;
             seleccionado = negocio.ObtenerAlbum(idbuscado);
             //se carga los datos del Album que se selecciono modificar
-            if (!seleccionado.Activo)
-            {
-                Lbltitlulo.Text = "Alta de Albums";
-            }
-            else
-            {
-                Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
-
-            }
+            
 
             TxtTitulo.Text = seleccionado.Titulo.ToString();
             TxtFechaLanza.Text = seleccionado.FechaLanzamiento.ToString("yyyy-MM-dd");
