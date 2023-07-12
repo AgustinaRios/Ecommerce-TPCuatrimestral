@@ -25,6 +25,7 @@ namespace TiendaVinilos
             AlbumNegocio negocio = new AlbumNegocio();
             try
             {
+                Session.Remove("listaFiltrada");
 
                 if (!IsPostBack)
                 {

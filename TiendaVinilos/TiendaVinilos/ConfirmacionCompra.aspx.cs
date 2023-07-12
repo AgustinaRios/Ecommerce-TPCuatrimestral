@@ -74,6 +74,14 @@ namespace TiendaVinilos
                     Session["ItemCount"] = 0;
                 }
 
+                Usuario usuario = new Usuario();
+                UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                usuario = (Usuario)Session["usuario"];
+                int id = usuario.ID;
+                usuario = usuarioNegocio.ObtenerUsuarioPorId(id);
+
+                EmailService emailService = new EmailService();
+                string resultadoEnvio = emailService.EnviarCorreo(usuario.Email, "Confirmación de compra", "Gracias por elegirnos! Su pedido a sido confirmado y se encuentra en preparación, será notificado por este medio sobre el estado del mismo.");
 
 
             }

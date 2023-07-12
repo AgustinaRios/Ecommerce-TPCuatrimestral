@@ -173,6 +173,12 @@ namespace TiendaVinilos
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+
+            Session.Remove("listaFiltrada");
+            Session.Remove("ListarUsuarios");
+            Session.Remove("listaArtista");
+            Session.Remove("listaCompras");
+
             List<Album> listaFiltrada = new List<Album>();
             AlbumNegocio negocio = new AlbumNegocio();
             string buscar = txtFiltro.Text;
