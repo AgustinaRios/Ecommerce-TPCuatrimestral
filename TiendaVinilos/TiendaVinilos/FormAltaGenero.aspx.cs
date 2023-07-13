@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
 using Dominio;
 using Negocio;
 namespace TiendaVinilos
@@ -48,6 +49,22 @@ namespace TiendaVinilos
 
         }
 
+        bool ValidarVacios()
+        {
+            TxtNombre.BorderColor = Color.White;
+             bool vacios = false;
+            if (TxtNombre.Text == "")
+            {
+                TxtNombre.BorderColor = Color.Red;
+                LblMensaje.Text = "Complete el campo...";
+                LblMensaje.Visible = true;
+                vacios = true;
+            }
+           
+           
+
+            return vacios;
+        }
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -72,6 +89,8 @@ namespace TiendaVinilos
                 }
                 else
                 {
+                    if (ValidarVacios() == false)
+                    {
                     nuevo.Descripcion = TxtNombre.Text;
 
                     negocio.agregar(nuevo);
@@ -83,7 +102,7 @@ namespace TiendaVinilos
                     {
                         Response.Redirect(paginaAnterior, false);
                     }
-
+                     }
                 }
             }
             catch (Exception ex)

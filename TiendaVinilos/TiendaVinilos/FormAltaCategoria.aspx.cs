@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Drawing;
 namespace TiendaVinilos
 {
     public partial class FormAltaCategoria : System.Web.UI.Page
@@ -51,6 +51,22 @@ namespace TiendaVinilos
 
         }
 
+        bool ValidarVacios()
+        {
+            TxtDescripcion.BorderColor = Color.White;
+            bool vacios = false;
+            if (TxtDescripcion.Text == "")
+            {
+                TxtDescripcion.BorderColor = Color.Red;
+                LblMensaje.Text = "Complete el campo...";
+                LblMensaje.Visible = true;
+                vacios = true;
+            }
+
+
+
+            return vacios;
+        }
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -75,17 +91,19 @@ namespace TiendaVinilos
                 }
                 else
                 {
-                    nuevo.Descripcion = TxtDescripcion.Text;
-                    negocio.agregar(nuevo);
-                    LblMensaje.Text = "Categoría agregada exitosamente";
-                    LblMensaje.Visible = true;
-
-                    string paginaAnterior = Session["PaginaAnterior"] as string;
-                    if (!string.IsNullOrEmpty(paginaAnterior))
+                    if (ValidarVacios() == false)
                     {
-                        Response.Redirect(paginaAnterior, false);
-                    }
+                        nuevo.Descripcion = TxtDescripcion.Text;
+                        negocio.agregar(nuevo);
+                        LblMensaje.Text = "Categoría agregada exitosamente";
+                        LblMensaje.Visible = true;
 
+                        string paginaAnterior = Session["PaginaAnterior"] as string;
+                        if (!string.IsNullOrEmpty(paginaAnterior))
+                        {
+                            Response.Redirect(paginaAnterior, false);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
