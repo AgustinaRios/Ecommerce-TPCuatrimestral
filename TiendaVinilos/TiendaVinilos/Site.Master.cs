@@ -22,8 +22,12 @@ namespace TiendaVinilos
         Item item = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page is Artistas || Page is Categorias || Page is FormAltaArtista || Page is FormAltaGenero
-              || Page is FormularioVinilo || Page is FormAltaCategoria || Page is Listar || Page is ListarUsuarios)
+            
+            if (!(Page is Inicio || Page is AlbumFiltrado || Page is Carrito
+                 || Page is Detalle || Page is MiPerfil || Page is MisCompras
+                 || Page is Login || Page is error || Page is Contact
+                 ||Page is RegistrarCuenta
+                 ||Page is AlbumsxGenero|| Page is AlbumsxCategoria))
             {
                 if (!Seguridad.esAdmin(Session["usuario"]))
                 {
@@ -32,7 +36,7 @@ namespace TiendaVinilos
 
                 }
             }
-            if (Page is MiPerfil)
+            if (Page is MiPerfil || Page is MisCompras)
             {
                 if (!Seguridad.sesionActiva(Session["usuario"]))
                     Response.Redirect("Login.aspx", false);
@@ -42,8 +46,8 @@ namespace TiendaVinilos
 
                 if (!IsPostBack)
                 {
-                   
-                    
+
+
                     List<Genero> listaGenero = generonegocio.listar();
                     List<Categoria> listaCategoria = negocioCategoria.listar();
 
@@ -150,7 +154,7 @@ namespace TiendaVinilos
                 throw;
             }
         }
-        protected void ddlGenero_SelectedIndexChanged (object sender, EventArgs e)
+        protected void ddlGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             int id = int.Parse(ddlGenero.SelectedValue);
@@ -183,7 +187,7 @@ namespace TiendaVinilos
             AlbumNegocio negocio = new AlbumNegocio();
             string buscar = txtFiltro.Text;
 
-            
+
             if (buscar != "")
             {
                 listaFiltrada = negocio.listaFiltrada(buscar);
