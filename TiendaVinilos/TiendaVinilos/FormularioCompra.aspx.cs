@@ -133,6 +133,30 @@ namespace TiendaVinilos
             return vacios;
         }
 
+        bool ValidarVaciosDll()
+        {
+            ddlFormaEntrega.BorderColor = Color.White;
+            ddlFormaPago.BorderColor = Color.White;
+            
+
+            bool vacios = false;
+
+            if (ddlFormaEntrega.SelectedIndex == 0)
+            {
+                ddlFormaEntrega.BorderColor = Color.Red;
+                vacios = true;
+            }
+            if (ddlFormaPago.SelectedIndex == 0)
+            {
+
+                ddlFormaPago.BorderColor = Color.Red;
+                vacios = true;
+            }
+          
+
+            return vacios;
+        }
+
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Carrito.aspx", false);
@@ -162,7 +186,7 @@ namespace TiendaVinilos
             {
 
                 Pedido domicilio = (Pedido)Session["Domicilio"];
-                if (domicilio.Direccion == "" || domicilio.Localidad == "" || domicilio.Provincia == "")
+                if ( ValidarVaciosDll()==true )
                 {
                     LblMensaje.Text = "Complete todos los campos";
                     LblMensaje.Visible = true;

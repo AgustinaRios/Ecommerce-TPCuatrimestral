@@ -25,8 +25,8 @@ namespace TiendaVinilos
             
             if (!(Page is Inicio || Page is AlbumFiltrado || Page is Carrito
                  || Page is Detalle || Page is MiPerfil || Page is MisCompras
-                 || Page is Login || Page is error || Page is Contact
-                 ||Page is RegistrarCuenta || Page is FormularioCompra || Page is ConfirmacionCompra
+                 || Page is Login || Page is error || Page is Contact || Page is Domicilio
+                 || Page is RegistrarCuenta || Page is FormularioCompra || Page is ConfirmacionCompra 
                  || Page is AlbumsxGenero|| Page is AlbumsxCategoria))
             {
                 if (!Seguridad.esAdmin(Session["usuario"]))

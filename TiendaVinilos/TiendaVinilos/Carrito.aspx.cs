@@ -84,7 +84,10 @@ namespace TiendaVinilos
                 }
                 else
                 {
-                    Response.Redirect("FormularioCompra.aspx", false);
+                    
+                      Response.Redirect("FormularioCompra.aspx", false);
+                    
+                    
                 }
 
             }

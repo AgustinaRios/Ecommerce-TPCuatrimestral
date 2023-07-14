@@ -212,17 +212,17 @@ namespace TiendaVinilos
                 TxtTitulo.BorderColor = Color.Red;
                 vacios = true;
             }
-            if (ddlArtista.SelectedIndex == -1)
+            if (ddlArtista.SelectedIndex == 0)
             {
                 ddlArtista.BorderColor = Color.Red;
                 vacios = true;
             }
-            if (ddlCategoria.SelectedIndex == -1)
+            if (ddlCategoria.SelectedIndex == 0)
             {
                 ddlCategoria.BorderColor = Color.Red;
                 vacios = true;
             }
-            if (ddlGenero.SelectedIndex == -1)
+            if (ddlGenero.SelectedIndex == 0)
             {
                 ddlGenero.BorderColor = Color.Red;
                 vacios = true;
