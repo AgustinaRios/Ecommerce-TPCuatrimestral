@@ -85,29 +85,26 @@ namespace TiendaVinilos
                 ///  PARA AGREGAR UN NUEVO ALBUM
                 ///     
                 Album nuevo = new Album();
-                nuevo.Titulo = TxtTitulo.Text;
-
 
                 AlbumNegocio albumNegocio = new AlbumNegocio();
 
-
-                nuevo.FechaLanzamiento =TxtFechaLanza.Text;
-                //// Se valida que la fecha no sea posterior a la del dia actual
-                DateTime hoy = DateTime.Now;
-                DateTime Lanzamiento = DateTime.Parse(nuevo.FechaLanzamiento);
-                if (Lanzamiento >= hoy)
-                {
-                    LblMensaje.Text = "No se puede cargar un album que no salio a la venta aun";
-                    LblMensaje.Visible = true;
-                    return;
-                }
-
-
-
                 if (ValidarVacios() == false)
                 {
+                    nuevo.Titulo = TxtTitulo.Text;
+                    nuevo.FechaLanzamiento = TxtFechaLanza.Text;
+                    //// Se valida que la fecha no sea posterior a la del dia actual
+                    DateTime hoy = DateTime.Now;
+                    DateTime Lanzamiento = DateTime.Parse(nuevo.FechaLanzamiento);
+                    if (Lanzamiento >= hoy)
+                    {
+                        LblMensaje.Text = "No se puede cargar un album que no salio a la venta aun";
+                        LblMensaje.Visible = true;
+                        return;
+                    }
+
                     nuevo.ImgTapa = TxtImgTapa.Text;
                     nuevo.ImgContratapa = TxtImgContraTapa.Text;
+                    nuevo.Precio = Decimal.Parse(TxtPrecio.Text);
                     nuevo.Genero = new Genero();
                     nuevo.Genero.Id = int.Parse(ddlGenero.SelectedValue);
                     nuevo.Categoria = new Categoria();
@@ -121,26 +118,56 @@ namespace TiendaVinilos
                         //////
                         ///     PARA MODIFICAR UN ALBUM
                         ///  
-                        albumNegocio.modificarConSP(nuevo);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " modificado exitosamente');window.location ='Listar.aspx';", true);
-                        // Response.Redirect("Listar.aspx");
+                        Album modificado = new Album();
+
+                        int id = Int32.Parse(Request.QueryString["Id"]);
+
+                        if (ValidarVacios() == false)
+                        {
+                            modificado.Id = id;
+                            modificado.Titulo = TxtTitulo.Text;
+                            modificado.FechaLanzamiento = TxtFechaLanza.Text;
+                            //// Se valida que la fecha no sea posterior a la del dia actual
+                            DateTime hoy1 = DateTime.Now;
+                            DateTime Lanzamiento1 = DateTime.Parse(nuevo.FechaLanzamiento);
+                            if (Lanzamiento1 >= hoy)
+                            {
+                                LblMensaje.Text = "No se puede cargar un album que no salio a la venta aun";
+                                LblMensaje.Visible = true;
+                                return;
+                            }
+
+                            modificado.ImgTapa = TxtImgTapa.Text;
+                            modificado.ImgContratapa = TxtImgContraTapa.Text;
+                            modificado.Precio = Decimal.Parse(TxtPrecio.Text);
+                            modificado.Genero = new Genero();
+                            modificado.Genero.Id = int.Parse(ddlGenero.SelectedValue);
+                            modificado.Categoria = new Categoria();
+                            modificado.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+                            modificado.Artista = new Artista();
+                            modificado.Artista.Id = int.Parse(ddlArtista.SelectedValue);
+                            modificado.Activo = true;
+                            albumNegocio.modificarConSP(modificado);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " modificado exitosamente');window.location ='Listar.aspx';", true);
+                            // Response.Redirect("Listar.aspx");
+                        }
+                        else
+                        {
+                            nuevo.Precio = Decimal.Parse(TxtPrecio.Text);
+
+                            albumNegocio.agregar(nuevo);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
+                            // Response.Redirect("Listar.aspx");
+
+                        }
+
                     }
                     else
                     {
-                        nuevo.Precio = Decimal.Parse(TxtPrecio.Text);
-
-                        albumNegocio.agregar(nuevo);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
-                        // Response.Redirect("Listar.aspx");
-
+                        LblMensaje.Text = "Debe ingresar los campos obligatorios";
+                        LblMensaje.Visible = true;
+                        return;
                     }
-
-                }
-                else
-                {
-                    LblMensaje.Text = "Debe ingresar los campos obligatorios";
-                    LblMensaje.Visible = true;
-                    return;
                 }
             }
             catch (Exception ex)
