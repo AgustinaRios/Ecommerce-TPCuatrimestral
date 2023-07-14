@@ -75,8 +75,18 @@ namespace TiendaVinilos
             }
             else
             {
-               Response.Redirect("FormularioCompra.aspx", false);
-                
+                if (carrito.lista.Count == 0)
+                {
+                    // Mostrar un mensaje indicando que el carrito está vacío
+                    Label2.Visible = true;
+                    Label2.Text = "No tiene productos seleccionados";
+                    BtnComprar.Visible = false;
+                }
+                else
+                {
+                    Response.Redirect("FormularioCompra.aspx", false);
+                }
+
             }
 
         }

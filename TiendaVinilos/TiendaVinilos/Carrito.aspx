@@ -28,15 +28,23 @@
                      </th>
                          <th>
                          <asp:Button Text="Eliminar" CssClass="btn btn-danger"  ID="btnEliminar" AutoPostBsack="true" OnClick="btnEliminar_Click" CommandArgument='<%#Eval("Producto.Id")%>' runat="server" />
-                     </th>
+                           
+                              <asp:Label ID="LblMensaje" ForeColor="red" runat="server" Visible="false"></asp:Label>
+                               
+                         </th>
                      </tr>
             </ItemTemplate> 
         </asp:Repeater>
-           
+       
+
+
     </tbody>
     </table>
+
     <p style="color: #FF0000" Font-Size="XX-Large">TOTAL: <asp:Label ID="lblTotal" runat="server" OnLoad="lblTotal_Load" ForeColor="Red" Font-Size="XX-Large" /></p>
-     <asp:Button Text="Comenzar la Compra" CssClass="btn btn-danger"  ID="BtnComprar" Onclick="BtnComprar_Click" runat="server" ToolTip="Comprar Vinilos" />
+    <asp:Label ID="Label2" ForeColor="red" runat="server" Visible="false" Font-Size="30px"></asp:Label>
+   <asp:Button Text="Comenzar la Compra" CssClass="btn btn-danger"  ID="BtnComprar" Onclick="BtnComprar_Click" runat="server" ToolTip="Comprar Vinilos" />
    </div> 
+    
    </div>    
 </asp:Content>

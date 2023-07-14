@@ -40,8 +40,15 @@ namespace Negocio
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
-                    DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
-                    aux.FechaLanzamiento = fecha.ToShortDateString();
+                    if (!datos.Lector.IsDBNull(datos.lector.GetOrdinal("FechaLanzamiento")))
+                    {
+                        DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
+                        aux.FechaLanzamiento = fecha.ToShortDateString();
+                    }
+                    else
+                    {
+                        aux.FechaLanzamiento = null; // Asignar null si el valor es nulo en la base de datos
+                    }
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
@@ -98,8 +105,15 @@ namespace Negocio
                     aux.Artista = new Artista();
                     if (!(datos.Lector.IsDBNull(datos.lector.GetOrdinal("Artista"))))
                         aux.Artista.Nombre = (string)datos.Lector["Artista"];
-                    DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
-                    aux.FechaLanzamiento = fecha.ToShortDateString();                   
+                    if (!datos.Lector.IsDBNull(datos.lector.GetOrdinal("FechaLanzamiento")))
+                    {
+                        DateTime fecha = (DateTime)datos.Lector["FechaLanzamiento"];
+                        aux.FechaLanzamiento = fecha.ToShortDateString();
+                    }
+                    else
+                    {
+                        aux.FechaLanzamiento = null; // Asignar null si el valor es nulo en la base de datos
+                    }
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgTapa"))))
                         aux.ImgTapa = (string)datos.Lector["ImgTapa"];
                     if (!(datos.lector.IsDBNull(datos.lector.GetOrdinal("ImgContratapa"))))
@@ -322,7 +336,14 @@ namespace Negocio
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@Titulo", nuevo.Titulo);
                 datos.setearParametro("@IdArtista", nuevo.Artista.Id);
-                datos.setearParametro("@FechaLanzamiento", nuevo.FechaLanzamiento);
+                if (string.IsNullOrEmpty(nuevo.FechaLanzamiento))
+                {
+                    datos.setearParametro("@FechaLanzamiento", DBNull.Value);
+                }
+                else
+                {
+                    datos.setearParametro("@FechaLanzamiento", nuevo.FechaLanzamiento);
+                }
                 datos.setearParametro("@ImgTapa", nuevo.ImgTapa);
                 datos.setearParametro("@ImgContratapa", nuevo.ImgContratapa);
                 datos.setearParametro("@IdGenero", nuevo.Genero.Id);
