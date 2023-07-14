@@ -1,20 +1,15 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.AccessControl;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using Dominio;
-using Negocio;
 
 namespace TiendaVinilos
 {
     public partial class FormularioVinilo : System.Web.UI.Page
     {
-       
+
         GeneroNegocio genero = new GeneroNegocio();
         List<Genero> listaGenero = new List<Genero>();
 
@@ -36,17 +31,17 @@ namespace TiendaVinilos
 
                     CargarDdl();
 
-                    
 
-                   
+
+
 
                     ///Toma el Id del album que  viene desde el boton de Modificar en el caso que no tenga Id cargado se asigna""
                     string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
-                        Lbltitlulo.Text = "Alta de Albums";
+                    Lbltitlulo.Text = "Alta de Albums";
                     if (Id != "")
 
                     {
-                       Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
+                        Lbltitlulo.Text = "Modificando Albums"; //Cambia Dinamicamente dependiendo de donde entre
                         CargarAlbum(Id);
                     }
 
@@ -76,32 +71,43 @@ namespace TiendaVinilos
             Session["PaginaAnterior"] = Request.Url.ToString();
             Response.Redirect("FormAltaCategoria.aspx", false);
         }
-       
+
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                ///
-                ///  PARA AGREGAR UN NUEVO ALBUM
-                ///     
                 Album nuevo = new Album();
-
                 AlbumNegocio albumNegocio = new AlbumNegocio();
+
+
 
                 if (ValidarVacios() == false)
                 {
-                    nuevo.Titulo = TxtTitulo.Text;
-                    nuevo.FechaLanzamiento = TxtFechaLanza.Text;
-                    //// Se valida que la fecha no sea posterior a la del dia actual
-                    DateTime hoy = DateTime.Now;
-                    DateTime Lanzamiento = DateTime.Parse(nuevo.FechaLanzamiento);
-                    if (Lanzamiento >= hoy)
+                    string fechaLanzamiento = TxtFechaLanza.Text;
+                    if (!string.IsNullOrEmpty(fechaLanzamiento))
                     {
-                        LblMensaje.Text = "No se puede cargar un album que no salio a la venta aun";
-                        LblMensaje.Visible = true;
-                        return;
-                    }
+                        DateTime lanzamiento;
+                        if (!DateTime.TryParse(fechaLanzamiento, out lanzamiento))
+                        {
+                            LblMensaje.Text = "La fecha de lanzamiento no es válida";
+                            LblMensaje.Visible = true;
+                            return;
+                        }
 
+                        if (lanzamiento >= DateTime.Now)
+                        {
+                            LblMensaje.Text = "No se puede cargar un álbum que no ha salido a la venta aún";
+                            LblMensaje.Visible = true;
+                            return;
+                        }
+
+                        nuevo.FechaLanzamiento = fechaLanzamiento; // Asignar la fecha de lanzamiento solo si es válida
+                    }
+                    else
+                    {
+                        nuevo.FechaLanzamiento = null; // Asignar null directamente cuando el campo de fecha está vacío
+                    }
+                    nuevo.Titulo = TxtTitulo.Text;
                     nuevo.ImgTapa = TxtImgTapa.Text;
                     nuevo.ImgContratapa = TxtImgContraTapa.Text;
                     nuevo.Precio = Decimal.Parse(TxtPrecio.Text);
@@ -111,9 +117,16 @@ namespace TiendaVinilos
                     nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
                     nuevo.Artista = new Artista();
                     nuevo.Artista.Id = int.Parse(ddlArtista.SelectedValue);
+
+                    nuevo.Genero = new Genero { Id = int.Parse(ddlGenero.SelectedValue) };
+                    nuevo.Categoria = new Categoria { Id = int.Parse(ddlCategoria.SelectedValue) };
+                    nuevo.Artista = new Artista { Id = int.Parse(ddlArtista.SelectedValue) };
+
                     nuevo.Activo = true;
+
                     if (Request.QueryString["Id"] != null)
                     {
+
 
                         //////
                         ///     PARA MODIFICAR UN ALBUM
@@ -122,54 +135,57 @@ namespace TiendaVinilos
 
                         int id = Int32.Parse(Request.QueryString["Id"]);
 
-                        if (ValidarVacios() == false)
+
+                        modificado.Id = id;
+                        modificado.Titulo = TxtTitulo.Text;
+                        modificado.FechaLanzamiento = TxtFechaLanza.Text;
+                        //// Se valida que la fecha no sea posterior a la del dia actual
+                        DateTime hoy = DateTime.Now;
+                        DateTime Lanzamiento = DateTime.Parse(nuevo.FechaLanzamiento);
+                        if (Lanzamiento >= hoy)
                         {
-                            modificado.Id = id;
-                            modificado.Titulo = TxtTitulo.Text;
-                            modificado.FechaLanzamiento = TxtFechaLanza.Text;
-                            //// Se valida que la fecha no sea posterior a la del dia actual
-                            DateTime hoy1 = DateTime.Now;
-                            DateTime Lanzamiento1 = DateTime.Parse(nuevo.FechaLanzamiento);
-                            if (Lanzamiento1 >= hoy)
-                            {
-                                LblMensaje.Text = "No se puede cargar un album que no salio a la venta aun";
-                                LblMensaje.Visible = true;
-                                return;
-                            }
-
-                            modificado.ImgTapa = TxtImgTapa.Text;
-                            modificado.ImgContratapa = TxtImgContraTapa.Text;
-                            modificado.Precio = Decimal.Parse(TxtPrecio.Text);
-                            modificado.Genero = new Genero();
-                            modificado.Genero.Id = int.Parse(ddlGenero.SelectedValue);
-                            modificado.Categoria = new Categoria();
-                            modificado.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
-                            modificado.Artista = new Artista();
-                            modificado.Artista.Id = int.Parse(ddlArtista.SelectedValue);
-                            modificado.Activo = true;
-                            albumNegocio.modificarConSP(modificado);
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " modificado exitosamente');window.location ='Listar.aspx';", true);
-                            // Response.Redirect("Listar.aspx");
-                        }
-                        else
-                        {
-                            nuevo.Precio = Decimal.Parse(TxtPrecio.Text);
-
-                            albumNegocio.agregar(nuevo);
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
-                            // Response.Redirect("Listar.aspx");
-
+                            LblMensaje.Text = "No se puede cargar un album que no salio a la venta aun";
+                            LblMensaje.Visible = true;
+                            return;
                         }
 
+                        modificado.ImgTapa = TxtImgTapa.Text;
+                        modificado.ImgContratapa = TxtImgContraTapa.Text;
+                        modificado.Precio = Decimal.Parse(TxtPrecio.Text);
+                        modificado.Genero = new Genero();
+                        modificado.Genero.Id = int.Parse(ddlGenero.SelectedValue);
+                        modificado.Categoria = new Categoria();
+                        modificado.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+                        modificado.Artista = new Artista();
+                        modificado.Artista.Id = int.Parse(ddlArtista.SelectedValue);
+                        modificado.Activo = true;
+                        albumNegocio.modificarConSP(modificado);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " modificado exitosamente');window.location ='Listar.aspx';", true);
+                        // Response.Redirect("Listar.aspx");
                     }
                     else
                     {
-                        LblMensaje.Text = "Debe ingresar los campos obligatorios";
-                        LblMensaje.Visible = true;
-                        return;
+
+
+                        albumNegocio.agregar(nuevo);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert(' " + nuevo.Titulo + " Agregado exitosamente');window.location ='Listar.aspx';", true);
+                        // Response.Redirect("Listar.aspx");
+
                     }
+
+                   
                 }
+
+                else
+                {
+                    LblMensaje.Text = "Debe ingresar los campos obligatorios";
+                    LblMensaje.Visible = true;
+                    return;
+
+                }
+
             }
+
             catch (Exception ex)
             {
                 throw ex;
@@ -229,12 +245,13 @@ namespace TiendaVinilos
                 TxtImgContraTapa.BorderColor = Color.Red;
                 vacios = true;
             }
-            if (TxtFechaLanza.Text == "" )
-            {
+            /* if (TxtFechaLanza.Text == "" )
+           {
 
-                TxtFechaLanza.BorderColor = Color.Red;
-                vacios = true;
-            }
+               TxtFechaLanza.BorderColor = Color.Red;
+               vacios = true;
+           }*/
+
 
             return vacios;
         }
@@ -279,7 +296,7 @@ namespace TiendaVinilos
             int idbuscado = seleccionado.Id;
             seleccionado = negocio.ObtenerAlbum(idbuscado);
             //se carga los datos del Album que se selecciono modificar
-            
+
 
             TxtTitulo.Text = seleccionado.Titulo.ToString();
             DateTime fecha = Convert.ToDateTime(seleccionado.FechaLanzamiento);

@@ -69,11 +69,11 @@
                       <asp:Label ID="LblMensaje" ForeColor="red" runat="server" Visible="false"></asp:Label> 
                   </div>
                   <asp:RangeValidator ID="rvclass" runat="server" ControlToValidate="TxtNroTarjeta"
-                        ErrorMessage="Solo números" MaximumValue="10000000000000000"
+                        ErrorMessage="Solo números" ForeColor="red" MaximumValue="10000000000000000"
                         MinimumValue="1" Type="Double">
                     </asp:RangeValidator>
                     <asp:RangeValidator ID="rvlclass2" runat="server" ControlToValidate="TxtCodSeguridad"
-                        ErrorMessage="Solo números" MaximumValue="5000"
+                        ErrorMessage="Solo números" ForeColor="red" MaximumValue="5000"
                         MinimumValue="1" Type="Double">
                     </asp:RangeValidator>
             </div>
